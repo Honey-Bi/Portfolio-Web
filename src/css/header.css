@@ -1,0 +1,99 @@
+nav {
+    overflow-block: auto;
+    border-bottom: 2px solid #f2f2f2;
+    z-index: 1;
+}
+.nav-item {
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+    text-align: center;
+    width: 33%;
+    font-size: 1.2rem;
+}
+.nav-home {
+    float: left;
+}
+.mode-toggle {
+    float: right;
+}
+.mode-toggle span {
+    cursor: pointer;
+    font-weight: 600;
+}
+.mode-toggle span:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+}
+.source {
+    position: relative;
+    float: right;
+}
+.source-item {
+    position: absolute;
+    width: 33%;
+    cursor: grab;
+}
+.source-item > div {
+    z-index: 999;
+}
+.source-item > div:active {
+    transform: scale(1.5);
+}
+.source-item:nth-child(2) {
+    left: 33%;
+}
+.source-item:nth-child(3) {
+    left: 66%;
+}
+
+.source-item > div {
+    position: absolute;
+}
+
+.mode-toggle.active .fa-sun {
+    display: none;
+}
+.mode-toggle.active .fa-moon {
+    display: inline;
+}
+.mode-toggle .fa-moon {
+    display: none;
+}
+
+.source > span {
+    padding: 0 1rem;
+}
+
+@media (min-width: 768px) {
+    .nav-item {
+        width: 16.666%;
+    }
+}
+.logo {
+    width: 40px;
+    height: 40px;
+}
+.polygon {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top:  calc( 5px * 1.732 ) solid grey;
+    position: absolute;
+    transform-origin: 5px calc( 5px * 1.732 + 0.2px);
+}
+.polygon:nth-child(2) {
+    transform: rotate(60deg);
+}
+.polygon:nth-child(3) {
+    transform: rotate(120deg);
+}
+.polygon:nth-child(4) {
+    transform: rotate(180deg);
+}
+.polygon:nth-child(5) {
+    transform: rotate(240deg);
+}
+.polygon:nth-child(6) {
+    transform: rotate(300deg);
+}
