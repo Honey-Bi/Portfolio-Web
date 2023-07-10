@@ -1,0 +1,89 @@
+#main {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+.box {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    inset: 0px;
+    margin: auto;
+}
+.comb {
+    height: 260px;
+    width: 300px;
+    padding: 70px 0px;
+    position: relative;
+    margin: 0px auto;
+    animation: turn 120s linear infinite;
+}
+.container {
+    height: 100vh;
+}
+.tri {
+    width: 0;
+    cursor: pointer;
+    height: 0;
+    margin-left: 75px;
+    border-left: 75px solid transparent;
+    border-right: 75px solid transparent;
+    border-top:  calc( 75px * 1.732 ) solid grey;
+    position: absolute;
+    transform-origin: 75px calc( 75px * 1.732 + 2px);
+    transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1) 0s;
+}
+.tri:hover > span {
+    top: -165px;
+}
+.tri > span {
+    display: block;
+    position: absolute;
+    top: -160px;
+    padding-bottom: 40px;
+    transform: translateX(-50%);
+    font-weight: 600;   
+    white-space: nowrap;
+    z-index: 0;
+    transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1) 0s;
+}
+.tri:nth-child(1):hover {
+    transform: translate(0px, -10px);
+}
+.tri:nth-child(2) {
+    transform: rotate(60deg);
+}
+.tri:nth-child(2):hover {
+    transform: rotate(60deg) translate(0px, -10px);
+}
+.tri:nth-child(3) {
+    transform: rotate(120deg);
+}
+.tri:nth-child(3):hover {
+    transform: rotate(120deg) translate(0, -10px);
+}
+.tri:nth-child(4) {
+    transform: rotate(-180deg);
+}
+.tri:nth-child(4):hover {
+    transform: rotate(-180deg) translate(0, -10px);
+}
+.tri:nth-child(5) {
+    transform: rotate(-120deg);
+}
+.tri:nth-child(5):hover {
+    transform: rotate(-120deg) translate(0, -10px);
+}
+.tri:nth-child(6) {
+    transform: rotate(-60deg);
+}
+.tri:nth-child(6):hover {
+    transform: rotate(-60deg) translate(0, -10px);
+}
+
+
+@keyframes turn {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
