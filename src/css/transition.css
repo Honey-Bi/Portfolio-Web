@@ -1,0 +1,35 @@
+.enter {
+    animation: 800ms ease 0s 1 normal none running enter;
+}
+.exit {
+    opacity: 0;
+    animation: 800ms ease 0s 1 normal none running exit;
+}
+@keyframes enter {
+    0% {
+        transform: translateY(50%);
+        opacity: 0;
+    }
+    20% {
+        transform: translateY(50%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+@keyframes exit {
+    0% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+    30% {
+        transform: translateY(5%);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-50%);
+        opacity: 0;
+    }
+}
