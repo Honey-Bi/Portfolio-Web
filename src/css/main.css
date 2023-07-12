@@ -10,6 +10,12 @@
     height: 400px;
     inset: 0px;
     margin: auto;
+    transition: all ease 1s;
+    animation: on 0.5s linear 1;
+    z-index: 1;
+}
+#down {
+    transition: all ease 0.5s;
 }
 .comb {
     height: 260px;
@@ -18,9 +24,6 @@
     position: relative;
     margin: 0px auto;
     animation: turn 120s linear infinite;
-}
-.container {
-    height: 100vh;
 }
 .tri {
     width: 0;
@@ -32,7 +35,7 @@
     border-top:  calc( 75px * 1.732 ) solid grey;
     position: absolute;
     transform-origin: 75px calc( 75px * 1.732 + 2px);
-    transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1) 0s;
+    transition: 0.3s cubic-bezier(0.25, 0.1, 0.25, 1) 0s;
 }
 .tri:hover > span {
     top: -165px;
@@ -45,45 +48,118 @@
     transform: translateX(-50%);
     font-weight: 600;   
     white-space: nowrap;
-    z-index: 0;
+    color: #000;
+    text-transform: uppercase;
     transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1) 0s;
+
+}
+.tri:nth-child(1) {
+    animation: triOn1 200ms linear;
 }
 .tri:nth-child(1):hover {
-    transform: translate(0px, -10px);
+    transform: translate(0px, -15px);
 }
 .tri:nth-child(2) {
     transform: rotate(60deg);
+    animation: triOn2 200ms linear 200ms;
 }
 .tri:nth-child(2):hover {
-    transform: rotate(60deg) translate(0px, -10px);
+    transform: rotate(60deg) translate(0px, -15px);
 }
 .tri:nth-child(3) {
     transform: rotate(120deg);
+    animation: triOn3 200ms linear 400ms;
 }
 .tri:nth-child(3):hover {
     transform: rotate(120deg) translate(0, -10px);
 }
 .tri:nth-child(4) {
     transform: rotate(-180deg);
+    animation: triOn4 200ms linear 600ms;
 }
 .tri:nth-child(4):hover {
     transform: rotate(-180deg) translate(0, -10px);
 }
 .tri:nth-child(5) {
     transform: rotate(-120deg);
+    animation: triOn5 200ms linear 800ms;
 }
 .tri:nth-child(5):hover {
     transform: rotate(-120deg) translate(0, -10px);
 }
 .tri:nth-child(6) {
     transform: rotate(-60deg);
+    animation: triOn6 200ms linear 1000ms;
 }
 .tri:nth-child(6):hover {
     transform: rotate(-60deg) translate(0, -10px);
 }
-
-
+@keyframes triOn1 {
+    0% {transform: translate(0px, 0px);}
+    50% {transform: translate(0px, -15px);}
+    100% {transform: translate(0px, 0px);}   
+}
+@keyframes triOn2 {
+    0% {transform: rotate(60deg) translate(0px, 0px);}
+    50% {transform: rotate(60deg) translate(0px, -15px);}
+    100% {transform: rotate(60deg) translate(0px, 0px);}   
+}
+@keyframes triOn3 {
+    0% {transform: rotate(120deg) translate(0px, 0px);}
+    50% {transform: rotate(120deg) translate(0px, -15px);}
+    100% {transform: rotate(120deg) translate(0px, 0px);}   
+}
+@keyframes triOn4 {
+    0% {transform: rotate(180deg) translate(0px, 0px);}
+    50% {transform: rotate(180deg) translate(0px, -15px);}
+    100% {transform: rotate(180deg) translate(0px, 0px);}   
+}
+@keyframes triOn5 {
+    0% {transform: rotate(240deg) translate(0px, 0px);}
+    50% {transform: rotate(240deg) translate(0px, -15px);}
+    100% {transform: rotate(240deg) translate(0px, 0px);}   
+}
+@keyframes triOn6 {
+    0% {transform: rotate(300deg) translate(0px, 0px);}
+    50% {transform: rotate(300deg) translate(0px, -15px);}
+    100% {transform: rotate(300deg) translate(0px, 0px);}   
+}
 @keyframes turn {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+@keyframes on {
+    0% { 
+        opacity: 0.5;
+        transform: scale(0.8);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.mushroom .box {
+    transform: scale(1.1);
+}
+.mushroom2 .box {
+    transform: scale(1.2);
+}
+.potion .tri {
+    border-top-color: #B5F1CC;
+}
+.potion .tri:nth-child(2) {
+    border-top-color: #FDF7C3;
+}
+.potion .tri:nth-child(3) {
+    border-top-color: #FFCEFE;
+}
+.potion .tri:nth-child(4) {
+    border-top-color: #FF9B9B;
+}
+.potion .tri:nth-child(5) {
+    border-top-color: #B9F3FC;
+}
+.potion .tri:nth-child(6) {
+    border-top-color: #B2A4FF;
 }
