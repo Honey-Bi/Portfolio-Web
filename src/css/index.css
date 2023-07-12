@@ -10,6 +10,7 @@ body {
 }
 #root {
   overflow: hidden;
+  transition: all ease 0.5s;
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -20,9 +21,12 @@ code {
   background-color: #343a40 !important;
   color: #fff !important;
 }
-
+.dark span {
+  color: #fff !important;
+}
 .container {
   margin: 0 auto;
+  height: 100vh;
 }
 
 @media (min-width: 576px) {
