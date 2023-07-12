@@ -1,13 +1,117 @@
-.slider {
+#down {
+    height: 100vh;
+}
+.controller {
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    bottom: 5%;
+}
+.timer {
+    position: relative;
     width: 20rem;
+    height: 0.25rem;
     max-width: 60%;
-    margin-top: auto;
+    border-radius: 0.5rem;
+    margin: 0 auto;
     margin-bottom: 1rem;
-
+    background-color: #000;
+    z-index: 0;
 }
 .wrap {
+    flex-direction: column;
     justify-content: center;
-    text-align: center;
+    align-items: center;
     display: flex;
     height: calc(100% - 52px);
+}
+.btn-group {
+    margin-bottom: 5rem;
+}
+.btn-group button {
+    width: 2rem;
+    padding: 0;
+    border:none;
+    background: none;
+    margin: 0 1rem;
+    cursor: pointer;
+}
+.btn-group button:hover {
+    color: #ccc;
+}
+.btn-group i {
+    font-size: 2rem;
+}
+.wrap button {
+    float: left;
+}
+.round {
+    width: 1rem;
+    height: 1rem;
+    border: 1px solid #000;
+    background-color: #f00;
+    border-radius: 1rem;
+    top: calc(-0.5rem + 1px);
+    left: -0.5rem;
+    position: absolute;
+    animation: moveRound 10s linear forwards;
+    z-index: 2;
+}
+.fill {
+    position: absolute;
+    height: 200%;
+    float: left;
+    left: 0;
+    top: -50%;
+    border-radius: 0.5rem;
+    background: #ff0000;
+    animation: fill 10s linear forwards;
+    z-index: 1;
+}
+.timer.active > .round, .timer.active > .fill {
+    animation-play-state: paused;
+}
+@keyframes fill {
+    0% {width: 0%;}
+    100% {width: 100%;}
+}
+@keyframes moveRound {
+    0% {left: -0.5rem;}
+    100% {left: calc(100% - 0.5rem);}
+}
+button.active .fa-pause, button .fa-play {
+    display: inline-block;
+}
+button.active .fa-play, button .fa-pause {
+    display: none;
+}
+.slide {
+    margin-left: calc(50% + 15rem);
+    width: calc(15rem*5);
+    transition: all 1s ease;
+}
+.slide-item {
+    filter: blur(10px);
+    width: 15rem;
+    float: left;
+    height: 30rem;
+    transform: scale(0.5);
+    transition: all 1s ease;
+    background-color: #f00;
+}
+.slide-item.active {
+    transform: scale(1);
+    filter: blur(0px);   
+}
+.slide-item:nth-child(2) {
+    background-color: #0f0;
+}
+.slide-item:nth-child(3) {
+    background-color: #00f;
+}
+.slide-item:nth-child(4) {
+    background-color: #ff0;
+}
+.slide-item:nth-child(5) {
+    background-color: #0ff;
 }
