@@ -1,43 +1,32 @@
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Header from './Header';
 import '../css/main.css';
-import '../css/transition.css'
 function Main() {
-
-    const navigate = useNavigate();
-
-    function Move(path:String):void {
-        const element = document.getElementById('main');
-        element?.classList.remove('enter');
-        element?.classList.add('exit');
-        setTimeout(() => {
-            navigate(path.toString());
-        }, 800);
-    }
-
     return (
-        <div className='enter' id='main'>
+        <div id='main'>
             <Header/>
-            <div className="container">
-                <div className="box">
-                    <div className="comb">
-                        <div className="tri" onClick={() => Move('./Timer')}>
-                            <span>test1</span>
-                        </div>
-                        <div className="tri">
-                            <span>test2</span>
-                        </div>
-                        <div className="tri">
-                            <span>test3</span>
-                        </div>
-                        <div className="tri">
-                            <span>test4</span>
-                        </div>
-                        <div className="tri">
-                            <span>test5</span>
-                        </div>
-                        <div className="tri">
-                            <span>test6</span>
+            <div id="down">
+                <div className="container">
+                    <div className="box">
+                        <div className="comb">
+                            <div className="tri">
+                                <span></span>
+                            </div>
+                            <Link to={'/Project'} className='tri'>
+                                <span>project</span>
+                            </Link>
+                            <Link to={'/Test'} className='tri'>
+                                <span>test1</span>
+                            </Link>
+                            <div className="tri">
+                                <span>concept</span>
+                            </div>
+                            <div className="tri">
+                                <span>making</span>
+                            </div>
+                            <div className="tri">
+                                <span>profile</span>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -1,23 +1,13 @@
 .move-enter {
-    opacity: 0;
-    transform: translatey(100%);
+    animation: 800ms ease 0s 1 normal none running enter;
 }
 .move-enter-active {
     opacity: 1;
-    animation: 800ms ease 0s 1 normal none running enter;
 }
 .move-exit {
-    opacity: 1;
-    transform: translateY(0px);
-}
-.move-exit-active {
-    opacity: 0;
     animation: 800ms ease 0s 1 normal none running exit;    
 }
-.move-enter-done {
-    opacity: 1;
-}
-.move-exit-done {
+.move-exit-active {
     opacity: 0;
 }
 @keyframes enter {
