@@ -1,0 +1,24 @@
+.container {
+    padding: 1rem;
+}
+.name {
+    display: none;
+    font-size: 2rem;
+}
+.name.active {
+    display: block;
+    animation: drop 1s ease 8s forwards;
+}
+@keyframes drop{
+    0% {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+    5% {
+        transform: translateY(-5%);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(50%);
+    }
+}

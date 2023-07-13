@@ -1,23 +1,47 @@
 import Header from './Header';
 import '../css/project.css';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+// import { Link } from 'react-router-dom';
 
 function Project() {
     const [play, setPlay] = useState<boolean>(true);
     const [direction, setDirection] = useState<number>(0);
+    const [count, setCount] = useState<number>(20);
+    const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
     useEffect(() => {
         const slide:HTMLCollectionOf<Element> = document.getElementsByClassName('slide-item');
         slide[direction].classList.add('active');
-
+        const round:HTMLElement = document.getElementById('round') as HTMLElement;
+        const fill:HTMLElement = document.getElementById('fill') as HTMLElement;
+        round.classList.remove('round');
+        fill.classList.remove('fill');
+        void round.offsetWidth; 
+        void fill.offsetWidth; 
+        round.classList.add('round');
+        fill.classList.add('fill');
+        setCount(20)
     },[direction]);
 
-    useEffect(() => {   
-        const slideId = setInterval(() => {
-            next();
-        }, 1000*10);
-        return () => clearInterval(slideId);
-    });
+    useEffect(() => {
+        if(count <= 0 ) {
+            next()
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [count]);
 
+    useEffect(() => {
+        if(play) {
+            timerRef.current = setInterval(elapsed, 500);
+        } else {
+            clearInterval(timerRef.current as NodeJS.Timer)
+        }
+        return () => clearInterval(timerRef.current as NodeJS.Timer);
+    }, [play]);
+
+    const elapsed = () => {
+        setCount((prev) => prev-1);
+    }
     const PP = () => {
         setPlay((prev) => !prev);
     }
@@ -36,19 +60,42 @@ function Project() {
         }
     }
 
+    function moveWheel(e: any): void {
+        if (e.deltaY > 0) {
+            next();
+        } else if (e.deltaY < 0) {
+            prev();
+        }
+    }
+
     return (
         <div id='main'>
             <Header/>
             <div id="down">
-                <div className="wrap">
+                <div className="wrap" onWheel={e => moveWheel(e)}>
                     <div className="slide" style={{
-                        transform: `translateX(${-15*direction}rem)`
+                        transform: `translateX(calc(12.5rem*${direction}*-2.45))`
                     }}>
-                        <div className="slide-item">&nbsp;</div>
-                        <div className="slide-item">&nbsp;</div>
-                        <div className="slide-item">&nbsp;</div>
-                        <div className="slide-item">&nbsp;</div>
-                        <div className="slide-item">&nbsp;</div>
+                        <div className="slide-item">
+                        {/* <Link to={'/Project/1'}> */}
+                            <div className="album">
+                                <span className="album-title">test1</span>
+                            </div>
+                        {/* </Link> */}
+                            <div className="record" ></div>
+                        </div>
+                        <div className="slide-item">
+                            <div className="album"></div>
+                            <div className="record"></div>
+                        </div>
+                        <div className="slide-item">
+                            <div className="album"></div>
+                            <div className="record"></div>
+                        </div>
+                        <div className="slide-item">
+                            <div className="album"></div>
+                            <div className="record"></div>
+                        </div>
                     </div>
                 </div>
                 <div className="controller">

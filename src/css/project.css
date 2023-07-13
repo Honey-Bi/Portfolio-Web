@@ -1,5 +1,5 @@
 #down {
-    height: 100vh;
+    height: calc(100% - 3.5rem);
 }
 .controller {
     text-align: center;
@@ -7,26 +7,28 @@
     width: 100%;
     bottom: 5%;
 }
-.timer {
-    position: relative;
-    width: 20rem;
-    height: 0.25rem;
-    max-width: 60%;
-    border-radius: 0.5rem;
-    margin: 0 auto;
-    margin-bottom: 1rem;
-    background-color: #000;
-    z-index: 0;
-}
 .wrap {
     flex-direction: column;
     justify-content: center;
     align-items: center;
     display: flex;
     height: calc(100% - 52px);
+    transition: all 2s ease;
 }
+.timer {
+    position: relative;
+    width: 20rem;
+    height: 0;
+    max-width: 60%;
+    border: calc(0.25rem/2) solid #bdbdbd;
+    border-radius: 0.5rem;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+    z-index: 0;
+}
+
 .btn-group {
-    margin-bottom: 5rem;
+    margin-bottom: 5%;
 }
 .btn-group button {
     width: 2rem;
@@ -34,13 +36,16 @@
     border:none;
     background: none;
     margin: 0 1rem;
-    cursor: pointer;
 }
 .btn-group button:hover {
+    cursor: pointer;
     color: #ccc;
 }
 .btn-group i {
     font-size: 2rem;
+}
+.dark i {
+    color: #fff !important;
 }
 .wrap button {
     float: left;
@@ -48,10 +53,9 @@
 .round {
     width: 1rem;
     height: 1rem;
-    border: 1px solid #000;
-    background-color: #f00;
+    background-color: #9E9E9E;
     border-radius: 1rem;
-    top: calc(-0.5rem + 1px);
+    top: -0.5rem;
     left: -0.5rem;
     position: absolute;
     animation: moveRound 10s linear forwards;
@@ -59,12 +63,10 @@
 }
 .fill {
     position: absolute;
-    height: 200%;
-    float: left;
-    left: 0;
-    top: -50%;
+    left: -0.25rem;
+    top: -0.25rem;
+    border: 0.25rem solid #9e9e9e;
     border-radius: 0.5rem;
-    background: #ff0000;
     animation: fill 10s linear forwards;
     z-index: 1;
 }
@@ -86,32 +88,86 @@ button.active .fa-play, button .fa-pause {
     display: none;
 }
 .slide {
-    margin-left: calc(50% + 15rem);
-    width: calc(15rem*5);
     transition: all 1s ease;
-}
+    position: absolute;
+    width: calc(12.5rem * 2.45 * 4);
+    left: calc(50% - 12.5rem * 0.75);
+
+}   
 .slide-item {
     filter: blur(10px);
-    width: 15rem;
+    width: 12.5rem;
+    height: 12.5rem;
+    margin-right: calc(12.5rem * 1.45);
     float: left;
-    height: 30rem;
     transform: scale(0.5);
     transition: all 1s ease;
-    background-color: #f00;
+    position: relative;
+}
+  
+.album {
+    width: 100%;
+    height: 100%;
+    background-color: #cecece;
+    transition: all 1s ease;
+    position: absolute;
+    z-index: 1;
+    cursor: pointer;
+}
+.album-title {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    font-size: 1.2rem;
+    color: #fff;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.record {
+    position: absolute;
+    width: 90%;
+    height: 90%;
+    border-radius: 50%;
+    top: 5%;
+    margin-left: 5%;
+    background-color: #374259;
+    z-index: 0;
+    transition: all 1s ease;
+    animation: rotate 6s linear infinite;
+}
+@keyframes rotate{
+    100% {
+        transform: rotate(360deg);
+    }
 }
 .slide-item.active {
     transform: scale(1);
     filter: blur(0px);   
 }
-.slide-item:nth-child(2) {
-    background-color: #0f0;
+.slide-item.active .record {
+    margin-left: 40%;
 }
-.slide-item:nth-child(3) {
-    background-color: #00f;
+.slide-item.active:hover .record {
+    margin-left: 80%;
 }
-.slide-item:nth-child(4) {
-    background-color: #ff0;
+.potion .slide-item:nth-child(1) .album {
+    background-color: #FF9B9B;
 }
-.slide-item:nth-child(5) {
-    background-color: #0ff;
+.potion .slide-item:nth-child(2) .album {
+    background-color: #FFD6A5;
+}
+.potion .slide-item:nth-child(3) .album {
+    background-color: #FFFEC4;
+}
+.potion .slide-item:nth-child(4) .album {
+    background-color: #CBFFA9;
+}
+.potion .slide-item:nth-child(5) .album {
+    background-color: #C2DEDC;
+}
+.mushroom .wrap {
+    transform: scale(1.1);
+}
+.mushroom2 .wrap {
+    transform: scale(1.2);
 }
