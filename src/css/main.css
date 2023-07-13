@@ -163,3 +163,22 @@
 .potion .tri:nth-child(6) {
     border-top-color: #B2A4FF;
 }
+.select {
+    display: none;
+}
+@media (min-width: 768px) {
+    .select {
+        display: block;
+        position: absolute;
+        right: -7rem;
+        bottom: 7rem;
+        font-weight: 800;
+        font-size: 6rem;
+        color: #ccc;
+        transform: rotate(-90deg);
+    }
+}
+  
+.select span {
+    text-transform: uppercase;
+}

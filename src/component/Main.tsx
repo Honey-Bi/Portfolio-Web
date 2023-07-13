@@ -12,23 +12,26 @@ function Main() {
                             <div className="tri">
                                 <span></span>
                             </div>
-                            <Link to={'/Project'} className='tri'>
+                            <Link to={'./Project'} className='tri'>
                                 <span>project</span>
                             </Link>
-                            <Link to={'/Test'} className='tri'>
+                            <Link to={'./Test'} className='tri'>
                                 <span>test1</span>
                             </Link>
-                            <div className="tri">
+                            <Link to={'./Concept'} className='tri'>
                                 <span>concept</span>
-                            </div>
-                            <div className="tri">
+                            </Link>
+                            <Link to={'./Making'} className='tri'>
                                 <span>making</span>
-                            </div>
-                            <div className="tri">
+                            </Link>
+                            <Link to={'./Profile'} className='tri'>
                                 <span>profile</span>
-                            </div>
+                            </Link>
                         </div>
                     </div>
+                </div>
+                <div className="select">
+                    <span>select</span>
                 </div>
             </div>
         </div>
