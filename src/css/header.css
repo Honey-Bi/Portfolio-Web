@@ -1,14 +1,21 @@
 nav {
     display: flex;
     border-bottom: 2px solid #f2f2f2;
-    /* height: 3.5rem; */
+    height: 3.5rem;
     padding: 0 1rem;
+    position: relative;
+    z-index: 999;
 }
 .nav-home a {
     color: #000;
 }
 .dark a {
     color: #fff !important;
+}
+.reload {
+    cursor: pointer;
+    margin: 0;
+
 }
 .nav-item {
     margin: 1rem 0 0.5rem;

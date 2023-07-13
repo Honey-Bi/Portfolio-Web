@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import '../css/header.css';
 import img1 from '../img/sample_images_01.png';
 import img2 from '../img/sample_images_02.png';
@@ -55,6 +55,7 @@ export default function Header() {
     useEffect(() => {
         const down:HTMLElement = document.getElementById('down') as HTMLElement;
         if (moveItems.mushroom === 2) {
+            down.classList.add('mushroom');
             down.classList.replace('mushroom', 'mushroom2');
         } else if (moveItems.mushroom === 1) {
             down.classList.add('mushroom');
@@ -64,6 +65,7 @@ export default function Header() {
         }
 
         if (moveItems.potion === 2) {
+            down.classList.add('potion');
             down.classList.replace('potion', 'potion2');
         } else if (moveItems.potion === 1) {
             down.classList.add('potion');
@@ -84,25 +86,34 @@ export default function Header() {
     }
     const dragStop = (e: any) => {
         const down:HTMLElement = document.getElementById('down') as HTMLElement;
-        if (down.classList.contains('dropPossible')) {
+        if(down.classList.contains('dropPossible')) {
             let id:string = e.target.id;
             addItems(id);
         }
         down.classList.remove('dropPossible')
 
     };
-    const dragDown = () => {
-        console.log('asd');
-    };
+
     const mushroomRef = useRef(null);
     const potionRef = useRef(null);
     const eraseRef = useRef(null);
-    
+
+    const location = useLocation();
+    const Home = () => {
+        if (location.pathname === '/') {
+            return <span className="reload" onClick={reload}>Home</span>;
+        } else {
+            return <Link to='/'>Home</Link>;
+        }
+    }
+    const reload = () => {
+        window.location.reload();
+    }
 
     return (
         <nav>
             <div className="nav-item nav-home">
-                <Link to='/'>Home</Link>
+                {Home()}
             </div>
             <div className="nav-item mode-toggle">
                 <span onClick={clickedToggle}>
@@ -114,7 +125,6 @@ export default function Header() {
             <div className="nav-item source">
                 <Draggable
                     nodeRef={mushroomRef}
-                    onMouseDown={dragDown}
                     onDrag={(e) => dragOn(e)}
                     onStop={(e) => dragStop(e)}
                     position={{x:0, y:0}}
