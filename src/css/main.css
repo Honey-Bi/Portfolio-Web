@@ -164,17 +164,18 @@
     border-top-color: #B2A4FF;
 }
 .select {
-    display: none;
+    position: absolute;
+    font-weight: 800;
+    font-size: 3rem;
+    right: 0;
+    bottom: 0;
+    color: #ccc;
 }
 @media (min-width: 768px) {
     .select {
-        display: block;
-        position: absolute;
         right: -7rem;
         bottom: 7rem;
-        font-weight: 800;
         font-size: 6rem;
-        color: #ccc;
         transform: rotate(-90deg);
     }
 }

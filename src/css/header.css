@@ -4,6 +4,7 @@ nav {
     height: 3.5rem;
     padding: 0 1rem;
     position: relative;
+    background-color: #fff;
     z-index: 999;
 }
 .nav-home a {
@@ -44,8 +45,11 @@ nav {
     float: left;
     cursor: grab;
 }
-.source-item  img {
+.source-item img {
     width: 100%;
+}
+.mode-toggle i {
+    margin-right: 2px;
 }
 .mode-toggle.active .fa-sun {
     display: none;
@@ -95,4 +99,30 @@ nav {
 }
 .dark .dropPossible {
     box-shadow: 0 0 3px 4px #ff7a7a inset; 
+}
+
+.logo1 {
+    border-radius: 0.25rem;
+    /* background: #000; */
+}
+.logo-left {
+    width: 0.5rem;
+    height: 1rem;
+    border-radius: 0.1rem 0 0 0.1rem;
+    background-color: #F4D160;
+    float: left;
+}
+.logo-middle {
+    width: 0.2rem;
+    height: 1.25rem;
+    background-color: #F0F0F0;
+    margin: 0 1px;
+    float: left;
+}
+.logo-right {
+    width: 0.5rem;
+    height: 1rem;
+    border-radius: 0 0.1rem 0.1rem 0;
+    background-color: #3C486B;
+    float: left;
 }

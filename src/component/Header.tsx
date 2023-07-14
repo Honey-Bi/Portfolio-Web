@@ -76,7 +76,7 @@ export default function Header() {
     }, [moveItems]);
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-    const dragOn = (e:any) => {
+    const dragOn = (e: any) => {
         const down:HTMLElement = document.getElementById('down') as HTMLElement;
         if (e.pageY >= 78 || (isMobile && e.changedTouches[0].pageY >= 78)) {
             down.classList.add('dropPossible')
@@ -101,18 +101,20 @@ export default function Header() {
     const location = useLocation();
     const Home = () => {
         if (location.pathname === '/') {
-            return <span className="reload" onClick={reload}>Home</span>;
+            return <span className="reload" onClick={window.location.reload}>Home</span>;
         } else {
             return <Link to='/'>Home</Link>;
         }
-    }
-    const reload = () => {
-        window.location.reload();
     }
 
     return (
         <nav>
             <div className="nav-item nav-home">
+                {/* <div className="logo1">
+                    <div className="logo-left"></div>
+                    <div className="logo-middle"></div>
+                    <div className="logo-right"></div>
+                </div> */}
                 {Home()}
             </div>
             <div className="nav-item mode-toggle">
