@@ -10,6 +10,7 @@ import Test from './component/Test';
 import Project from './component/Project';
 import Profile from './component/Profile';
 import Concept from './component/Concept';
+import Making from './component/Making';
 
 function App() {
     const location = useLocation();
@@ -24,8 +25,8 @@ function App() {
                     <Route path="/" element={<Main/>} />
                     <Route path="/Project" element={<Project/>} />
                     <Route path="/Test" element={<Test/>} />
-                    <Route path="/Making" element={<Test/>} />
                     <Route path="/Concept" element={<Concept/>} />
+                    <Route path="/Making" element={<Making/>} />
                     <Route path="/Profile" element={<Profile/>} />
                 </Routes>
             </CSSTransition>
