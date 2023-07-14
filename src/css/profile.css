@@ -1,13 +1,33 @@
-.container {
+.profile {
+    position: relative;
     padding: 1rem;
 }
+.names {
+    padding-top: clamp(
+        1rem,
+        5%,
+        3rem
+    );
+    height: 3.5rem;
+}
+.scrollY{
+    overflow-y: auto;
+}
 .name {
-    display: none;
-    font-size: 2rem;
+    text-align: left;
+    font-weight: 800;
+    font-size: 1.5rem;
+    opacity: 0;
+    text-transform: uppercase;
+    position: absolute;
+    padding: 1rem;
+    left: 0;
+    right: 0;
+    animation: 500ms ease 0ms 1 normal none running exit;
 }
 .name.active {
-    display: block;
-    animation: drop 1s ease 8s forwards;
+    animation: 500ms ease 0s 1 normal none running enter;
+    opacity: 1;
 }
 @keyframes drop{
     0% {
@@ -21,4 +41,15 @@
         opacity: 0;
         transform: translateY(50%);
     }
+}
+.accent {
+    background: #000;
+    color: #fff;
+    border-radius: 0.25rem;
+    padding: 0 0.25rem;
+    font-weight: 500;
+}
+.dark .accent {
+    background: #fff;
+    color: #000 !important;
 }
