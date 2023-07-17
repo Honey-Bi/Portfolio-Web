@@ -103,6 +103,16 @@ button.active .fa-play, button .fa-pause {
     transform: scale(0.5);
     transition: all 1s ease;
     position: relative;
+    &.active {
+        transform: scale(1);
+        filter: blur(0px);   
+        & .record, & .record-shadow {
+            margin-left: 60%;
+        }
+        &:hover .record, &:hover .record-shadow {
+            margin-left: 80%;
+        }
+    }
 }
   
 .album {
@@ -134,21 +144,35 @@ button.active .fa-play, button .fa-pause {
     z-index: 0;
     transition: all 1s ease;
     animation: rotate 6s linear infinite;
+    .innerRound {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 15%;
+        height: 15%;
+        border-radius: 50%;
+        padding: 5%;
+        background-color: #fff;
+        background-clip: content-box;
+        border: 2px solid #fff;
+        transform: translate(-50%, -50%);
+    }
+}
+.record-shadow {
+    position: absolute;
+    width: 90%;
+    height: 90%;
+    border-radius: 50%;
+    top: 5%;
+    margin-left: 5%;
+    transition: all 1s ease;
+    border: 2px solid #fff;
+    box-shadow: #777 0px 3px 8px;
 }
 @keyframes rotate{
     100% {
         transform: rotate(360deg);
     }
-}
-.slide-item.active {
-    transform: scale(1);
-    filter: blur(0px);   
-}
-.slide-item.active .record {
-    margin-left: 40%;
-}
-.slide-item.active:hover .record {
-    margin-left: 80%;
 }
 .potion .slide-item:nth-child(1) .album {
     background-color: #FF9B9B;

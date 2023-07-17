@@ -77,24 +77,34 @@ function Project() {
                         transform: `translateX(calc(12.5rem*${direction}*-2.45))`
                     }}>
                         <div className="slide-item">
-                        {/* <Link to={'/Project/1'}> */}
                             <div className="album">
                                 <span className="album-title">test1</span>
                             </div>
-                        {/* </Link> */}
-                            <div className="record" ></div>
+                            <div className="record" >
+                                <div className="innerRound"></div>
+                            </div>
+                            <div className="record-shadow"></div>
                         </div>
                         <div className="slide-item">
                             <div className="album"></div>
-                            <div className="record"></div>
+                            <div className="record">
+                                <div className="innerRound"></div>
+                            </div>
+                            <div className="record-shadow"></div>
                         </div>
                         <div className="slide-item">
                             <div className="album"></div>
-                            <div className="record"></div>
+                            <div className="record">
+                                <div className="innerRound"></div>
+                            </div>
+                            <div className="record-shadow"></div>
                         </div>
                         <div className="slide-item">
                             <div className="album"></div>
-                            <div className="record"></div>
+                            <div className="record">
+                                <div className="innerRound"></div>
+                            </div>
+                            <div className="record-shadow"></div>
                         </div>
                     </div>
                 </div>
