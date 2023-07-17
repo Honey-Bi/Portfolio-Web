@@ -35,7 +35,7 @@ export default function Profile() {
             <Header/>
             <div id="down" className="scrollY">
                 <div className="container">
-                    <div className="profile">
+                    <div className="profile1">
                         <div className="names">
                             <div className="name">유현비</div>
                             <div className="name">HyueonBi Yu</div>
