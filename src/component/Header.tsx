@@ -101,10 +101,13 @@ export default function Header() {
     const location = useLocation();
     const Home = () => {
         if (location.pathname === '/') {
-            return <span className="reload" onClick={window.location.reload}>Home</span>;
+            return <span className="reload" onClick={reload}>Home</span>;
         } else {
             return <Link to='/'>Home</Link>;
         }
+    }
+    const reload = () => {
+        window.location.reload();
     }
 
     return (
