@@ -14,9 +14,6 @@
     animation: on 0.5s linear 1;
     z-index: 1;
 }
-#down {
-    transition: all ease 0.5s;
-}
 .comb {
     height: 260px;
     width: 300px;
@@ -146,22 +143,22 @@
     transform: scale(1.2);
 }
 .potion .tri {
-    border-top-color: #B5F1CC;
+    border-top-color: var(--base-color-1);
 }
 .potion .tri:nth-child(2) {
-    border-top-color: #FDF7C3;
+    border-top-color: var(--base-color-project);
 }
 .potion .tri:nth-child(3) {
-    border-top-color: #FFCEFE;
+    border-top-color: var(--base-color-test1);
 }
 .potion .tri:nth-child(4) {
-    border-top-color: #FF9B9B;
+    border-top-color: var(--base-color-concept);
 }
 .potion .tri:nth-child(5) {
-    border-top-color: #B9F3FC;
+    border-top-color: var(--base-color-making);
 }
 .potion .tri:nth-child(6) {
-    border-top-color: #B2A4FF;
+    border-top-color: var(--base-color-profile);
 }
 .select {
     position: absolute;
@@ -169,7 +166,6 @@
     font-size: 3rem;
     right: 0;
     bottom: 0;
-    color: #ccc;
 }
 @media (min-width: 768px) {
     .select {
@@ -182,4 +178,5 @@
   
 .select span {
     text-transform: uppercase;
+    color: #ccc !important;
 }

@@ -7,6 +7,11 @@ body {
   background-color: white;
   overflow: hidden;
 }
+#down {
+  position: relative;
+  z-index: 1;
+  transition: all ease 0.5s;
+}
 #root {
   overflow: hidden;
   transition: all ease 0.5s;
@@ -18,9 +23,20 @@ code {
 .dark {
   background-color: #343a40 !important;
   color: #fff !important;
+  & span {
+    color: #fff !important;
+  }
 }
-.dark span {
-  color: #fff !important;
+.dark nav{
+  & span {
+    color: #000 !important;
+  }
+  & i {
+    color: #000 !important;
+  }
+  & a {
+    color: #000 !important;
+  }
 }
 .container {
   margin: 0 auto;
@@ -55,3 +71,13 @@ code {
     max-width:1320px
   }
 } */
+
+:root {
+  --base-color-1: #fff7ab;
+  --base-color-project: #B5F1CC;
+  --base-color-test1: #FFCEFE;
+  --base-color-concept: #FF9B9B;
+  --base-color-making: #B9F3FC;
+  --base-color-profile: #FFD6A5;
+  /* FFD6A5 AA96DA */
+} 
