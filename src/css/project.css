@@ -174,20 +174,22 @@ button.active .fa-play, button .fa-pause {
         transform: rotate(360deg);
     }
 }
-.potion .slide-item:nth-child(1) .album {
-    background-color: #FF9B9B;
-}
-.potion .slide-item:nth-child(2) .album {
-    background-color: #FFD6A5;
-}
-.potion .slide-item:nth-child(3) .album {
-    background-color: #FFFEC4;
-}
-.potion .slide-item:nth-child(4) .album {
-    background-color: #CBFFA9;
-}
-.potion .slide-item:nth-child(5) .album {
-    background-color: #C2DEDC;
+.potion, .potion2 {
+    .slide-item:nth-child(1) .album {
+        background-color: #FF9B9B;
+    }
+    .slide-item:nth-child(2) .album {
+        background-color: #FFD6A5;
+    }
+    .slide-item:nth-child(3) .album {
+        background-color: #FFFEC4;
+    }
+    .slide-item:nth-child(4) .album {
+        background-color: #CBFFA9;
+    }
+    .slide-item:nth-child(5) .album {
+        background-color: #C2DEDC;
+    }
 }
 .mushroom .wrap {
     transform: scale(1.1);

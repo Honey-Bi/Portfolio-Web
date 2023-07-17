@@ -33,63 +33,62 @@
     position: absolute;
     transform-origin: 75px calc( 75px * 1.732 + 2px);
     transition: 0.3s cubic-bezier(0.25, 0.1, 0.25, 1) 0s;
-}
-.tri:hover > span {
-    top: -165px;
-}
-.tri > span {
-    display: block;
-    position: absolute;
-    top: -160px;
-    padding-bottom: 40px;
-    transform: translateX(-50%);
-    font-weight: 600;   
-    white-space: nowrap;
-    color: #000;
-    text-transform: uppercase;
-    transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1) 0s;
-
-}
-.tri:nth-child(1) {
-    animation: triOn1 200ms linear;
-}
-.tri:nth-child(1):hover {
-    transform: translate(0px, -15px);
-}
-.tri:nth-child(2) {
-    transform: rotate(60deg);
-    animation: triOn2 200ms linear 200ms;
-}
-.tri:nth-child(2):hover {
-    transform: rotate(60deg) translate(0px, -15px);
-}
-.tri:nth-child(3) {
-    transform: rotate(120deg);
-    animation: triOn3 200ms linear 400ms;
-}
-.tri:nth-child(3):hover {
-    transform: rotate(120deg) translate(0, -10px);
-}
-.tri:nth-child(4) {
-    transform: rotate(-180deg);
-    animation: triOn4 200ms linear 600ms;
-}
-.tri:nth-child(4):hover {
-    transform: rotate(-180deg) translate(0, -10px);
-}
-.tri:nth-child(5) {
-    transform: rotate(-120deg);
-    animation: triOn5 200ms linear 800ms;
-}
-.tri:nth-child(5):hover {
-    transform: rotate(-120deg) translate(0, -10px);
-}
-.tri:nth-child(6) {
-    transform: rotate(-60deg);
-    animation: triOn6 200ms linear 1000ms;
-}
-.tri:nth-child(6):hover {
-    transform: rotate(-60deg) translate(0, -10px);
+    & > span {
+        display: block;
+        position: absolute;
+        top: -160px;
+        padding-bottom: 40px;
+        transform: translateX(-50%);
+        font-weight: 600;   
+        white-space: nowrap;
+        color: #000;
+        text-transform: uppercase;
+        transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1) 0s;
+    }
+    &:hover > span {
+        top: -165px;
+    }
+    &:nth-child(1) {
+        animation: triOn1 200ms linear;
+    }
+    &:nth-child(2) {
+        transform: rotate(60deg);
+        animation: triOn2 200ms linear 200ms;
+    }
+    &:nth-child(3) {
+        transform: rotate(120deg);
+        animation: triOn3 200ms linear 400ms;
+    }
+    &:nth-child(4) {
+        transform: rotate(-180deg);
+        animation: triOn4 200ms linear 600ms;
+    }
+    &:nth-child(5) {
+        transform: rotate(-120deg);
+        animation: triOn5 200ms linear 800ms;
+    }
+    &:nth-child(6) {
+        transform: rotate(-60deg);
+        animation: triOn6 200ms linear 1000ms;
+    }
+    &:nth-child(1):hover {
+        transform: translate(0px, -15px);
+    }
+    &:nth-child(2):hover {
+        transform: rotate(60deg) translate(0px, -15px);
+    }
+    &:nth-child(3):hover {
+        transform: rotate(120deg) translate(0, -10px);
+    }
+    &:nth-child(4):hover {
+        transform: rotate(-180deg) translate(0, -10px);
+    }
+    &:nth-child(5):hover {
+        transform: rotate(-120deg) translate(0, -10px);
+    }
+    &:nth-child(6):hover {
+        transform: rotate(-60deg) translate(0, -10px);
+    }   
 }
 @keyframes triOn1 {
     0% {transform: translate(0px, 0px);}
@@ -142,24 +141,26 @@
 .mushroom2 .box {
     transform: scale(1.2);
 }
-.potion .tri {
-    border-top-color: var(--base-color-1);
-}
-.potion .tri:nth-child(2) {
-    border-top-color: var(--base-color-project);
-}
-.potion .tri:nth-child(3) {
-    border-top-color: var(--base-color-test1);
-}
-.potion .tri:nth-child(4) {
-    border-top-color: var(--base-color-concept);
-}
-.potion .tri:nth-child(5) {
-    border-top-color: var(--base-color-making);
-}
-.potion .tri:nth-child(6) {
-    border-top-color: var(--base-color-profile);
-}
+.potion, .potion2 {
+    & .tri {
+        border-top-color: var(--base-color-1);
+    }
+    & .tri:nth-child(2) {
+        border-top-color: var(--base-color-project);
+    }
+    & .tri:nth-child(3) {
+        border-top-color: var(--base-color-test1);
+    }
+    & .tri:nth-child(4) {
+        border-top-color: var(--base-color-concept);
+    }
+    & .tri:nth-child(5) {
+        border-top-color: var(--base-color-making);
+    }
+    & .tri:nth-child(6) {
+        border-top-color: var(--base-color-profile);
+    }
+} 
 .select {
     position: absolute;
     font-weight: 800;
