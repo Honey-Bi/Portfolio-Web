@@ -95,10 +95,10 @@ nav {
 .polygon:nth-child(6) {
     transform: rotate(300deg);
 }
-.dropPossible {
+.dropZone {
     box-shadow: 0 0 0 3px #ff7a7a inset; 
 }
-.dark .dropPossible {
+.dark .dropZone {
     box-shadow: 0 0 3px 4px #ff7a7a inset; 
 }
 

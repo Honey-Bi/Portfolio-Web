@@ -79,18 +79,18 @@ export default function Header() {
     const dragOn = (e: any) => {
         const down:HTMLElement = document.getElementById('down') as HTMLElement;
         if (e.pageY >= 78 || (isMobile && e.changedTouches[0].pageY >= 78)) {
-            down.classList.add('dropPossible')
+            down.classList.add('dropZone')
         } else {
-            down.classList.remove('dropPossible')
+            down.classList.remove('dropZone')
         }
     }
     const dragStop = (e: any) => {
         const down:HTMLElement = document.getElementById('down') as HTMLElement;
-        if(down.classList.contains('dropPossible')) {
+        if(down.classList.contains('dropZone')) {
             let id:string = e.target.id;
             addItems(id);
         }
-        down.classList.remove('dropPossible')
+        down.classList.remove('dropZone')
 
     };
 
