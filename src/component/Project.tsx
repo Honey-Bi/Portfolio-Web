@@ -1,6 +1,7 @@
 import Header from './Header';
 import '../css/project.css';
 import { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 // import { Link } from 'react-router-dom';
 
 function Project() {
@@ -68,39 +69,58 @@ function Project() {
         }
     }
 
+    const navigate = useNavigate ();
+    // const [move, setPosition] = useState<object>();
+    const main:Element = document.getElementById('main') as Element;
+    function move(e:any, pName:string):void {
+        const event:MouseEvent = e;
+        const target:Element = e.target;
+        const target_style:CSSStyleDeclaration = window.getComputedStyle(target);
+        const style = `
+            top: ${event.pageY}px;
+            left: ${event.pageX}px;
+            background-color: ${target_style.backgroundColor}
+        `;
+        const add_element:Element = document.createElement('div');
+        add_element.setAttribute('class', 'project-enter');
+        add_element.setAttribute('style', style);
+        main.after(add_element)
+
+        navigate(`./Test`, {state: {color:target_style.backgroundColor}});
+    }
     return (
         <div id='main'>
-            <Header/>
+            <Header />
             <div id="down">
                 <div className="wrap" onWheel={e => moveWheel(e)}>
                     <div className="slide" style={{
                         transform: `translateX(calc(12.5rem*${direction}*-2.45))`
                     }}>
                         <div className="slide-item">
-                            <div className="album">
+                            <div className="album" onClick={e => move(e, '')}>
                                 <span className="album-title">test1</span>
                             </div>
-                            <div className="record" >
-                                <div className="innerRound"></div>
-                            </div>
-                            <div className="record-shadow"></div>
-                        </div>
-                        <div className="slide-item">
-                            <div className="album"></div>
                             <div className="record">
                                 <div className="innerRound"></div>
                             </div>
                             <div className="record-shadow"></div>
                         </div>
                         <div className="slide-item">
-                            <div className="album"></div>
+                            <div className="album" onClick={e => move(e, '')}></div>
                             <div className="record">
                                 <div className="innerRound"></div>
                             </div>
                             <div className="record-shadow"></div>
                         </div>
                         <div className="slide-item">
-                            <div className="album"></div>
+                            <div className="album" onClick={e => move(e, '')}></div>
+                            <div className="record">
+                                <div className="innerRound"></div>
+                            </div>
+                            <div className="record-shadow"></div>
+                        </div>
+                        <div className="slide-item">
+                            <div className="album" onClick={e => move(e, '')}></div>
                             <div className="record">
                                 <div className="innerRound"></div>
                             </div>
@@ -113,7 +133,7 @@ function Project() {
                         <button onClick={prev}>
                             <i className="fa-solid fa-backward"></i>
                         </button>
-                        <button className={play?'active':''} onClick={PP}>
+                        <button className={play ? 'active' : ''} onClick={PP}>
                             <i className="fa-solid fa-pause"></i>
                             <i className="fa-solid fa-play"></i>
                         </button>
@@ -121,7 +141,7 @@ function Project() {
                             <i className="fa-solid fa-forward"></i>
                         </button>
                     </div>
-                    <div className={play?'timer':'timer active'}>
+                    <div className={play ? 'timer' : 'timer active'}>
                         <div id='round' className="round"></div>
                         <div id='fill' className="fill"></div>
                     </div>
