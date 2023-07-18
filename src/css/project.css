@@ -29,20 +29,21 @@
 
 .btn-group {
     margin-bottom: 5%;
-}
-.btn-group button {
-    width: 2rem;
-    padding: 0;
-    border:none;
-    background: none;
-    margin: 0 1rem;
-}
-.btn-group button:hover {
-    cursor: pointer;
-    color: #ccc;
-}
-.btn-group i {
-    font-size: 2rem;
+    & button {
+        width: 2rem;
+        padding: 0;
+        border:none;
+        background: none;
+        margin: 0 1rem;
+        &:hover {
+            cursor: pointer;
+            color: #ccc;
+        }
+    }
+    & i {
+        font-size: 2rem;
+    }
+
 }
 .dark i {
     color: #fff !important;

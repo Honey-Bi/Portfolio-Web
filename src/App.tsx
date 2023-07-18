@@ -1,6 +1,5 @@
-import { Route, Routes, useLocation } from 'react-router-dom';
+import { Link, Route, Routes, useLocation } from 'react-router-dom';
 import { CSSTransition, SwitchTransition } from 'react-transition-group';
-// import { useRef } from 'react';
 
 import './css/index.css';
 import './css/transition.css';
@@ -15,19 +14,29 @@ import Making from './component/Making';
 function App() {
     const location = useLocation();
     // const nodeRef = useRef();
+    let className:string; 
+        
+    switch (true) {
+        case /^\/project\/[a-zA-Z]/.test(location.pathname): // /project/
+            className = "project-move";
+            break;
+        default:
+            className = "move";
+            break;
+    }
     
     return (
         <SwitchTransition mode={"out-in"}>
-            <CSSTransition 
-            // nodeRef={nodeRef} 
-            key={location.key} timeout={800} classNames="move">
+            <CSSTransition
+                // nodeRef={nodeRef} 
+                key={location.key} timeout={800} classNames={className}>
                 <Routes location={location}>
-                    <Route path="/" element={<Main/>} />
-                    <Route path="/Project" element={<Project/>} />
-                    <Route path="/Test" element={<Test/>} />
-                    <Route path="/Concept" element={<Concept/>} />
-                    <Route path="/Making" element={<Making/>} />
-                    <Route path="/Profile" element={<Profile/>} />
+                    <Route path="/" element={<Main />} />
+                    <Route path="/project" element={<Project />} />
+                    <Route path="/project/Test" element={<Test />} />
+                    <Route path="/concept" element={<Concept />} />
+                    <Route path="/making" element={<Making />} />
+                    <Route path="/profile" element={<Profile />} />
                 </Routes>
             </CSSTransition>
         </SwitchTransition>

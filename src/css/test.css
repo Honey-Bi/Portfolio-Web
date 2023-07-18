@@ -1,0 +1,17 @@
+#close {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+#close::after {
+    cursor: pointer;
+    display: inline-block;
+    content: "\00d7";
+    font-size: 2rem;
+    padding: 1rem;
+    margin-right: 1rem;
+    font-weight: 600;
+}
+.post {
+    position: relative;
+}
