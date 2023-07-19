@@ -45,8 +45,11 @@
     opacity: 1;
 }
 
-.project-move-enter-active .post {
+.project-move-enter .post-transition {
     animation: 800ms ease 0s 1 normal none running enter;
+}
+.project-move-enter-active .post-transition{
+    opacity: 1;
 }
 .project-move-exit-active {
     animation: 800ms linear forwards exit-project;
