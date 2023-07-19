@@ -76,11 +76,15 @@ function Project() {
         const event:MouseEvent = e;
         const target:Element = e.target;
         const target_style:CSSStyleDeclaration = window.getComputedStyle(target);
+
         const style = `
-            top: ${event.pageY}px;
-            left: ${event.pageX}px;
+            top: -${document.body.clientHeight - event.pageY}px;
+            left: -${document.body.clientWidth - event.pageX}px;
             background-color: ${target_style.backgroundColor}
         `;
+        console.log(event.pageY);
+        console.log(event.pageX);
+
         const add_element:Element = document.createElement('div');
         add_element.setAttribute('class', 'project-enter');
         add_element.setAttribute('style', style);

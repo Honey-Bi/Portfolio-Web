@@ -5,13 +5,13 @@ import { useEffect, useRef, useState } from "react";
 import '../css/concept.css';
 
 class Ball {
-    position: { x: number; y: number; };
-    velocity: { x: number; y: number; };
-    e: number;
-    mass: number;
-    radius: number;
-    color: string;
-    area: number;
+    position: { x: number; y: number; }; // 위치
+    velocity: { x: number; y: number; }; // 속도
+    e: number; // 충격 속도 감속
+    mass: number; // 무게
+    radius: number; // 반지름
+    color: string; // 색상
+    area: number; // 크기
 
     constructor(
         x:number, y:number, 
@@ -21,13 +21,13 @@ class Ball {
         mass:number, 
         color:string
     ){
-        this.position = {x: x, y: y}; //m
-        this.velocity = {x: vx, y: vy}; // m/s
-        this.e = -e; // has no units
-        this.mass = mass; //kg
-        this.radius = radius; //m
+        this.position = {x: x, y: y};
+        this.velocity = {x: vx, y: vy};
+        this.e = -e;
+        this.mass = mass;
+        this.radius = radius;
         this.color = color; 
-        this.area = (Math.PI * radius * radius) / 10000; //m^2
+        this.area = (Math.PI * radius * radius) / 10000;
     }
 }
 const balls:Array<Ball> = [];
@@ -38,7 +38,8 @@ export default function Concept() {
     const [ctx, setCtx] = useState<CanvasRenderingContext2D | null>(null);
     const [size, setSize] = useState<Size>({width:0, height:0});
     var fps = 1/60;
-
+    const [degree, setDegree] = useState<number>(0);
+    const [r_direction, setDirection] = useState<boolean>(true);
 
     useEffect(() => { //context 처리
         if (canvasRef.current) {
@@ -50,20 +51,20 @@ export default function Concept() {
             canvas.width = down.clientWidth;
             canvas.height = down.clientHeight;
 
-            for(var i = 0; i < 5; i++) {
+            
+            do {
                 var max = 255;
                 var min = 20;
                 var r = 75 + Math.floor(Math.random() * (max - min) - min);
                 var g = 75 + Math.floor(Math.random() * (max - min) - min);
                 var b = 75 + Math.floor(Math.random() * (max - min) - min);
-                var x = Math.floor(Math.random() * (canvas.width - 0 + 1) + -10);
-                var y = Math.floor(Math.random() * (canvas.height - 0 + 1) + -10);
+                var x = Math.floor(Math.random() * (1226 - 0 + 1) - 0);
                 var vx = Math.floor(Math.random() * (10 - -10 + 1) + -10);
                 var vy = Math.floor(Math.random() * (10 - 0 + 1) + 0);
+                balls.push(new Ball(x, 20, vx, vy, 20, 1, 10, "rgb(" + r + "," + g + "," + b + ")")); 
                 // var r = 75, g = 75, b = 75;
-                balls.push(new Ball(x, y, vx, vy, 20, 0.7,10, "rgb(" + r + "," + g + "," + b + ")")); 
-                // balls.push(new Ball(canvas.width-10, -2, 10, 0.7,10, "rgb(" + r + "," + g + "," + b + ")")); 
-            }
+            } while  (balls.length < 0) 
+
         }
     }, [canvasRef]);
 
@@ -83,19 +84,31 @@ export default function Concept() {
             window.cancelAnimationFrame(requestId);
 		};
     });
-
-    function animate(ctx: CanvasRenderingContext2D) { //애니메이션 함수
-        var gravity = 0.1;
+    function animate(ctx: CanvasRenderingContext2D) { // 애니메이션 함수
+        var gravity = 1;
         var density = 1.22;
-        var drag = 0.47;
 
-        ctx.clearRect(0, 0, size.width, size.height);
+        ctx.clearRect(0, 0, size.width, size.height); // 배경 삭제
+
+        ctx.save();
+        ctx.translate(size.width/2, size.height);
+        ctx.lineWidth = 10;
+        ctx.lineCap = "round";
+        ctx.moveTo(0,0);
+
+        var tr = -90;
+        ctx.rotate(tr*Math.PI/180);
+        ctx.lineTo(size.width/2, 0);
+        // ctx.stroke();
+        ctx.rotate(-tr*Math.PI/180);
+        ctx.restore();
+        // ctx.translate(0,0);
 
         for(var i = 0; i < balls.length; i++){
             //physics - calculating the aerodynamic forces to drag
             // -0.5 * Cd * A * v^2 * rho
-            var fx = -0.5 * drag * density * balls[i].area * balls[i].velocity.x * balls[i].velocity.x * (balls[i].velocity.x / Math.abs(balls[i].velocity.x));
-            var fy = -0.5 * drag * density * balls[i].area * balls[i].velocity.y * balls[i].velocity.y * (balls[i].velocity.y / Math.abs(balls[i].velocity.y));
+            var fx = -0.5 * density * balls[i].area * balls[i].velocity.x * balls[i].velocity.x * (balls[i].velocity.x / Math.abs(balls[i].velocity.x));
+            var fy = -0.5 * density * balls[i].area * balls[i].velocity.y * balls[i].velocity.y * (balls[i].velocity.y / Math.abs(balls[i].velocity.y));
 
             fx = (isNaN(fx)? 0 : fx);
             fy = (isNaN(fy)? 0 : fy);
@@ -104,6 +117,7 @@ export default function Concept() {
             //F = ma or a = F/m
             var ax = fx / balls[i].mass;
             var ay = (9.81 * gravity) + (fy / balls[i].mass);
+            // 9.81
 
             //Calculating the ball velocity 
             balls[i].velocity.x += ax * fps;
@@ -122,31 +136,78 @@ export default function Concept() {
     
             //Handling the ball collisions
             collisionBall(balls[i]);
-            collisionWall(balls[i]);	
+            collisionWall(balls[i], i);	
+            collisionWiper(balls[i]);
         }
-    }
 
-    function collisionWall(ball:Ball){ //
-        if(ball.position.x > size.width - ball.radius){
+
+        // if (r_direction) {
+        //     setDegree(degree + 1);
+        // } else {
+        //     setDegree(degree + 1);
+        // }
+        
+        // if (degree > 180) {
+        //     setDirection(false);
+        // } else {
+        //     setDirection(true);
+        // }
+    }
+    function collisionWiper(ball: Ball) {
+        
+    }
+    function collisionWall(ball: Ball, index: number) { //
+        // if(ball.position.x > size.width - ball.radius){
+        //     console.log('right');
+		// 	ball.velocity.x *= ball.e;
+		// 	ball.position.x = size.width - ball.radius;
+		// }
+		// if(ball.position.y > size.height - ball.radius){
+        //     console.log('bottom');
+		// 	ball.velocity.y *= ball.e;
+		// 	ball.position.y = size.height - ball.radius;
+		// }
+		// if(ball.position.x < ball.radius){
+        //     console.log('left');
+		// 	ball.velocity.x *= ball.e;
+		// 	ball.position.x = ball.radius;
+		// }
+		// if(ball.position.y < ball.radius){
+        //     console.log('top');
+		// 	ball.velocity.y *= ball.e;
+		// 	ball.position.y = ball.radius;
+		// }
+        if(
+            ball.position.x > size.width + ball.radius || //right
+            ball.position.y > size.height + ball.radius|| // bottom
+            ball.position.x < ball.radius // left
+        ){
+
+            var x = Math.floor(Math.random() * (size.width - 0 + 1) - 0);
+            var vx = Math.floor(Math.random() * (10 - -10 + 1) + -10);
+            var vy = Math.floor(Math.random() * (10 - 0 + 1) + 0);
+            ball.velocity.x = vx;
+            ball.velocity.y = vy;
+            ball.position.x = x;
+            ball.position.y = 0;
             // console.log('right');
-			ball.velocity.x *= ball.e;
-			ball.position.x = size.width - ball.radius;
-		}
-		if(ball.position.y > size.height - ball.radius){
-            // console.log('bottom');
-			ball.velocity.y *= ball.e;
-			ball.position.y = size.height - ball.radius;
-		}
-		if(ball.position.x < ball.radius){
-            // console.log('left');
-			ball.velocity.x *= ball.e;
-			ball.position.x = ball.radius;
-		}
-		if(ball.position.y < ball.radius || ball.position.y > size.height - ball.radius){
+        }
+        // if(ball.position.y > size.height + ball.radius){
+        //     console.log('bottom');
+        //     ball.position.y = 0;
+        //     // ball.velocity.y *= ball.e;
+        // }
+        // if(ball.position.x < ball.radius){
+        //     console.log('left');
+        //     ball.velocity.x *= ball.e;
+        //     ball.position.x = Math.floor(Math.random() * (size.width - 0 + 1) - 0);;
+        //     ball.position.y = 0;
+        // }
+        // if(ball.position.y < ball.radius){
             // console.log('top');
-			ball.velocity.y *= ball.e;
-			ball.position.y = ball.radius;
-		}
+            // ball.velocity.y *= ball.e;
+            // ball.position.y = ball.radius;
+        // }
     }
 
     function collisionBall(b1:Ball){
@@ -190,14 +251,11 @@ export default function Concept() {
             }
         }
     }
-    const mouseDown = (e:any) => {
-        console.log(e);
-    };
     return (
         <div id="main">
             <Header/>
             <div id="down">
-                <canvas ref={canvasRef} className="fall" onClick={e => mouseDown(e)}> </canvas>
+                <canvas ref={canvasRef} className="fall"> </canvas>
             </div>
         </div>
     )
