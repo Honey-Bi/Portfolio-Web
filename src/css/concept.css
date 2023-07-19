@@ -1,17 +1,4 @@
-.line2 {
+.fall {
     position: absolute;
-    width: 100%;
-    border-top: 1px solid #000;
-    animation: repeat 8s linear infinite;
-}
-@keyframes repeat {
-    0% {
-        top: 0%;
-    }
-    50% {
-        top: 100%;
-    }
-    100% {
-        top: 0%;
-    }
+    top: 0;
 }
