@@ -18,10 +18,18 @@ export default function Test() {
                 backgroundColor: color
             }}
         >   
-        <div className="container post">
-            <Link to={"/project"} id="close" />
-            
-        </div>
+            <div className="project-nav">
+                <Link to={"/"} className="project-home" />
+                <Link to={"/project"} className="project-exit" />
+            </div>
+            <div className="container post-transition">
+                <div className="post">
+                    <div className="post-title">제목</div>
+                    <div className="post-body">
+                        내용
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }
