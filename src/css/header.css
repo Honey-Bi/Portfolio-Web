@@ -11,8 +11,17 @@ nav {
 .nav-home a {
     color: #000;
 }
-.dark a {
-    color: #fff !important;
+.dark {
+    & a, & span, & i {
+        color: #fff !important;
+    }
+    & nav {
+        background-color: var(--base-dark);
+    }
+}
+    
+.dark .dropZone {
+    box-shadow: 0 0 3px 4px #ff7a7a inset; 
 }
 .reload {
     cursor: pointer;
@@ -97,9 +106,6 @@ nav {
 }
 .dropZone {
     box-shadow: 0 0 0 3px #ff7a7a inset; 
-}
-.dark .dropZone {
-    box-shadow: 0 0 3px 4px #ff7a7a inset; 
 }
 
 .logo1 {

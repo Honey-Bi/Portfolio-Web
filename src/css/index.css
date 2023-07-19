@@ -20,21 +20,10 @@ code {
     monospace;
 }
 .dark {
-  background-color: #343a40 !important;
+  background-color: var(--base-dark) !important;
   color: #fff !important;
   & span {
     color: #fff !important;
-  }
-}
-.dark nav{
-  & span {
-    color: #000 !important;
-  }
-  & i {
-    color: #000 !important;
-  }
-  & a {
-    color: #000 !important;
   }
 }
 .container {
@@ -79,5 +68,6 @@ code {
   --base-color-making: #B9F3FC;
   --base-color-profile: #FFD6A5;
   --base-color: #cecece;
+  --base-dark: #343a40;
   /* FFD6A5 AA96DA */
 } 
