@@ -4,6 +4,29 @@
     flex-direction: column;
 }
 
+.boxs {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+    /* transform: rotate(-45deg); */
+    & :nth-child(3), & :nth-child(4) {
+        border: 2px solid #fff;
+    }
+}
+.bob {
+    position: relative;
+    width: calc(33% - 7px);
+    height: 10vw;
+    float: left;
+    margin: 2px;
+    top: calc(50% - 50px);
+    border: 2px solid #000;
+    /* transform: rotate(45deg); */
+}
 .info {
     position: relative;
     width: 90%;

@@ -19,10 +19,12 @@ nav {
     & nav {
         background-color: var(--base-dark);
     }
+    & .dropZone {
+        box-shadow: 0 0 3px 4px #ff7a7a inset; 
+    }
 }
-    
-.dark .dropZone {
-    box-shadow: 0 0 3px 4px #ff7a7a inset; 
+.dropZone {
+    box-shadow: 0 0 0 3px #ff7a7a inset; 
 }
 .reload {
     cursor: pointer;
@@ -104,9 +106,6 @@ nav {
 }
 .polygon:nth-child(6) {
     transform: rotate(300deg);
-}
-.dropZone {
-    box-shadow: 0 0 0 3px #ff7a7a inset; 
 }
 
 .logo1 {

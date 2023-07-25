@@ -1,12 +1,11 @@
 import Header from "./Header";
-// import { useState } from "react";
 
 import '../css/making.css'
 
 export default function Making() {
 
     const toTop = () => {
-        const top:Element = document.getElementById('top') as Element;
+        const top = document.getElementById('top') as Element;
         top.scrollIntoView(true);
     }
 
@@ -16,7 +15,14 @@ export default function Making() {
             <Header/>
             <div id="down">
                 <div className="container making-flex">
-                    
+                    <div className="boxs ">
+                        <div className="bob"></div>
+                        <div className="bob"></div>
+                        <div className="bob"></div>
+                        <div className="bob"></div>
+                        <div className="bob"></div>
+                        <div className="bob"></div>
+                    </div>
                     <div className="info">
                         <div className="info-project">
                             <div className="info-title">project</div>
@@ -29,9 +35,6 @@ export default function Making() {
                             </div>
                             <div className="info-sub">
                             </div>
-                        </div>
-                        <div className="info-test1">
-                            <div className="info-title">test1</div>
                         </div>
                         <div className="info-concept">
                             <div className="info-title">concept</div>
