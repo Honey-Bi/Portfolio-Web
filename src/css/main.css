@@ -5,7 +5,7 @@
     overflow: hidden;
 }
 .smooth {
-    transition: all ease 300ms;
+    transition: all cubic-bezier(0,.75,.25,1) 700ms;
 }
 .box {
     position: absolute;
