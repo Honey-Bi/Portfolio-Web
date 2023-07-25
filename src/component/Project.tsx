@@ -1,6 +1,6 @@
 import Header from './Header';
 import '../css/project.css';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 // import { Link } from 'react-router-dom';
 
@@ -24,12 +24,19 @@ function Project() {
         setCount(20)
     },[direction]);
 
+    const next = useCallback(() => {
+        const slide:HTMLCollectionOf<Element> = document.getElementsByClassName('slide-item');
+        if (direction < slide.length-1) {
+            slide[direction].classList.remove('active');
+            setDirection((next) => next + 1);
+        }
+    },[direction]);
+
     useEffect(() => {
         if(count <= 0 ) {
             next()
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [count]);
+    }, [count, next]);
 
     useEffect(() => {
         if(play) {
@@ -46,13 +53,7 @@ function Project() {
     const PP = () => {
         setPlay((prev) => !prev);
     }
-    const next = () => {
-        const slide:HTMLCollectionOf<Element> = document.getElementsByClassName('slide-item');
-        if (direction < slide.length-1) {
-            slide[direction].classList.remove('active');
-            setDirection((next) => next + 1);
-        }
-    }
+    
     const prev = () => {
         if (direction > 0) {
             const slide:HTMLCollectionOf<Element> = document.getElementsByClassName('slide-item');
