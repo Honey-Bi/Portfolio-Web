@@ -7,12 +7,18 @@
     z-index: 1;
     font-size: 2rem;
 }
+.qwer {
     transition: all 1s ease;
     font-size: 2rem;
+    z-index: 1;
 }
-.im {
-    /* font-size: 2rem; */
-    &::before, &::after {
-        content: "\00a0";
+.blink {
+    &.active {
+        animation: blink 1000ms step-end infinite;
+    }
+}
+@keyframes blink {
+    50% {
+        opacity: 0;
     }
 }

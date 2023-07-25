@@ -1,6 +1,7 @@
 import Header from './Header';
 import '../css/concept.css';
 import { useCallback, useEffect, useRef, useState } from 'react';
+
 class Ball {
     position: { x: number; y: number; }; // 위치
     vector: {x: number; y: number; }; // 속도
@@ -37,6 +38,12 @@ const opts = {
 }
 
 const balls:Array<Ball> = [];
+const titles:Array<string> = [ // 타이핑 목록
+    '123456789',
+    'abcdefghi',
+    'ABCDEFGHI',
+];
+
 export default function Concept() {    
     
     interface Size {width:number, height:number};
@@ -149,18 +156,65 @@ export default function Concept() {
     }, [animate, ctx]);
 
 
-export default function Concept() {
+    let checkDistance = function(x1:number, y1:number, x2:number, y2:number) {
+        return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+    };
+    
+    const [title, setTitle] = useState<string>('');
+    const [count, setCount] = useState<number>(0);
+    const [add, setAdd] = useState<boolean>(true); 
+    const [tIndex, setTIndex] = useState<number>(0);
+    const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+    const [pp, setPP] = useState<boolean>(true);
+
+    const typing = useCallback(() => {
+        if (add) { // 타이핑 글자 생성
+            setTitle(prev => prev ? prev + titles[tIndex][count] : titles[tIndex][0]);
+            setCount(count + 1);
+            if (count >= titles[tIndex].length - 1) {
+                setAdd(false);
+                setPP(false);
+            }
+        } else { // 타이핑 글자 삭제
+            setTitle(prev => prev.slice(0, -1));
+            setCount(count - 1);
+            if (title.length === 0) {
+                setTIndex(tIndex + 1);
+                setCount(0);
+                setAdd(true);
+                setPP(false);
+                if (tIndex >= titles.length - 1) {
+                    setTIndex(0);
+                }
+            }
+        }
+    },[add, count, tIndex, title.length]);
+
+    useEffect(() => {
+        const blink = document.getElementsByClassName('blink')[0];
+        if(pp) {
+            blink.classList.remove('active');
+            timerRef.current = setInterval(typing, 150);
+        } else {
+            clearInterval(timerRef.current as NodeJS.Timer)
+            blink.classList.add('active');
+            setTimeout(() => {
+                setPP(true);
+            }, 4000);
+        }
+        return () => clearInterval(timerRef.current as NodeJS.Timer);
+    }, [pp, typing]);
+
     return (
         <div id='main'>
         <Header/>
         <div id="down">
             <div className="wrap">
-                <div className="concept">
-                    나는
-                    <span className="im">asd</span>
-                    입니다.
+                <div className="concept-title">{title}
+                    <span className="blink">|</span>
                 </div>
             </div>
+            <canvas ref={canvasRef} className='concept'></canvas>
         </div>
     </div>
     )
