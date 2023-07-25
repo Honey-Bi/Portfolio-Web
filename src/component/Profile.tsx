@@ -8,6 +8,7 @@ export default function Profile() {
     const [selector, setSelector] = useState<Element|null>(null);
     const [beforeSame, setBeaforeSave] = useState<boolean>(true);
     const select = (e:any):void => {
+
         let select_element:Element = e.target;
         if (select_element.classList.contains('color')) {
             select_element = e.target.parentNode;
@@ -37,12 +38,15 @@ export default function Profile() {
                 countUp()
             }
         }, 1000*10);
-
+        
+        names[count].classList.remove('exit');
         names[count].classList.add('active');
         if(count === 0) {
             names[names.length-1].classList.remove('active');
+            names[names.length-1].classList.add('exit');
         } else {
             names[count - 1].classList.remove('active');
+            names[count - 1].classList.add('exit');
         }
         return () => clearInterval(interval);
     }, [count]);
@@ -56,7 +60,7 @@ export default function Profile() {
             <Header/>
             <div id="down">
                 <div className="container">
-                <div className="time-line">
+                    <div className="time-line">
                         <div className="line"></div>
                         <div className="square"></div>
                         <div className="square selector project" onClick={(e) => select(e)}>

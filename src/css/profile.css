@@ -26,11 +26,13 @@
     padding: 1rem;
     left: 0;
     right: 0;
-    animation: 500ms ease 0ms 1 normal none running exit;
-}
-.name.active {
-    animation: 500ms ease 0s 1 normal none running enter;
-    opacity: 1;
+    &.active {
+        animation: 500ms ease 0s 1 normal none running enter;
+        opacity: 1;
+    }
+    &.exit {
+        animation: 500ms ease 0ms 1 normal none running exit;
+    }
 }
 @keyframes drop{
     0% {
@@ -68,66 +70,32 @@
     flex-direction: row;
     justify-content: space-between;
     .project {
-        border: 1px solid var(--base-color-project);
         animation: 800ms ease 0s 1 appear forwards; 
-        .color {
-            background-color: var(--base-color-project);   
-        }
-        &::before, &::after {
-            border: 1px solid var(--base-color-project);
-        }
         &::before {
             animation: 1000ms pulse 0ms ease-in-out;
         }
     }
     .test1 {
-        border: 1px solid var(--base-color-test1);
         animation: 800ms ease 200ms 1 appear forwards;   
-        .color{ 
-            background-color: var(--base-color-test1);
-        }
-        &::before, &::after {
-            border: 1px solid var(--base-color-test1);
-        }
         &::before {
             animation: 1000ms pulse 200ms ease-in-out;
         }
     }
     .concept {
-        border: 1px solid var(--base-color-concept);
         animation: 800ms ease 400ms 1 appear forwards;   
-        .color {
-            background-color: var(--base-color-concept);
-        }
-        &::before, &::after {
-            border: 1px solid var(--base-color-concept);
-        }
         &::before {
             animation: 1000ms pulse 400ms ease-in-out;
         }
+        
     }
     .making {
-        border: 1px solid var(--base-color-making);
         animation: 800ms ease 600ms 1 appear forwards;   
-        .color {
-            background-color: var(--base-color-making);
-        }
-        &::before, &::after {
-            border: 1px solid var(--base-color-making);
-        }
         &::before {
             animation: 1000ms pulse 600ms ease-in-out;
         }
     }
     .profile1 {
-        border: 1px solid var(--base-color-profile);
         animation: 800ms ease 800ms 1 appear forwards;
-        .color {
-            background-color: var(--base-color-profile);
-        }
-        &::before, &::after {
-            border: 1px solid var(--base-color-profile);
-        }
         &::before {
             animation: 1000ms pulse 800ms ease-in-out;
         }
@@ -145,16 +113,19 @@
     height: 0.5rem;
     background-color: #000;
     transform: rotate(45deg);
-    margin-top: 1px;
-    transition: 200ms all ease;  
+    margin-top: 1px;  
     &.selector {
         width: 0.5rem;
         height: 0.5rem;
-        padding: 0.2rem;    
+        padding: 0.2rem;
         background-color: #fff;
         opacity: 0;
         cursor: pointer;
+        border: 1px solid var(--base-color);
+        transition: 500ms all ease; 
         &::before, &::after {
+            transition: 500ms all ease; 
+            border: 1px solid var(--base-color);
             position: absolute;
             content: '';
             top: -1px;
@@ -166,6 +137,7 @@
             width: 0.7rem;
             height: 0.7rem;
             padding: 0.3rem;
+            transition: 400ms all ease;
         }
         &.active {
             padding: 0.4rem;
@@ -176,8 +148,10 @@
             animation: 600ms pulse 2 ease-in-out !important;
         }
         .color {
+            transition: 500ms all ease;  
             width: 100%;
             height: 100%;
+            background-color: var(--base-color);   
         }
     }
 }
@@ -216,4 +190,53 @@
     left: 0;
     right: 0;
     text-align: center;
+}
+.potion, .potion2 {
+    .time-line {
+        .project {
+            border: 1px solid var(--base-color-project);
+            &::before, &::after {
+                border: 1px solid var(--base-color-project);
+            }
+            .color {
+                background-color: var(--base-color-project);   
+            }
+        }
+        .test1 {
+            border: 1px solid var(--base-color-test1);
+            &::before, &::after {
+                border: 1px solid var(--base-color-test1);
+            }
+            .color{ 
+                background-color: var(--base-color-test1);
+            }
+        }
+        .concept {
+            border: 1px solid var(--base-color-concept);
+            .color {
+                background-color: var(--base-color-concept);
+            }
+            &::before, &::after {
+                border: 1px solid var(--base-color-concept);
+            }
+        }
+        .making {
+            border: 1px solid var(--base-color-making);
+            .color {
+                background-color: var(--base-color-making);
+            }
+            &::before, &::after {
+                border: 1px solid var(--base-color-making);
+            }
+        }
+        .profile1 {
+            border: 1px solid var(--base-color-profile);
+            .color {
+                background-color: var(--base-color-profile);
+            }
+            &::before, &::after {
+                border: 1px solid var(--base-color-profile);
+            }
+        }
+    }
 }
