@@ -10,7 +10,6 @@ import Project from './component/Project';
 import Profile from './component/Profile';
 import Concept from './component/Concept';
 import Making from './component/Making';
-import Test2 from './component/balls';
 
 function App() {
     const location = useLocation();
@@ -38,7 +37,6 @@ function App() {
                     <Route path="/concept" element={<Concept />} />
                     <Route path="/making" element={<Making />} />
                     <Route path="/profile" element={<Profile />} />
-                    <Route path="/b" element={<Test2 />} />
                 </Routes>
             </CSSTransition>
         </SwitchTransition>

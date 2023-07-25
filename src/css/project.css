@@ -7,14 +7,7 @@
     width: 100%;
     bottom: 5%;
 }
-.wrap {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    height: calc(100% - 52px);
-    transition: all 2s ease;
-}
+
 .timer {
     position: relative;
     width: 20rem;
