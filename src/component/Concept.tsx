@@ -28,7 +28,7 @@ class Ball {
     }
 }
 const opts = {
-    particleAmount: window.screen.width/50 + window.screen.height/50, // 입자 개수
+    particleAmount: Math.round(window.screen.width/50 + window.screen.height/50), // 입자 개수
     defaultSpeed: 0.5, // 기본 속도
     variantSpeed: 1, // +- 속도
     defaultRadius: 4, // 기본 크기
@@ -214,7 +214,7 @@ export default function Concept() {
                     <span className="blink">|</span>
                 </div>
             </div>
-            <canvas ref={canvasRef} className='concept'></canvas>
+            <canvas ref={canvasRef} className='concept-canvas'></canvas>
         </div>
     </div>
     )
