@@ -83,8 +83,6 @@ function Project() {
             left: -${document.body.clientWidth - event.pageX}px;
             background-color: ${target_style.backgroundColor}
         `;
-        console.log(event.pageY);
-        console.log(event.pageX);
 
         const add_element:Element = document.createElement('div');
         add_element.setAttribute('class', 'project-enter');

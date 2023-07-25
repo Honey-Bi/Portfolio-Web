@@ -8,6 +8,16 @@
     flex-direction: row;
     align-items: center;
     border-bottom: 2px solid #f2f2f2;
+    overflow: hidden;
+    animation: 800ms linear project-nav-appear;
+}
+@keyframes project-nav-appear {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 .project-home {
     margin-right: auto;
