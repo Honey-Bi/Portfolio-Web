@@ -1,3 +1,10 @@
+.concept {
+    transition: all 1s ease;
+    font-size: 2rem;
 }
+.im {
+    /* font-size: 2rem; */
+    &::before, &::after {
+        content: "\00a0";
     }
 }
