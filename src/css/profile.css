@@ -6,7 +6,7 @@
     display: flex;
 }
 .names {
-    height: 3.5rem;
+    height: 21px;
 }
 .scroll {
     overflow-y: scroll !important;
@@ -54,9 +54,23 @@
     padding: 0 0.25rem;
     font-weight: 500;
 }
-.dark .accent {
-    background: #fff;
-    color: #000 !important;
+.dark {
+    & .square {
+        background-color: #fff;
+    }
+    & .line {
+        border-top: 1px solid #fff;
+    }
+    & .selector {
+        background-color: #343a40;
+    }
+    & .info {
+        color: #fff;
+    }
+    & .accent {
+        background: #fff;
+        color: #000 !important;
+    }
 }
 
 .time-line {
