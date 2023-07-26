@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 function Main() {
     const PENTAGON_SIZE = 300;
     const xmlns = "http://www.w3.org/2000/svg";
-    const lists:Array<string> = ["project", "concept", "making", "","profile"];
+    const lists:Array<string> = ["project", "concept", "about", "","profile"];
     const pentagonDots = {
         center: ` ${PENTAGON_SIZE/2}, ${PENTAGON_SIZE/1.905759}`,
         bottomRight: ` ${PENTAGON_SIZE/1.2402044}, ${PENTAGON_SIZE/1.0550724637}`,
