@@ -1,0 +1,56 @@
+.about-flex {
+    display: flex;
+    justify-content: center;
+}
+.about {
+    width: 100%;
+    max-width: 800px;
+    height: 100%;
+    max-height: 560px;
+    margin: auto;
+    box-sizing: border-box;
+    overflow: hidden;
+    & .name {
+        padding: 0;
+        font-weight: 500 !important;
+        font-size: 1rem;
+    }
+}
+.about-tab {
+    font-size: 1rem;
+    font-weight: 300;
+    &::before {
+        content: "\00a0\00a0\00a0\00a0";;
+    }
+}
+.about-accent {
+    font-size: 1rem;
+    font-weight: 500 !important;
+}
+.about-name {
+    position: relative;
+}
+.command {
+    border: 0px;
+    width: 100%;
+}
+.whoami {
+    position: absolute;
+    font-weight: 800;
+    font-size: 3rem;
+    right: 0;
+    bottom: 0;
+    & span {
+        text-transform: uppercase;
+        color: #ccc !important;
+    }
+}
+@media (min-width: 768px) {
+    .whoami {
+        right: -8rem;
+        bottom: 50%;
+        font-size: 6rem;
+        transform-origin: bottom center;
+        transform: rotate(90deg);
+    }
+}
