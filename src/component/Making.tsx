@@ -15,14 +15,7 @@ export default function Making() {
             <Header/>
             <div id="down">
                 <div className="container making-flex">
-                    <div className="boxs ">
-                        <div className="bob"></div>
-                        <div className="bob"></div>
-                        <div className="bob"></div>
-                        <div className="bob"></div>
-                        <div className="bob"></div>
-                        <div className="bob"></div>
-                    </div>
+                    
                     <div className="info">
                         <div className="info-project">
                             <div className="info-title">project</div>
@@ -38,9 +31,6 @@ export default function Making() {
                         </div>
                         <div className="info-concept">
                             <div className="info-title">concept</div>
-                        </div>
-                        <div className="info-making">
-                            <div className="info-title">making</div>
                         </div>
                         <div className="info-profile">
                             <div className="info-title">profile</div>

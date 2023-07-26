@@ -190,6 +190,10 @@
     font-size: 3rem;
     right: 0;
     bottom: 0;
+    & span {
+        text-transform: uppercase;
+        color: #ccc !important;
+    }
 }
 @media (min-width: 768px) {
     .select {
@@ -198,11 +202,6 @@
         font-size: 6rem;
         transform: rotate(-90deg);
     }
-}
-  
-.select span {
-    text-transform: uppercase;
-    color: #ccc !important;
 }
 .dark {
     & text {

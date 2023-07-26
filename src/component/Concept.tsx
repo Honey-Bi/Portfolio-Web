@@ -39,9 +39,9 @@ const opts = {
 
 const balls:Array<Ball> = [];
 const titles:Array<string> = [ // 타이핑 목록
-    '123456789',
-    'abcdefghi',
-    'ABCDEFGHI',
+    '크리에이터이자\n 개발자입니다.',
+    'Hello World!',
+    'For Better New Experience',
 ];
 
 export default function Concept() {    
@@ -76,7 +76,7 @@ export default function Concept() {
                 balls.push(new Ball(x, y, s, d, r, c));
             }
         }
-    }, [canvasRef, size.height, size.width]);
+    }, [canvasRef]);
 
     
     const handelResize = () => { // 화면 resize 크기 저장
@@ -210,9 +210,10 @@ export default function Concept() {
         <Header/>
         <div id="down">
             <div className="wrap">
-                <div className="concept-title">{title}
+                <pre className="concept-title">
+                    {title}
                     <span className="blink">|</span>
-                </div>
+                </pre>
             </div>
             <canvas ref={canvasRef} className='concept-canvas'></canvas>
         </div>

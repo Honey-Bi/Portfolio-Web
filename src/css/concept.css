@@ -5,7 +5,9 @@
 }
 .concept-title {
     z-index: 1;
-    font-size: 2rem;
+    font-size: 1.5rem;
+    font-family: "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "sans-serif";
+    text-align: center;
 }
 .qwer {
     transition: all 1s ease;
