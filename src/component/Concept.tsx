@@ -41,7 +41,7 @@ const balls:Array<Ball> = [];
 const titles:Array<string> = [ // 타이핑 목록
     '크리에이터이자\n 개발자입니다.',
     'Hello World!',
-    'For Better New Experience',
+    '의식의 흐름',
 ];
 
 export default function Concept() {    
@@ -206,7 +206,7 @@ export default function Concept() {
     }, [pp, typing]);
 
     return (
-        <div id='main'>
+    <div id='main'>
         <Header/>
         <div id="down">
             <div className="wrap">
