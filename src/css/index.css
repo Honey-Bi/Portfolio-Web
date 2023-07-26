@@ -79,3 +79,12 @@ code {
   --base-dark: #343a40;
   /* FFD6A5 AA96DA */
 } 
+.toTop {
+  text-align: center;
+  margin-top: auto;
+  margin-bottom: 0.5rem;
+  & span {
+      color: #aaa;
+      cursor: pointer;
+  }
+}
