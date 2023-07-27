@@ -55,19 +55,19 @@
     font-weight: 500;
 }
 .dark {
-    & .square {
+    .square {
         background-color: #fff;
     }
-    & .line {
+    .line {
         border-top: 1px solid #fff;
     }
-    & .selector {
-        background-color: #343a40;
+    .selector {
+        background-color: #343a40 !important;
     }
-    & .info {
+    .info {
         color: #fff;
     }
-    & .accent {
+    .accent {
         background: #fff;
         color: #000 !important;
     }

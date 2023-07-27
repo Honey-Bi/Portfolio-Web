@@ -1,6 +1,6 @@
 import Header from './Header';
 import '../css/project.css';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { BaseSyntheticEvent, useCallback, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 // import { Link } from 'react-router-dom';
 
@@ -73,8 +73,8 @@ function Project() {
     const navigate = useNavigate ();
     // const [move, setPosition] = useState<object>();
     const main:Element = document.getElementById('main') as Element;
-    function move(e:any, pName:string):void {
-        const event:MouseEvent = e;
+    function move(e:BaseSyntheticEvent, pName:string):void {
+        const event = e.nativeEvent as PointerEvent;
         const target:Element = e.target;
         const target_style:CSSStyleDeclaration = window.getComputedStyle(target);
 
@@ -89,7 +89,12 @@ function Project() {
         add_element.setAttribute('style', style);
         main.after(add_element)
 
-        navigate(`./Test`, {state: {color:target_style.backgroundColor}});
+        navigate(`./post`, {
+            state: {
+                color:target_style.backgroundColor, 
+                page: pName
+            }
+        });
     }
     return (
         <div id='main'>
