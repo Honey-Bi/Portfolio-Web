@@ -9,7 +9,7 @@ body {
 #down {
   position: relative;
   z-index: 1;
-  transition: all ease 0.5s;
+  transition: box-shadow ease 0.5s;
 }
 .wrap {
   flex-direction: column;
@@ -21,7 +21,7 @@ body {
 }
 #root {
   overflow: hidden;
-  transition: all ease 0.5s;
+  transition: background-color ease 0.5s;
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
