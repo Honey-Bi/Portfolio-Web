@@ -190,10 +190,8 @@
     font-size: 3rem;
     right: 0;
     bottom: 0;
-    & span {
-        text-transform: uppercase;
-        color: #ccc !important;
-    }
+    text-transform: uppercase;
+    color: #ccc !important;
 }
 @media (min-width: 768px) {
     .select {

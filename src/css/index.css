@@ -62,12 +62,6 @@ code {
     max-width:1140px
   }
 }
-/* @media (min-width: 1400px) {
-  .container {
-    max-width:1320px
-  }
-} */
-
 :root {
   --base-color-1: #fff7ab;
   --base-color-project: #B5F1CC;
