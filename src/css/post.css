@@ -21,6 +21,8 @@
 }
 .project-home {
     margin-right: auto;
+    width: 33.333%;
+    text-align: left;
 }
 .project-home::after {
     display: inline-block;
@@ -29,6 +31,8 @@
     color: #fff;
 }
 .project-exit {
+    width: 33.333%;
+    text-align: right;
     margin-left: auto;
 }
 .project-exit::after {
@@ -38,10 +42,52 @@
     font-weight: 600;
     color: #fff;
 }
+.post-body {
+    padding: 1rem;
+}
+.post-body img {
+    width: 100%;
+    height: 100%;
+}
+@media (min-width: 768px) {
+    .project-home, .project-exit {
+        width: 16.666%;
+        text-align: center;
+    }
+    .post-body img.fl {
+        margin-right: 1rem;
+    }
+    .post-img-s {
+        max-width: 40%; 
+    }
+    .post-img-m {
+        max-width: 50%;
+    }
+    .post-img-l {
+        max-width: 60%;
+    }   
+    .post-img-xl {
+        margin: 1rem 0;
+        max-width: 100%
+    }
+    .post-body {
+        word-break: break-all;
+    }
+    .ic {
+        display: block;
+        margin: 1rem auto;
+    }
+}
+.fl {
+    float: left;
+}
+.fr {
+    float: right;
+}
 .post {
     position: relative;    
     margin: 1rem;
-    padding: 1rem;
+    padding: clamp(0.2rem, 2vw, 1rem);
     display: flex;
     flex-direction: column;
     background-color: #fff;
@@ -58,6 +104,18 @@
     border-bottom: 1px solid rgba(0,0,0,.12);
     padding: 1rem;
 }
-.post-body {
-    padding: 1rem;
+.post-sub {
+    display: flex;
+    margin-top: 0.2rem;
+    margin-bottom: 2rem;
+}
+.post-category {
+    padding-left: clamp(0.2rem, 2vw, 1rem);
+    font-weight: 500;
+    margin-right: auto;
+}
+.post-date {
+    padding-right: clamp(0.2rem, 2vw, 1rem);
+    font-weight: 300;
+    margin-left: auto;
 }
