@@ -71,7 +71,6 @@ function Project() {
     }
 
     const navigate = useNavigate ();
-    // const [move, setPosition] = useState<object>();
     const main:Element = document.getElementById('main') as Element;
     function move(e:BaseSyntheticEvent, pName:string):void {
         const event = e.nativeEvent as PointerEvent;
@@ -89,23 +88,35 @@ function Project() {
         add_element.setAttribute('style', style);
         main.after(add_element)
 
-        navigate(`./post`, {
+        navigate(`./post/${pName}`,{
             state: {
                 color:target_style.backgroundColor, 
-                page: pName
-            }
+            },
+            
         });
     }
+
+    const handelKeyDown =(e:BaseSyntheticEvent) => {
+        const event = e.nativeEvent as KeyboardEvent;
+        if (event.key ===' ') {
+            PP();
+        }
+    };
     return (
-        <div id='main'>
+        <div id='main' 
+            tabIndex={0}
+            onKeyDown={handelKeyDown}
+        >
             <Header />
             <div id="down">
-                <div className="wrap" onWheel={e => moveWheel(e)}>
+                <div className="wrap" 
+                    onWheel={e => moveWheel(e)}
+                >
                     <div className="slide" style={{
                         transform: `translateX(calc(12.5rem*${direction}*-2.45))`
                     }}>
                         <div className="slide-item">
-                            <div className="album" onClick={e => move(e, '')}>
+                            <div className="album" onClick={e => move(e, 'test')}>
                                 <span className="album-title">test1</span>
                             </div>
                             <div className="record">
@@ -114,7 +125,7 @@ function Project() {
                             <div className="record-shadow"></div>
                         </div>
                         <div className="slide-item">
-                            <div className="album" onClick={e => move(e, '')}></div>
+                            <div className="album" onClick={e => move(e, 'test2')}></div>
                             <div className="record">
                                 <div className="innerRound"></div>
                             </div>
@@ -153,6 +164,9 @@ function Project() {
                         <div id='round' className="round"></div>
                         <div id='fill' className="fill"></div>
                     </div>
+                </div>
+                <div className="project-title">
+                    project
                 </div>
             </div>
         </div>

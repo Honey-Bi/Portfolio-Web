@@ -1,6 +1,9 @@
 #down {
     height: calc(100% - 3.5rem);
 }
+#main:focus-visible {
+    outline: none;;
+}
 .controller {
     text-align: center;
     position: fixed;
@@ -31,6 +34,9 @@
         &:hover {
             cursor: pointer;
             color: #ccc;
+        }
+        &:active, &:focus {
+            color: #000;
         }
     }
     & i {
@@ -138,20 +144,21 @@ button.active .fa-play, button .fa-pause {
     z-index: 0;
     transition: all 1s ease;
     animation: rotate 6s linear infinite;
-    .innerRound {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        width: 15%;
-        height: 15%;
-        border-radius: 50%;
-        padding: 5%;
-        background-color: #fff;
-        background-clip: content-box;
-        border: 2px solid #fff;
-        transform: translate(-50%, -50%);
-    }
 }
+.innerRound {
+    left: 50%;
+    top: 50%;
+    width: 15%;
+    height: 15%;
+    position: absolute !important;
+    border-radius: 50% !important;
+    padding: 5%;
+    background-color: #fff;
+    background-clip: content-box;
+    border: 2px solid #fff;
+    transform: translate(-50%, -50%);
+}
+
 .record-shadow {
     position: absolute;
     width: 90%;
@@ -209,11 +216,21 @@ button.active .fa-play, button .fa-pause {
     100% {
         clip-path: circle(100%);
     }
-    /* 100% {
-        width: 200vw;
-        height: 200vw;
-        top: -50%;
-        left: -50%;
-        border-radius: 100%;
-    } */
+}
+.project-title {
+    position: absolute;
+    transform-origin: bottom left;
+    bottom: 0.3rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #ccc !important;
+    display: none;
+}
+@media (min-width: 768px) {
+    .project-title {
+        display: block;
+        left: 5.3rem;
+        font-size: 5rem;
+        transform: rotate(-90deg);
+    }
 }
