@@ -73,7 +73,7 @@ function Main() {
                     </div>
                 </div>
                 <div className="select">
-                    <span>select</span>
+                    select
                 </div>
             </div>
         </div>
