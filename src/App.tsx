@@ -10,6 +10,7 @@ import Project from './component/Project';
 import Profile from './component/Profile';
 import Concept from './component/Concept';
 import Terminal from './component/Terminal';
+import NotFound404 from './component/404';
 
 function App() {
     const location = useLocation();
@@ -33,13 +34,15 @@ function App() {
                 <Routes location={location}>
                     <Route path="/" element={<Main />} />
                     <Route path="/project" element={<Project />} />
-                    <Route path="/project/post" element={<Post />} />
+                    <Route path="/project/post/:pname" element={<Post />} />
                     <Route path="/concept" element={<Concept />} />
                     <Route path="/terminal" element={<Terminal />} />
                     <Route path="/profile" element={<Profile />} />
+                    <Route path="/*" element={<NotFound404 />} />
                 </Routes>
             </CSSTransition>
         </SwitchTransition>
+
     )
 }
 export default App;
