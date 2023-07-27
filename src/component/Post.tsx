@@ -1,9 +1,9 @@
 
 import { Link, useLocation } from "react-router-dom";
 
-import '../css/test.css'
+import '../css/post.css'
 
-export default function Test() {
+export default function Post() {
 
     const location = useLocation();
     const color = location.state.color;

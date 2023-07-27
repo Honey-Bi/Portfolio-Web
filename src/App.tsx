@@ -5,11 +5,11 @@ import './css/index.css';
 import './css/transition.css';
 
 import Main from './component/Main';
-import Test from './component/Test';
+import Post from './component/Post';
 import Project from './component/Project';
 import Profile from './component/Profile';
 import Concept from './component/Concept';
-import About from './component/About';
+import Terminal from './component/Terminal';
 
 function App() {
     const location = useLocation();
@@ -33,9 +33,9 @@ function App() {
                 <Routes location={location}>
                     <Route path="/" element={<Main />} />
                     <Route path="/project" element={<Project />} />
-                    <Route path="/project/Test" element={<Test />} />
+                    <Route path="/project/post" element={<Post />} />
                     <Route path="/concept" element={<Concept />} />
-                    <Route path="/about" element={<About />} />
+                    <Route path="/terminal" element={<Terminal />} />
                     <Route path="/profile" element={<Profile />} />
                 </Routes>
             </CSSTransition>
