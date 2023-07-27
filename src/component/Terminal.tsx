@@ -76,7 +76,7 @@ export default function Terminal() {
         if(command === 'cls') terminal.innerHTML = '';
     };
 
-    const handleOnKeyPress = (e:BaseSyntheticEvent) => {
+    const handleOnKeyDown = (e:BaseSyntheticEvent) => {
         const e1:KeyboardEvent = e.nativeEvent as KeyboardEvent;
         if (e1.key === 'Enter') {
             handleOnSubmit(e.target.value);
@@ -102,22 +102,23 @@ export default function Terminal() {
             <Header/>
             <div id="down" className='terminal-flex'>
                 <div className="terminal scroll" onClick={focusCommand}>
-                    <div className="terminal-accent">- - - - - - - - - - - - - - - - - - - - - - - - - -</div>
-                    <div className="terminal-accent">Command</div>
-                    <div className="terminal-tab">whoami</div>
-                    <div className="terminal-tab">pwd</div>
-                    <div className="terminal-tab">exit</div>
-                    <div className="terminal-tab">ls</div>
-                    <div className="terminal-tab">cd</div>
-                    <div className="terminal-tab">contact</div>
-                    <div className="terminal-tab">cls</div>
-                    <div className="terminal-accent">- - - - - - - - - - - - - - - - - - - - - - - - - -</div>
+                    <div className="terminal-help">
+                        <div className="terminal-accent">- - - - - - - - - - - - - - - - - - - - - - - - - -</div>
+                        <div className="terminal-accent">Command</div>
+                        <div className="terminal-tab">whoami</div>
+                        <div className="terminal-tab">pwd</div>
+                        <div className="terminal-tab">exit</div>
+                        <div className="terminal-tab">ls</div>
+                        <div className="terminal-tab">cd</div>
+                        <div className="terminal-tab">contact</div>
+                        <div className="terminal-tab">cls</div>
+                        <div className="terminal-accent">- - - - - - - - - - - - - - - - - - - - - - - - - -</div>
+                    </div>
                     <div className="terminal-log">
-
                     </div>
                     <div className="terminal-command">
                         <span>&gt;</span>
-                        <input type="text" id='command' autoComplete='off' onKeyDown={e => handleOnKeyPress(e)}/>
+                        <input type="text" id='command' autoComplete='off' onKeyDown={e => handleOnKeyDown(e)}/>
                     </div>
                 </div>
                 <div className="whoami">
