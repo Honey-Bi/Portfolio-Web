@@ -73,16 +73,16 @@
     .post-body {
         word-break: break-all;
     }
-    .ic {
+    .center {
         display: block;
         margin: 1rem auto;
     }
-}
-.fl {
-    float: left;
-}
-.fr {
-    float: right;
+    .fl {
+        float: left;
+    }
+    .fr {
+        float: right;
+    }
 }
 .post {
     position: relative;    

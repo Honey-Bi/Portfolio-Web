@@ -1,8 +1,7 @@
 import Header from './Header';
-import '../css/project.css';
+import 'css/project.css';
 import { BaseSyntheticEvent, useCallback, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-// import { Link } from 'react-router-dom';
 
 function Project() {
     const [play, setPlay] = useState<boolean>(true);
@@ -21,7 +20,6 @@ function Project() {
         void fill.offsetWidth; 
         round.classList.add('round');
         fill.classList.add('fill');
-        setCount(20)
     },[direction]);
 
     const next = useCallback(() => {
@@ -33,7 +31,8 @@ function Project() {
     },[direction]);
 
     useEffect(() => {
-        if(count <= 0 ) {
+        if(count === 0 ) {
+            setCount(20)
             next()
         }
     }, [count, next]);
@@ -98,7 +97,7 @@ function Project() {
 
     const handelKeyDown =(e:BaseSyntheticEvent) => {
         const event = e.nativeEvent as KeyboardEvent;
-        if (event.key ===' ') {
+        if (event.key === ' ') {
             PP();
         }
     };
@@ -126,6 +125,13 @@ function Project() {
                         </div>
                         <div className="slide-item">
                             <div className="album" onClick={e => move(e, 'test2')}></div>
+                            <div className="record">
+                                <div className="innerRound"></div>
+                            </div>
+                            <div className="record-shadow"></div>
+                        </div>
+                        <div className="slide-item">
+                            <div className="album" onClick={e => move(e, '')}></div>
                             <div className="record">
                                 <div className="innerRound"></div>
                             </div>

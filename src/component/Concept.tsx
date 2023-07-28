@@ -1,5 +1,5 @@
 import Header from './Header';
-import '../css/concept.css';
+import 'css/concept.css';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 class Ball {

@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import Header from './Header';
-import '../css/main.css';
+import 'css/main.css';
 import { useEffect, useState } from 'react';
 function Main() {
     const PENTAGON_SIZE = 300;

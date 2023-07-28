@@ -90,7 +90,7 @@ button.active .fa-play, button .fa-pause {
 .slide {
     transition: all 1s ease;
     position: absolute;
-    width: calc(12.5rem * 2.45 * 4);
+    width: calc(12.5rem * 2.45 * 5);
     left: calc(50% - 12.5rem * 0.75);
 
 }   

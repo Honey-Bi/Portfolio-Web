@@ -1,7 +1,7 @@
 import Header from "./Header";
 import { useState } from "react";
 
-import '../css/profile.css';
+import 'css/profile.css';
 import Names from "./Names";
 
 export default function Profile() {
@@ -62,7 +62,9 @@ export default function Profile() {
                     </div>
                     
                 </div>
-                <div className="container"></div>
+                <div className="profile-title">
+                    profile
+                </div>
             </div>
         </div>
     )

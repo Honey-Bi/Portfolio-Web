@@ -1,5 +1,5 @@
 import Header from './Header';
-import '../css/terminal.css';
+import 'css/terminal.css';
 import { BaseSyntheticEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 

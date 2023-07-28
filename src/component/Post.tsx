@@ -1,14 +1,17 @@
 
-import { Link, useLocation, useParams } from "react-router-dom";
-import '../css/post.css'
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import 'css/post.css'
 import ToTop from "./ToTop";
 import Post1 from "./post/Test";
-import { useEffect, useState } from "react";
 import Post2 from "./post/Test2";
+import Post_Oraculum from "./post/Oraculum";
 
 export default function Post() {
     const location = useLocation();
-    const color = location.state.color;
+    const navigate = useNavigate();
+    let color:string = "#ccc";
+    if (location.state) color = location.state.color;
     const { pname } = useParams();
     const project_enter:Element|null = document.getElementsByClassName('project-enter')[0];
     if (project_enter) project_enter.remove();
@@ -27,9 +30,15 @@ export default function Post() {
                 case 'test2':
                     setPost(Post2());
                     break;
+                case 'oraculum':
+                    setPost(Post_Oraculum());
+                    break;
+                default :
+                    navigate('/404');
+                    break;
             }
         };
-    }, [once, pname]);
+    }, [navigate, once, pname]);
     return(
         <div 
             id="main" className="scroll"

@@ -254,3 +254,20 @@
         }
     }
 }
+.profile-title {
+    position: absolute;
+    transform-origin: bottom left;
+    bottom: 0.3rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #ccc !important;
+    display: none;
+}
+@media (min-width: 768px) {
+    .profile-title {
+        display: block;
+        left: 5.3rem;
+        font-size: 5rem;
+        transform: rotate(-90deg);
+    }
+}

@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from 'react-router-dom';
-import '../css/header.css';
-import img1 from '../img/sample_images_01.png';
-import img2 from '../img/sample_images_02.png';
-import img3 from '../img/sample_images_03.png';
+import 'css/header.css';
+import img1 from 'img/sample_images_01.png';
+import img2 from 'img/sample_images_02.png';
+import img3 from 'img/sample_images_03.png';
 import Draggable from "react-draggable";
 
 export default function Header() {
