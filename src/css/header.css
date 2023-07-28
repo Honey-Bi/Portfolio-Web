@@ -13,7 +13,7 @@ nav {
     color: #000;
 }
 .dark {
-    & a, & span, & i {
+    & a, & span:not(.album > *), & i {
         color: #fff !important;
     }
     & nav {
