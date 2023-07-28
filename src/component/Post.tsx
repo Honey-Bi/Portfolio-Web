@@ -1,47 +1,35 @@
 
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
 import 'css/post.css'
 import ToTop from "./ToTop";
-import Post1 from "./post/Test";
-import Post2 from "./post/Test2";
-import Post_Oraculum from "./post/Oraculum";
+import posts from'post.json';
 
 export default function Post() {
-    const location = useLocation();
     const navigate = useNavigate();
+    const location = useLocation();
     let color:string = "#ccc";
+    
     if (location.state) color = location.state.color;
-    const { pname } = useParams();
+    
+    const { pname }= useParams();
+    if (
+        pname === undefined || 
+        (pname !== undefined && !Object.keys(posts).includes(pname))
+    ) return (<>{navigate('/404')}</>);
+
+    const data = Object.values(posts)[Object.keys(posts).indexOf(pname)];
+
     const project_enter:Element|null = document.getElementsByClassName('project-enter')[0];
     if (project_enter) project_enter.remove();
 
-    const [post, setPost] = useState<JSX.Element|null>(null);
-    const [once, setOnce] = useState<boolean>(true);
-
-    useEffect(() => {
-        const project_post:Element|null = document.getElementsByClassName('post-transition')[0];
-        if (project_post && once) {
-            setOnce(false);
-            switch(pname) {
-                case 'test':
-                    setPost(Post1());
-                    break;
-                case 'test2':
-                    setPost(Post2());
-                    break;
-                case 'oraculum':
-                    setPost(Post_Oraculum());
-                    break;
-                default :
-                    navigate('/404');
-                    break;
-            }
-        };
-    }, [navigate, once, pname]);
+    const isDark:String|null = localStorage.getItem('isDark');
+    const root = document.getElementById('root');
+    if (root !== null && isDark === 'on') {
+        root.classList.add('dark');
+    }   
     return(
         <div 
-            id="main" className="scroll"
+            id="main" className="not-dark scroll"
             style={{
                 backgroundColor: color
             }}
@@ -55,7 +43,17 @@ export default function Post() {
                 <Link to={"/project"} className="project-exit" />
             </div>
             <div className="container post-transition"> 
-                {post}
+                <div className="post">
+                    <div className="post-title">{data.title}</div>
+                    <div className="post-sub">
+                        <div className="post-category">
+                            {data.category} / {data.author}
+                        </div>
+                        <div className="post-date">{data.date}</div>
+                    </div>
+                    <div className="post-body">
+                    </div>
+                </div>
                 <ToTop color='#fff'/>
             </div>
         </div>

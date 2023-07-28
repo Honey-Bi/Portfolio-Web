@@ -119,3 +119,6 @@
     font-weight: 300;
     margin-left: auto;
 }
+.not-dark {
+    color: #000 !important;
+}

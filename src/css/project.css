@@ -90,7 +90,6 @@ button.active .fa-play, button .fa-pause {
 .slide {
     transition: all 1s ease;
     position: absolute;
-    width: calc(12.5rem * 2.45 * 5);
     left: calc(50% - 12.5rem * 0.75);
 
 }   
@@ -123,15 +122,32 @@ button.active .fa-play, button .fa-pause {
     position: absolute;
     z-index: 1;
     cursor: pointer;
-}
-.album-title {
-    position: absolute;
-    bottom: 1rem;
-    left: 1rem;
-    font-size: 1.2rem;
-    color: #fff;
-    font-weight: 700;
-    text-transform: uppercase;
+    .album-title {
+        position: absolute;
+        bottom: 1rem;
+        left: 1rem;
+        font-size: 1.2rem;
+        color: #fff;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+    .album-date {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        color: #fff;
+        font-weight: 500;
+    }
+    .album-category {
+        font-size: 0.8rem;
+        transform-origin: bottom right;
+        transform: rotate(-90deg);
+        position: absolute;
+        right: 0;
+        top: -0.8rem;
+        color: #fff;
+        text-transform: uppercase;
+    }
 }
 .record {
     position: absolute;
@@ -175,7 +191,7 @@ button.active .fa-play, button .fa-pause {
         transform: rotate(360deg);
     }
 }
-.potion, .potion2 {
+/* .potion, .potion2 {
     .slide-item:nth-child(1) .album {
         background-color: #FF9B9B;
     }
@@ -191,7 +207,7 @@ button.active .fa-play, button .fa-pause {
     .slide-item:nth-child(5) .album {
         background-color: #C2DEDC;
     }
-}
+} */
 .mushroom .wrap {
     transform: scale(1.1);
 }
@@ -232,5 +248,13 @@ button.active .fa-play, button .fa-pause {
         left: 5.3rem;
         font-size: 5rem;
         transform: rotate(-90deg);
+    }
+}
+#down:not(.potion, .potion2) {
+    .album {
+        background-color: #ccc !important;
+        & > * {
+            color: #fff !important;
+        }
     }
 }
