@@ -30,7 +30,7 @@ code {
 .dark {
   background-color: var(--base-dark) !important;
   color: #fff !important;
-  & span {
+  & span:not(.album > *) {
     color: #fff !important;
   }
 }
