@@ -2,14 +2,16 @@ import Header from './Header';
 import 'css/project.css';
 import { BaseSyntheticEvent, useCallback, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import posts from'post.json';
 
 function Project() {
     const [play, setPlay] = useState<boolean>(true);
-    const [direction, setDirection] = useState<number>(0);
+    const [direction, setDirection] = useState<number|null>(null);
     const [count, setCount] = useState<number>(20);
     const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
     useEffect(() => {
+        if(direction === null) return;
         const slide:HTMLCollectionOf<Element> = document.getElementsByClassName('slide-item');
         slide[direction].classList.add('active');
         const round:HTMLElement = document.getElementById('round') as HTMLElement;
@@ -20,15 +22,16 @@ function Project() {
         void fill.offsetWidth; 
         round.classList.add('round');
         fill.classList.add('fill');
-    },[direction]);
+    }, [direction]);
 
     const next = useCallback(() => {
         const slide:HTMLCollectionOf<Element> = document.getElementsByClassName('slide-item');
+        if(direction === null || slide.length === 0) return;
         if (direction < slide.length-1) {
             slide[direction].classList.remove('active');
-            setDirection((next) => next + 1);
+            setDirection((next) => next as number + 1);
         }
-    },[direction]);
+    }, [direction]);
 
     useEffect(() => {
         if(count === 0 ) {
@@ -54,10 +57,10 @@ function Project() {
     }
     
     const prev = () => {
-        if (direction > 0) {
+        if (direction && direction > 0) {
             const slide:HTMLCollectionOf<Element> = document.getElementsByClassName('slide-item');
             slide[direction].classList.remove('active');
-            setDirection((prev) => prev - 1);
+            setDirection((prev) => prev as number - 1);
         }
     }
 
@@ -70,20 +73,20 @@ function Project() {
     }
 
     const navigate = useNavigate ();
-    const main:Element = document.getElementById('main') as Element;
-    function move(e:BaseSyntheticEvent, pName:string):void {
-        const event = e.nativeEvent as PointerEvent;
-        const target:Element = e.target;
+    const move = useCallback((e:MouseEvent, pName:string) => {
+        const main:Element = document.getElementById('main') as Element;
+        // const event = e.nativeEvent as PointerEvent;
+        const target = e.target as Element;
         const target_style:CSSStyleDeclaration = window.getComputedStyle(target);
 
         const style = `
-            top: -${document.body.clientHeight - event.pageY}px;
-            left: -${document.body.clientWidth - event.pageX}px;
+            top: -${document.body.clientHeight - e.pageY}px;
+            left: -${document.body.clientWidth - e.pageX}px;
             background-color: ${target_style.backgroundColor}
         `;
 
-        const add_element:Element = document.createElement('div');
-        add_element.setAttribute('class', 'project-enter');
+        const add_element = document.createElement('div');
+        add_element.classList.add('project-enter');
         add_element.setAttribute('style', style);
         main.after(add_element)
 
@@ -93,7 +96,7 @@ function Project() {
             },
             
         });
-    }
+    }, [navigate])
 
     const handelKeyDown =(e:BaseSyntheticEvent) => {
         const event = e.nativeEvent as KeyboardEvent;
@@ -101,6 +104,57 @@ function Project() {
             PP();
         }
     };
+
+    const [once, setOnce] = useState<boolean>(true);
+    useEffect(() => {
+        const slide:Element|null = document.getElementsByClassName('slide')[0];
+        if (slide && once) {
+            setOnce(false);
+            for (var i of Object.values(posts)) {
+                const s_item = document.createElement('div');
+                s_item.classList.add('slide-item');
+                const album = document.createElement('div');
+                album.classList.add('album');
+                album.setAttribute('style', `background-color: ${i.color}`);
+                
+                const album_title = document.createElement('span');
+                album_title.classList.add('album-title');
+                const title = i.title;
+                album_title.textContent = title;
+                album_title.setAttribute('style', `color: ${i.tColor}`);
+                album.onclick = e => move(e, title);
+                album.appendChild(album_title);
+                
+                const album_date = document.createElement('span');
+                album_date.classList.add('album-date');
+                album_date.textContent = i.date;
+                album_date.setAttribute('style', `color: ${i.tColor}`);
+                album.appendChild(album_date);
+
+                const album_category = document.createElement('span');
+                album_category.classList.add('album-category');
+                album_category.textContent = i.category;
+                album_category.setAttribute('style', `color: ${i.tColor}`);
+                album.appendChild(album_category);
+
+                const record = document.createElement('div');
+                record.classList.add('record');
+                const round = document.createElement('div');
+                round.classList.add('innerRound');
+                const shadow = document.createElement('div');
+                shadow.classList.add('record-shadow');
+
+                record.appendChild(round);
+                s_item.appendChild(record);
+                s_item.appendChild(shadow);
+                s_item.appendChild(album);
+                s_item.appendChild(album);
+                slide.appendChild(s_item);
+            }
+            setDirection(0);
+        }
+    }, [move, once]);
+
     return (
         <div id='main' 
             tabIndex={0}
@@ -112,45 +166,9 @@ function Project() {
                     onWheel={e => moveWheel(e)}
                 >
                     <div className="slide" style={{
-                        transform: `translateX(calc(12.5rem*${direction}*-2.45))`
+                        transform: `translateX(calc(12.5rem*${direction}*-2.45))`,
+                        width: `calc(12.5rem * 2.45 * ${Object.keys(posts).length})`
                     }}>
-                        <div className="slide-item">
-                            <div className="album" onClick={e => move(e, 'test')}>
-                                <span className="album-title">test1</span>
-                            </div>
-                            <div className="record">
-                                <div className="innerRound"></div>
-                            </div>
-                            <div className="record-shadow"></div>
-                        </div>
-                        <div className="slide-item">
-                            <div className="album" onClick={e => move(e, 'test2')}></div>
-                            <div className="record">
-                                <div className="innerRound"></div>
-                            </div>
-                            <div className="record-shadow"></div>
-                        </div>
-                        <div className="slide-item">
-                            <div className="album" onClick={e => move(e, '')}></div>
-                            <div className="record">
-                                <div className="innerRound"></div>
-                            </div>
-                            <div className="record-shadow"></div>
-                        </div>
-                        <div className="slide-item">
-                            <div className="album" onClick={e => move(e, '')}></div>
-                            <div className="record">
-                                <div className="innerRound"></div>
-                            </div>
-                            <div className="record-shadow"></div>
-                        </div>
-                        <div className="slide-item">
-                            <div className="album" onClick={e => move(e, '')}></div>
-                            <div className="record">
-                                <div className="innerRound"></div>
-                            </div>
-                            <div className="record-shadow"></div>
-                        </div>
                     </div>
                 </div>
                 <div className="controller">
