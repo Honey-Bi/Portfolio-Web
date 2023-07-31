@@ -8,22 +8,76 @@
         "tColor": "#fff",
         "body": [
             {
-                "src":"img/sample_images_03.png",
+                "type":"img",
+                "src":"sample_images_01.png",
                 "alt":"img3",
-                "class":["post-img-s", "fl"]
-            },
-            "hello world \n 123asd"
+                "class":["post-img-xl"]
+            }
         ]
     },
-    "test1": {
-        "title": "test1",
-        "category": "test",
+    "Oraculum": {
+        "title": "Oraculum",
+        "category": "Toy Project",
         "author": "HB",
-        "date": "2023 July",
-        "color": "#FFD6A5",
+        "date": "2023 June",
+        "color": "#112D4E",
         "tColor": "#fff",
         "body": [
-            "hello world \n 123asd"
+            {
+                "type":"img",
+                "src":"test_images_1.png",
+                "alt":"img1",
+                "class":["post-img-xl"]
+            },
+            {
+                "type":"text",
+                "bold": false,
+                "link": false,
+                "href": "",
+                "content":"Oraculum은 우주를 배경으로한 간단한 의사결정 시뮬레이션 게임으로 NPC들의 질문과 현재의 상황등에 따라 화면의 카드를 좌우로 슬라이드해 양자택일로 결정하는 게임입니다. 이프로젝트는 EJS를 사용하여 프론트엔드를 개발하였으며, Node.js와 Express를 이용하여 백엔드를 구축되었습니다. 데이터베이스로는 MongoDB Atlas를 사용하였스며, 게임은 순수 JavaScript만을 활용하여 구현하였습니다.",
+                "class":[]
+            },
+            {
+                "type":"img",
+                "src":"sample_images_01.png",
+                "alt":"img1",
+                "class":["post-img-m"]
+            },
+            {
+                "type":"text",
+                "bold": false,
+                "link": false,
+                "href": "",
+                "content": "프로젝트를 진행하면서 제가 중요하게 생각했던 측면은 유지보수의 용이함이었습니다. 각각의 이벤트와 카드가 생성될 때마다 개발자가 수동으로 코드를 추가한다면, 이것은 상당히 비효율적이라고 판단하여, 관리자 페이지를 구축했습니다. 관리자 페이지에서는 관리자가 카드 이미지를 쉽게 추가하고, 이벤트를 생성할 수 있습니다. 또한, 유저의 정보를 쉽게 확인하고 수정 또는 삭제하는 기능도 구현하였습니다.",
+                "class":[]
+            },
+            {
+                "type":"img",
+                "src":"sample_images_01.png",
+                "alt":"img2",
+                "class":["post-img-3", "fl"]
+            },
+            {
+                "type":"img",
+                "src":"sample_images_02.png",
+                "alt":"img2",
+                "class":["post-img-3", "fl"]
+            },
+            {
+                "type":"img",
+                "src":"sample_images_03.png",
+                "alt":"img2",
+                "class":["post-img-3", "fl"]
+            },
+            {
+                "type":"text",
+                "bold": false,
+                "link": true,
+                "href": "https://port-0-oraculum-k19y2kljp1v7t6.sel4.cloudtype.app/",
+                "content":"https://port-0-oraculum-k19y2kljp1v7t6.sel4.cloudtype.app/",
+                "class":["mt-2"]
+            }
+
         ]
     },
     "test2":{
@@ -34,7 +88,6 @@
         "color": "#FFFEC4",
         "tColor": "#858585",
         "body": [
-            "hello world \n 123asd"
         ]
     }
 }
