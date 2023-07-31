@@ -105,11 +105,9 @@ function Project() {
         }
     };
 
-    const [once, setOnce] = useState<boolean>(true);
     useEffect(() => {
-        const slide:Element|null = document.getElementsByClassName('slide')[0];
-        if (slide && once) {
-            setOnce(false);
+        const slide = document.getElementsByClassName('slide')[0];
+        if (slide && slide.childNodes.length < Object.values(posts).length) {
             for (var i of Object.values(posts)) {
                 const s_item = document.createElement('div');
                 s_item.classList.add('slide-item');
@@ -153,7 +151,7 @@ function Project() {
             }
             setDirection(0);
         }
-    }, [move, once]);
+    }, [move]);
 
     return (
         <div id='main' 
