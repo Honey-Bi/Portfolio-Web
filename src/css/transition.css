@@ -38,17 +38,10 @@
         opacity: 0;
     }
 }
-.move-project-enter {
+.move-project-enter, .project-move-enter .post-transition {
     animation: 800ms ease 0s 1 normal none running enter;
 }
-.move-project-enter-active {
-    opacity: 1;
-}
-
-.project-move-enter .post-transition {
-    animation: 800ms ease 0s 1 normal none running enter;
-}
-.project-move-enter-active .post-transition{
+.move-project-enter-active, .project-move-enter-active .post-transition {
     opacity: 1;
 }
 .project-move-exit-active {
