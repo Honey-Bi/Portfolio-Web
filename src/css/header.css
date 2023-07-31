@@ -13,9 +13,6 @@ nav {
     color: #000;
 }
 .dark {
-    & a, & span:not(.album > *), & i {
-        color: #fff !important;
-    }
     & nav {
         background-color: var(--base-dark);
     }
