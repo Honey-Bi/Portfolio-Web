@@ -87,6 +87,10 @@ button.active .fa-pause, button .fa-play {
 button.active .fa-play, button .fa-pause {
     display: none;
 }
+.slide-move {
+    position: absolute;
+    top: calc(50% - 100px);
+}
 .slide {
     transition: all 1s ease;
     position: absolute;

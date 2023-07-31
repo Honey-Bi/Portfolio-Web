@@ -9,8 +9,9 @@ function Project() {
     const [direction, setDirection] = useState<number|null>(null);
     const [count, setCount] = useState<number>(20);
     const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+    const slideRef = useRef<HTMLDivElement | null>(null);
 
-    useEffect(() => {
+    useEffect(() => { // 슬라이드 선택
         if(direction === null) return;
         const slide:HTMLCollectionOf<Element> = document.getElementsByClassName('slide-item');
         slide[direction].classList.add('active');
@@ -24,7 +25,7 @@ function Project() {
         fill.classList.add('fill');
     }, [direction]);
 
-    const next = useCallback(() => {
+    const next = useCallback(() => { // 슬라이드 다음
         const slide:HTMLCollectionOf<Element> = document.getElementsByClassName('slide-item');
         if(direction === null || slide.length === 0) return;
         if (direction < slide.length-1) {
@@ -33,14 +34,14 @@ function Project() {
         }
     }, [direction]);
 
-    useEffect(() => {
+    useEffect(() => { // 10초마다 다음슬라이드로 이동
         if(count === 0 ) {
             setCount(20)
             next()
         }
     }, [count, next]);
 
-    useEffect(() => {
+    useEffect(() => { // 0.5초마다 확인
         if(play) {
             timerRef.current = setInterval(elapsed, 500);
         } else {
@@ -49,14 +50,14 @@ function Project() {
         return () => clearInterval(timerRef.current as NodeJS.Timer);
     }, [play]);
 
-    const elapsed = () => {
+    const elapsed = () => { // 카운트 다운
         setCount((prev) => prev-1);
     }
-    const PP = () => {
+    const PP = () => { // 정지 | 재생
         setPlay((prev) => !prev);
     }
     
-    const prev = () => {
+    const prev = () => { // 슬라이드 되돌리기
         if (direction && direction > 0) {
             const slide:HTMLCollectionOf<Element> = document.getElementsByClassName('slide-item');
             slide[direction].classList.remove('active');
@@ -64,7 +65,7 @@ function Project() {
         }
     }
 
-    function moveWheel(e: any): void {
+    function moveWheel(e: any): void { // 마우스 휠 핸들러
         if (e.deltaY > 0) {
             next();
         } else if (e.deltaY < 0) {
@@ -73,9 +74,8 @@ function Project() {
     }
 
     const navigate = useNavigate ();
-    const move = useCallback((e:MouseEvent, pName:string) => {
+    const move = useCallback((e:MouseEvent, pName:string) => { // 페이지 이동 함수
         const main:Element = document.getElementById('main') as Element;
-        // const event = e.nativeEvent as PointerEvent;
         const target = e.target as Element;
         const target_style:CSSStyleDeclaration = window.getComputedStyle(target);
 
@@ -98,30 +98,33 @@ function Project() {
         });
     }, [navigate])
 
-    const handelKeyDown =(e:BaseSyntheticEvent) => {
+    const handelKeyDown =(e:BaseSyntheticEvent) => { // spacebar 정지 
         const event = e.nativeEvent as KeyboardEvent;
         if (event.key === ' ') {
             PP();
         }
     };
 
-    useEffect(() => {
+    useEffect(() => { // 앨범 생성
         const slide = document.getElementsByClassName('slide')[0];
         if (slide && slide.childNodes.length < Object.values(posts).length) {
+            let count = 0;
             for (var i of Object.values(posts)) {
                 const s_item = document.createElement('div');
                 s_item.classList.add('slide-item');
                 const album = document.createElement('div');
                 album.classList.add('album');
                 album.setAttribute('style', `background-color: ${i.color}`);
-                
+
                 const album_title = document.createElement('span');
                 album_title.classList.add('album-title');
                 const title = i.title;
                 album_title.textContent = title;
                 album_title.setAttribute('style', `color: ${i.tColor}`);
-                album.onclick = e => move(e, title);
+                const src = Object.keys(posts)[count];
+                album.onclick = e => move(e, src);
                 album.appendChild(album_title);
+                count++;
                 
                 const album_date = document.createElement('span');
                 album_date.classList.add('album-date');
@@ -153,6 +156,35 @@ function Project() {
         }
     }, [move]);
 
+    const [mouse, setMouse] = useState<boolean>(false);
+    const [mouseX, setMouseX] = useState<number>(0);
+    const [style, setStyle] = useState<string>('');
+    const mousedownHandler = (e:BaseSyntheticEvent) => { 
+        const event = e.nativeEvent as MouseEvent;
+        setMouseX(event.pageX);
+        setMouse(true);
+    };
+    const mouseMoveHander = (e:BaseSyntheticEvent) => {
+        const event = e.nativeEvent as MouseEvent;
+        if (slideRef.current && mouse && Math.abs(event.pageX - mouseX) > 50) {
+            if (event.pageX > mouseX) { // 전으로 | 마우스 우로 이동
+                setStyle(`translateX(${event.pageX - mouseX - 50}px)`);
+            //     if (event.pageX - mouseX > 245) {
+            //         console.log(1);
+            //         setMouseX(event.pageX);
+            //         prev()
+            //     }
+            } else if (mouseX > event.pageX) { // 앞으로 | 마우스 좌로 이동
+                setStyle(`translateX(${event.pageX - mouseX + 50}px)`);
+            //     console.log(2);
+            //     next()
+            }
+            setPlay(false);
+            
+
+        }
+    };    
+
     return (
         <div id='main' 
             tabIndex={0}
@@ -160,13 +192,30 @@ function Project() {
         >
             <Header />
             <div id="down">
-                <div className="wrap" 
+                <div className="wrap"
                     onWheel={e => moveWheel(e)}
+
+                    onMouseDown={e => mousedownHandler(e)}
+                    onMouseMove={mouseMoveHander}
+                    onMouseUp={e => setMouse(false)}
+                    
+                    onTouchStart={e => mousedownHandler(e)}
+                    onTouchMove={mouseMoveHander}
+                    onTouchEnd={e => setMouse(false)}
                 >
-                    <div className="slide" style={{
-                        transform: `translateX(calc(12.5rem*${direction}*-2.45))`,
-                        width: `calc(12.5rem * 2.45 * ${Object.keys(posts).length})`
-                    }}>
+                    <div className="slide-move" 
+                        ref={slideRef}
+                        style={{
+                            transform: style,
+                        }}
+                    >
+                    <div className="slide" 
+                        style={{
+                            marginLeft: `calc(12.5rem*${direction}*-2.45)`,
+                            width: `calc(12.5rem * 2.45 * ${Object.keys(posts).length})`
+                        }}
+                    >
+                    </div>
                     </div>
                 </div>
                 <div className="controller">
