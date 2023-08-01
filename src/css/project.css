@@ -4,6 +4,9 @@
 #main:focus-visible {
     outline: none;;
 }
+.wrap {
+    cursor: move;
+}
 .controller {
     text-align: center;
     position: fixed;
@@ -89,7 +92,7 @@ button.active .fa-play, button .fa-pause {
 }
 .slide-move {
     position: absolute;
-    top: calc(50% - 100px);
+    top: calc(50% - 100px - 3.5rem);
 }
 .slide {
     transition: all 1s ease;
@@ -252,6 +255,10 @@ button.active .fa-play, button .fa-pause {
         left: 5.3rem;
         font-size: 5rem;
         transform: rotate(-90deg);
+        cursor: vertical-text;
+    }
+    .slide-move {
+        top: calc(50% - 100px);
     }
 }
 #down:not(.potion, .potion2) {
@@ -261,4 +268,8 @@ button.active .fa-play, button .fa-pause {
             color: #fff !important;
         }
     }
+    
+}
+.ease-reverse {
+    transition: all 1s ease;
 }
