@@ -74,17 +74,13 @@ function Project() {
     }
 
     const navigate = useNavigate ();
-    const move = useCallback((e:MouseEvent, pName:string) => { // 페이지 이동 함수
+    const move = useCallback((e:MouseEvent, pName:string, bgColor:string) => { // 페이지 이동 함수
         const main:Element = document.getElementById('main') as Element;
-        const target = e.target as Element;
-        const target_style:CSSStyleDeclaration = window.getComputedStyle(target);
-
         const style = `
             top: -${document.body.clientHeight - e.pageY}px;
             left: -${document.body.clientWidth - e.pageX}px;
-            background-color: ${target_style.backgroundColor}
+            background-color: ${bgColor}
         `;
-
         const add_element = document.createElement('div');
         add_element.classList.add('project-enter');
         add_element.setAttribute('style', style);
@@ -92,7 +88,7 @@ function Project() {
 
         navigate(`./post/${pName}`,{
             state: {
-                color:target_style.backgroundColor, 
+                color: bgColor, 
             },
             
         });
@@ -122,7 +118,7 @@ function Project() {
                 album_title.textContent = title;
                 album_title.setAttribute('style', `color: ${i.tColor}`);
                 const src = Object.keys(posts)[count];
-                album.onclick = e => move(e, src);
+                album.onclick = e => move(e, src, window.getComputedStyle(album).backgroundColor);
                 album.appendChild(album_title);
                 count++;
                 
@@ -159,31 +155,62 @@ function Project() {
     const [mouse, setMouse] = useState<boolean>(false);
     const [mouseX, setMouseX] = useState<number>(0);
     const [style, setStyle] = useState<string>('');
-    const mousedownHandler = (e:BaseSyntheticEvent) => { 
-        const event = e.nativeEvent as MouseEvent;
-        setMouseX(event.pageX);
+    const mouseDownHandler = (e:BaseSyntheticEvent) => { // 터치 | 클릭 시작
+        let event;
+        if (e.type === "touchstart") {
+            event = e.nativeEvent as TouchEvent;
+            setMouseX(event.changedTouches[0].pageX);
+        } else if (e.type === "mousedown") {
+            event = e.nativeEvent as MouseEvent;
+            setMouseX(event.pageX);
+        }
+        
         setMouse(true);
+        if (slideRef.current) {
+            slideRef.current.classList.remove('ease-reverse');
+        }
     };
-    const mouseMoveHander = (e:BaseSyntheticEvent) => {
-        const event = e.nativeEvent as MouseEvent;
-        if (slideRef.current && mouse && Math.abs(event.pageX - mouseX) > 50) {
-            if (event.pageX > mouseX) { // 전으로 | 마우스 우로 이동
-                setStyle(`translateX(${event.pageX - mouseX - 50}px)`);
-            //     if (event.pageX - mouseX > 245) {
-            //         console.log(1);
-            //         setMouseX(event.pageX);
-            //         prev()
-            //     }
-            } else if (mouseX > event.pageX) { // 앞으로 | 마우스 좌로 이동
-                setStyle(`translateX(${event.pageX - mouseX + 50}px)`);
-            //     console.log(2);
-            //     next()
-            }
-            setPlay(false);
-            
 
+    const mouseMoveHandler = (e:BaseSyntheticEvent) => { // 터치 | 클릭 이동
+        let event, pageX;
+        if (e.type === "touchmove") {
+            event = e.nativeEvent as TouchEvent;
+            pageX = event.changedTouches[0].pageX;
+        } else if (e.type === "mousemove") {
+            event = e.nativeEvent as MouseEvent;
+            pageX = event.pageX;
+        }
+        if (mouse && slideRef.current && direction !== null && pageX) {
+            if (direction > 0 && pageX > mouseX) { // 전으로 | 마우스 우로 이동
+                setStyle(`translateX(${pageX - mouseX}px)`);
+                setPlay(false);
+            } else if (direction < Object.keys(posts).length-1 && mouseX > pageX) { // 앞으로 | 마우스 좌로 이동
+                setStyle(`translateX(${pageX - mouseX}px)`);
+                setPlay(false);
+            }
         }
     };    
+
+    const mouseUpHandler = (e:BaseSyntheticEvent) => {
+        let event, pageX = 0;
+        if (e.type === "touchend") {
+            event = e.nativeEvent as TouchEvent;
+            pageX = event.changedTouches[0].pageX;
+        } else if (e.type === "mouseup") {
+            event = e.nativeEvent as MouseEvent;
+            pageX = event.pageX;
+        }
+        let distance = Math.round(Math.abs(pageX - mouseX) / 490);
+        for (var i=0; i < distance; i++) {
+            if (pageX > mouseX) prev();
+            else if (pageX < mouseX) next();
+        }
+        setMouse(false);
+        setStyle('');
+        if (slideRef.current) {
+            slideRef.current.classList.add('ease-reverse');
+        }
+    }
 
     return (
         <div id='main' 
@@ -193,17 +220,17 @@ function Project() {
             <Header />
             <div id="down">
                 <div className="wrap"
-                    onWheel={e => moveWheel(e)}
+                    onWheel={moveWheel}
 
-                    onMouseDown={e => mousedownHandler(e)}
-                    onMouseMove={mouseMoveHander}
-                    onMouseUp={e => setMouse(false)}
+                    onMouseDown={mouseDownHandler}
+                    onMouseMove={mouseMoveHandler}
+                    onMouseUp={mouseUpHandler}
                     
-                    onTouchStart={e => mousedownHandler(e)}
-                    onTouchMove={mouseMoveHander}
-                    onTouchEnd={e => setMouse(false)}
+                    onTouchStart={mouseDownHandler}
+                    onTouchMove={mouseMoveHandler}
+                    onTouchEnd={mouseUpHandler}
                 >
-                    <div className="slide-move" 
+                    <div className="slide-move ease-reverse" 
                         ref={slideRef}
                         style={{
                             transform: style,
