@@ -11,6 +11,11 @@
     overflow: hidden;
     animation: 800ms linear project-nav-appear;
 }
+.post-transition {
+    .toTop {
+        margin-bottom: 1.5rem;
+    }
+}
 @keyframes project-nav-appear {
     0% {
         opacity: 0;
@@ -55,6 +60,7 @@
     display: block;
 }
 .post-body > p {
+    width: 100%;
     &::after {
         content: '\00a0';
     }
@@ -63,11 +69,12 @@
     display: inline-block;
     color: #000 !important;
 }
-.mt-2 {
-    margin-top: 2rem;
-}
-.mb-2 {
-    margin-bottom: 2rem;
+.row {
+    display: flex;
+    flex-direction: column;
+    & p {
+        width: 100%;
+    }
 }
 @media (min-width: 768px) {
     .project-home, .project-exit {
@@ -108,7 +115,32 @@
     .fl {
         float: left;
     }
+    .row {
+        flex-direction: row;
+    }
 }
+.mt-0 {
+    margin-top: 0 !important;
+}
+.mt-1 {
+    margin-top: 1rem !important;
+}
+.mt-2 {
+    margin-top: 2rem !important;
+}
+.mr-1 {
+    margin-right: 1rem !important;
+}
+.mb-0 {
+    margin-bottom: 0 !important;
+}
+.mb-2 {
+    margin-bottom: 2rem !important;
+}
+.ml-1 {
+    margin-left: 1rem !important;
+}
+
 .post {
     position: relative;    
     margin: 1rem;
