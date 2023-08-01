@@ -30,7 +30,7 @@ export default function Names() {
     
     return (
         <div className="names">
-            <div className="name">유현비</div>
+            <div className="name">류현비</div>
             <div className="name">HyueonBi Yu</div>
             <div className="name">柳賢飛</div>
             <div className="name">HB</div>
