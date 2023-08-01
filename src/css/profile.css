@@ -1,79 +1,18 @@
-.profile {
-    position: relative;
-    padding: 1rem;
-    width: 90%;
-    margin: 0 auto;
-    display: flex;
-}
-.names {
-    height: 21px;
-}
-.scroll {
-    overflow-y: scroll !important;
-    -ms-overflow-style: none; 
-    scrollbar-width: none;
-    &::-webkit-scrollbar {
-        display: none;
-    }
-}
-.name {
-    text-align: left;
-    font-weight: 800;
-    font-size: 1.5rem;
-    opacity: 0;
-    text-transform: uppercase;
-    position: absolute;
-    padding: 1rem;
-    left: 0;
-    right: 0;
-    &.active {
-        animation: 500ms ease 0s 1 normal none running enter;
-        opacity: 1;
-    }
-    &.exit {
-        animation: 500ms ease 0ms 1 normal none running exit;
-    }
-}
-@keyframes drop{
-    0% {
-        opacity: 1;
-        transform: translateY(0%);
-    }
-    5% {
-        transform: translateY(-5%);
-    }
-    100% {
-        opacity: 0;
-        transform: translateY(50%);
-    }
-}
-.accent {
-    background: #000;
-    color: #fff;
-    border-radius: 0.25rem;
-    padding: 0 0.25rem;
-    font-weight: 500;
-}
-.dark {
-    .square {
-        background-color: #fff;
-    }
-    .line {
-        border-top: 1px solid #fff;
-    }
-    .selector {
-        background-color: #343a40 !important;
-    }
-    .info {
-        color: #fff;
-    }
-    .accent {
-        background: #fff;
+#profile {
+    & .toTop > span {
         color: #000 !important;
     }
+    .toTop {
+        margin-top: -2.5rem;
+    }
 }
-
+.dark {
+    #profile .toTop > span {
+        color: #fff !important;
+    }
+}
 .time-line {
+    z-index: 9;
     width: 90%;
     margin: 0 auto;
     position: sticky;
@@ -83,7 +22,7 @@
     align-items: center;
     flex-direction: row;
     justify-content: space-between;
-    .project {
+    .about {
         animation: 800ms ease 0s 1 appear forwards; 
         &::before {
             animation: 1000ms pulse 0ms ease-in-out;
@@ -108,7 +47,7 @@
             animation: 1000ms pulse 600ms ease-in-out;
         }
     }
-    .profile1 {
+    .skills {
         animation: 800ms ease 800ms 1 appear forwards;
         &::before {
             animation: 1000ms pulse 800ms ease-in-out;
@@ -207,7 +146,7 @@
 }
 .potion, .potion2 {
     .time-line {
-        .project {
+        .about {
             border: 1px solid var(--base-color-project);
             &::before, &::after {
                 border: 1px solid var(--base-color-project);
@@ -243,7 +182,7 @@
                 border: 1px solid var(--base-color-making);
             }
         }
-        .profile1 {
+        .skills {
             border: 1px solid var(--base-color-profile);
             .color {
                 background-color: var(--base-color-profile);
@@ -254,8 +193,132 @@
         }
     }
 }
-.profile-title {
+.profile {
+    position: relative;
+    padding: 1rem;
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    & li {
+        list-style: none;
+    }
+}
+#about {
+    color: var(--base-color-project);
+}
+.profile-name {
+    position: relative;
+    margin-bottom: 1rem;
+}
+.names {
     position: absolute;
+    width: 100%;
+    top: 1rem;
+    left: 1rem;
+}
+.profile-contact {
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 1.1rem;
+    & i {
+        color: #068FFF !important;
+        margin-right: 2px;
+    }
+    & a { 
+        font-weight: 500;
+        text-decoration: none;
+        color: #068FFF !important;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+.profile-sub {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+#skills {
+    color: var(--base-color-profile);
+}
+ul.skill_list {
+    padding: 0;
+    & > li {
+        font-size: 1.1rem;
+        font-weight: 500;
+    }
+}
+ul.skill_down {
+    padding-left: 2rem;
+    & > li {
+        font-size: 1rem;
+        font-weight: 400;
+    }
+}
+
+.name {
+    text-align: left;
+    font-weight: 800;
+    font-size: 1.5rem;
+    opacity: 0;
+    text-transform: uppercase;
+    position: absolute;
+    left: 0;
+    right: 0;
+    &.active {
+        animation: 500ms ease 0s 1 normal none running enter;
+        opacity: 1;
+    }
+    &.exit {
+        animation: 500ms ease 0ms 1 normal none running exit;
+    }
+}
+.name-hidden {
+    padding: 1rem;
+    font-size: 1.5rem;
+}
+@keyframes drop{
+    0% {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+    5% {
+        transform: translateY(-5%);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(50%);
+    }
+}
+.accent {
+    background: #000;
+    color: #fff;
+    border-radius: 0.25rem;
+    padding: 0 0.25rem;
+    font-weight: 500;
+}
+.dark {
+    .square {
+        background-color: #fff;
+    }
+    .line {
+        border-top: 1px solid #fff;
+    }
+    .selector {
+        background-color: #343a40 !important;
+    }
+    .info {
+        color: #fff;
+    }
+    .accent {
+        background: #fff;
+        color: #000 !important;
+    }
+}
+
+.profile-title {
+    position: fixed;
     transform-origin: bottom left;
     bottom: 0.3rem;
     font-weight: 800;
@@ -269,5 +332,9 @@
         left: 5.3rem;
         font-size: 5rem;
         transform: rotate(-90deg);
+        cursor: vertical-text;
     }
+}
+.dummy {
+    height: 100vh;
 }
