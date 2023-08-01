@@ -89,6 +89,7 @@
         font-size: 6rem;
         transform-origin: bottom center;
         transform: rotate(90deg);
+        cursor: vertical-text;
     }
     .mushroom .terminal {
         transform: scale(1.1);

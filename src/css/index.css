@@ -27,6 +27,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.scroll {
+  overflow-y: scroll !important;
+  -ms-overflow-style: none; 
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+      display: none;
+  }
+}
 .dark {
   background-color: var(--base-dark) !important;
   color: #fff !important;
@@ -74,11 +82,12 @@ code {
   /* FFD6A5 AA96DA */
 } 
 .toTop {
-  text-align: center;
-  margin-top: auto;
-  margin-bottom: 0.5rem;
+  text-align: center; 
   & span {
       color: #aaa;
       cursor: pointer;
+      &:hover {
+        text-decoration: underline;
+      }
   }
 }

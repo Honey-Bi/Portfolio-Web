@@ -199,6 +199,7 @@
         bottom: 7rem;
         font-size: 6rem;
         transform: rotate(-90deg);
+        cursor: vertical-text;
     }
 }
 .dark {
