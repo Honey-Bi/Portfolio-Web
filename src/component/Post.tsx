@@ -135,7 +135,8 @@ export default function Post() {
                 backgroundColor: color
             }}>
                 <Link to={"/"} className="project-home" />
-                <Link to={"/project"} className="project-exit" />
+                <span className="project-exit" onClick={e => navigate(-1)}></span>
+                {/* <Link to={"/project"} className="project-exit" /> */}
             </div>
             <div className="container post-transition"> 
                 <div className="post">
