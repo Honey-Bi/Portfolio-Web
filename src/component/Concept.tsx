@@ -39,9 +39,7 @@ const opts = {
 
 const balls:Array<Ball> = [];
 const titles:Array<string> = [ // 타이핑 목록
-    // 'developer이자 createar 입니다.',
-    ' ',
-    ' '
+    'Developer이자 Createar 입니다.'
 ];
 
 export default function Concept() {    
@@ -208,7 +206,7 @@ export default function Concept() {
     return (
     <div id='main'>
         <Header/>
-        <div id="down">
+        <div id="down" className='down-height'>
             <div className="wrap">
                 <pre className="concept-title">
                     {title}
