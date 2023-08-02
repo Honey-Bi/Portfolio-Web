@@ -54,9 +54,9 @@ function Main() {
     return (
         <div id='main'>
             <Header/>
-            <div id="down" onWheel={e => rotateWheel(e)}>
+            <div id="down" className="down-height" onWheel={e => rotateWheel(e)}>
                 <div 
-                    className="container smooth" 
+                    className="container smooth main" 
                     style={{
                         transform: `rotate(${wheel}deg)`
                     }}

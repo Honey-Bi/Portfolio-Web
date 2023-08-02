@@ -218,7 +218,7 @@ function Project() {
             onKeyDown={handelKeyDown}
         >
             <Header />
-            <div id="down">
+            <div id="down" className="down-height">
                 <div className="wrap"
                     onWheel={moveWheel}
 

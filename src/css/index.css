@@ -11,6 +11,9 @@ body {
   z-index: 1;
   transition: box-shadow ease 0.5s;
 }
+.down-height {
+  height: calc(100% - 3.5rem);
+}
 .wrap {
   flex-direction: column;
   justify-content: center;
@@ -44,7 +47,6 @@ code {
 }
 .container {
   margin: 0 auto;
-  min-height: calc(100vh - 3.5rem);
 }
 
 @media (min-width: 576px) {

@@ -100,7 +100,7 @@ export default function Terminal() {
     return (
         <div id="main">
             <Header/>
-            <div id="down" className='terminal-flex'>
+            <div id="down" className="terminal-flex down-height">
                 <div className="terminal scroll" onClick={focusCommand}>
                     <div className="terminal-help">
                         <div className="terminal-accent">- - - - - - - - - - - - - - - - - - - - - - - - - -</div>
@@ -121,9 +121,9 @@ export default function Terminal() {
                         <input type="text" id='command' autoComplete='off' onKeyDown={e => handleOnKeyDown(e)}/>
                     </div>
                 </div>
-                <div className="whoami">
-                    <span>who am i</span>
-                </div>
+            </div>
+            <div className="whoami">
+                <span>who am i</span>
             </div>
         </div>
     )
