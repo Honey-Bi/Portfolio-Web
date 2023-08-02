@@ -1,6 +1,3 @@
-#down {
-    height: calc(100% - 3.5rem);
-}
 #main:focus-visible {
     outline: none;;
 }
@@ -188,6 +185,7 @@ button.active .fa-play, button .fa-pause {
     height: 90%;
     border-radius: 50%;
     top: 5%;
+    cursor: auto;
     margin-left: 5%;
     transition: all 1s ease;
     border: 2px solid #fff;
