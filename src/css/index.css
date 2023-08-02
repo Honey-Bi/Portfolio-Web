@@ -86,6 +86,7 @@ code {
 .toTop {
   text-align: center; 
   position: relative;
+  margin-bottom: 1.5rem;
   & span {
       color: #aaa;
       cursor: pointer;
