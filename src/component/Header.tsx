@@ -1,6 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from 'react-router-dom';
 import 'css/header.css';
+import mushroom_img from 'img/mushroom.png';
+import posion_img from 'img/potion.png';
+import eraser_img from 'img/eraser.png';
 import img2 from 'img/x.png';
 import Draggable from "react-draggable";
 
@@ -133,7 +136,7 @@ export default function Header() {
                     position={{x:0, y:0}}
                 >
                     <div className="source-item" ref={mushroomRef}>
-                        <img src={img2} alt="X" id="mushroom" draggable="false"/>
+                        <img src={mushroom_img} alt="Mushroom" id="mushroom" draggable="false"/>
                     </div>
                 </Draggable>
                 <Draggable
@@ -143,7 +146,7 @@ export default function Header() {
                     position={{x:0, y:0}}
                 >
                     <div className="source-item" ref={potionRef}>
-                        <img src={img2} alt="X" id="potion" draggable="false"/>
+                        <img src={posion_img} alt="Potion" id="potion" draggable="false"/>
                     </div>
                 </Draggable>
                 <Draggable
@@ -153,7 +156,7 @@ export default function Header() {
                     position={{x:0, y:0}}
                 >
                     <div className="source-item" ref={eraseRef}>
-                        <img src={img2} alt="X" id="erase" draggable="false"/>
+                        <img src={eraser_img} alt="Eraser" id="erase" draggable="false"/>
                     </div>
                 </Draggable>
             </div>
