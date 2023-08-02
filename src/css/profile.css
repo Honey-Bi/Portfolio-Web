@@ -1,9 +1,8 @@
 #profile {
+    display: flex;
+    flex-direction: column;
     & .toTop > span {
         color: #000 !important;
-    }
-    .toTop {
-        margin-top: -2.5rem;
     }
 }
 .dark {
@@ -17,8 +16,10 @@
     margin: 0 auto;
     position: sticky;
     display: flex;
-    top: 3.5rem;
-    height: 15vh;
+    top: calc(3.5rem + 2px);
+    height: 10vh;
+    transition: background-color ease 0.5s;
+    background-color: #fff;
     align-items: center;
     flex-direction: row;
     justify-content: space-between;
@@ -28,26 +29,26 @@
             animation: 1000ms pulse 0ms ease-in-out;
         }
     }
-    .test1 {
+    .summary {
         animation: 800ms ease 200ms 1 appear forwards;   
         &::before {
             animation: 1000ms pulse 200ms ease-in-out;
         }
     }
-    .concept {
+    .project {
         animation: 800ms ease 400ms 1 appear forwards;   
         &::before {
             animation: 1000ms pulse 400ms ease-in-out;
         }
         
     }
-    .making {
+    .skills {
         animation: 800ms ease 600ms 1 appear forwards;   
         &::before {
             animation: 1000ms pulse 600ms ease-in-out;
         }
     }
-    .skills {
+    .contact {
         animation: 800ms ease 800ms 1 appear forwards;
         &::before {
             animation: 1000ms pulse 800ms ease-in-out;
@@ -76,7 +77,7 @@
         cursor: pointer;
         border: 1px solid var(--base-color);
         transition: 500ms all ease; 
-        &.about {
+        &.about{
             border: 1px solid var(--base-color-project);
             &::before, &::after {
                 border: 1px solid var(--base-color-project);
@@ -85,7 +86,7 @@
                 background-color: var(--base-color-project);   
             }
         }
-        &.test1 {
+        &.summary {
             border: 1px solid var(--base-color-test1);
             &::before, &::after {
                 border: 1px solid var(--base-color-test1);
@@ -94,7 +95,7 @@
                 background-color: var(--base-color-test1);
             }
         }
-        &.concept {
+        &.project {
             border: 1px solid var(--base-color-concept);
             .color {
                 background-color: var(--base-color-concept);
@@ -103,7 +104,7 @@
                 border: 1px solid var(--base-color-concept);
             }
         }
-        &.making {
+        &.skills {
             border: 1px solid var(--base-color-making);
             .color {
                 background-color: var(--base-color-making);
@@ -112,7 +113,7 @@
                 border: 1px solid var(--base-color-making);
             }
         }
-        &.skills {
+        &.contact {
             border: 1px solid var(--base-color-profile);
             .color {
                 background-color: var(--base-color-profile);
@@ -151,6 +152,7 @@
             height: 100%;
             background-color: var(--base-color);   
         }
+        
     }
 }
 
@@ -200,8 +202,23 @@
         list-style: none;
     }
 }
+.profile-section + .profile-section {
+    margin-top: 2rem;
+}
 #about {
     color: var(--base-color-project);
+}
+#summary {
+    color: var(--base-color-test1);
+}
+#project {
+    color: var(--base-color-concept);
+}
+#skills {
+    color: var(--base-color-making);
+}
+#contact {
+    color: var(--base-color-profile);
 }
 .profile-name {
     position: relative;
@@ -213,10 +230,68 @@
     top: 1rem;
     left: 1rem;
 }
-.profile-contact {
+.thinking {
+    margin-top: 2rem;
+    border-left: 3px solid var(--base-color-project);
+    & > li {
+        margin: 1rem 0;
+        list-style: disc;
+    }
+}
+.border-project {
+    /* width: 100%; */
+    padding-top: 1rem;
+    border-bottom: 2px solid var(--base-color-project);
+}
+.summary-list {
+    margin: 0;
+    padding-left: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--base-color-test1);
+    & ul {
+        padding-left: 1rem;
+        font-size: 1.1rem;
+        font-weight: 500;
+    }
+}
+.summary-title {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin: 0.5rem 0;
+}
+.summary-sub-list {
+    font-size: 1rem !important;
+    font-weight: normal !important;
+}
+.normal {
+    font-size: 1rem !important;
+    font-weight: normal !important;
+}
+.profile-project {
+    padding-left: 0.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--base-color-concept);
+    & .date {
+        font-size: 0.9rem;
+        margin-left: 0.5rem;
+        text-transform: uppercase;
+    }
+}
+.profile-project-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #000;
+    &:hover {
+        color: #068FFF !important;
+    }
+}
+.contact-bundle {
     display: flex;
-    justify-content: space-evenly;
+    flex-direction: column;
     font-size: 1.1rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--base-color-profile);
+    gap: 0.5rem;
     & i {
         color: #068FFF !important;
         margin-right: 2px;
@@ -233,13 +308,17 @@
 .profile-sub {
     text-transform: uppercase;
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+
 }
-#skills {
-    color: var(--base-color-profile);
-}
+
 ul.skill_list {
-    padding: 0;
+    margin: 0;
+    padding-left: 0;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--base-color-making);
+
     & > li {
         font-size: 1.1rem;
         font-weight: 500;
@@ -295,6 +374,9 @@ ul.skill_down {
     font-weight: 500;
 }
 .dark {
+    .time-line {
+        background-color: var(--base-dark);
+    }
     .square {
         background-color: #fff;
     }
@@ -311,12 +393,14 @@ ul.skill_down {
         background: #fff;
         color: #000 !important;
     }
+    .profile-project-title {
+        color: #fff;
+    }
 }
 
 .profile-title {
     position: fixed;
     transform-origin: bottom left;
-    bottom: 0.3rem;
     font-weight: 800;
     text-transform: uppercase;
     color: #ccc !important;
@@ -325,10 +409,17 @@ ul.skill_down {
 @media (min-width: 768px) {
     .profile-title {
         display: block;
-        left: 5.3rem;
+        top: -2rem;
+        right: 0;
         font-size: 5rem;
+        transform-origin: bottom right;
         transform: rotate(-90deg);
         cursor: vertical-text;
+    }
+    .contact-bundle {
+        gap: 0;
+        flex-direction: row;
+        justify-content: space-evenly;
     }
 }
 .dummy {

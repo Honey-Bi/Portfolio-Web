@@ -3,6 +3,7 @@ import { BaseSyntheticEvent, useEffect, useState } from "react";
 
 import 'css/profile.css';
 import ToTop from "./ToTop";
+import { Link } from "react-router-dom";
 
 export default function Profile() {
 
@@ -30,7 +31,7 @@ export default function Profile() {
         const move = document.getElementById(id);
         move?.scrollIntoView({behavior:"smooth", block:"center"});
     }
-    const removeSelect = (e:BaseSyntheticEvent) => {
+    const removeSelect = () => {
         if (selector) selector.classList.remove('active');
     };
 
@@ -75,22 +76,22 @@ export default function Profile() {
                         <div className="square selector about" onClick={(e) => select(e, 'about')}>
                             <div className="color"></div>
                         </div>
-                        <div className="square selector test1" onClick={(e) => select(e, '')}>
+                        <div className="square selector summary" onClick={(e) => select(e, 'summary')}>
                             <div className="color"></div>
                         </div>
-                        <div className="square selector concept" onClick={(e) => select(e, '')}>
-                            <div className="color"></div>
-                        </div>
-                        <div className="square selector making" onClick={(e) => select(e, '')}>
+                        <div className="square selector project" onClick={(e) => select(e, 'project')}>
                             <div className="color"></div>
                         </div>
                         <div className="square selector skills" onClick={(e) => select(e, 'skills')}>
                             <div className="color"></div>
                         </div>
+                        <div className="square selector contact" onClick={(e) => select(e, 'contact')}>
+                            <div className="color"></div>
+                        </div>
                         <div className="square"></div>
                     </div>
                     <div className="profile">
-                        <div className="profile-about">
+                        <div className="profile-section"> {/* 자기소개 */}
                             <div className="profile-sub" id="about">about me</div>
                             <div className="profile-name">
                                 <div className="name-hidden">&nbsp;</div>
@@ -101,18 +102,67 @@ export default function Profile() {
                                     <div className="name">HB</div>
                                 </div>
                             </div>
-                            {/* <p>반갑습니다. 저는 크리에이터이자 개발자입니다. <br/>주로 웹개발을 담당하고 있으며, <span className="accent">항상 새로운 도전</span>을 하려는 자세로 개발을 하고 있습니다.</p> */}
-                            <div className="profile-contact">
-                                <span>EMAIL : <a href="mailto:biten10@naver.com">biten10@naver.com</a></span>
-                                <a href="https://github.com/Honey-Bi" target="_blink">
-                                    <i className="fa-brands fa-github"></i>
-                                    github
-                                </a>
-                            </div>
-                            
+                            <p>재미있는 아이디어를 상상하고 구현하는것을 즐기는 주니어 개발자입니다.</p>
+                            <p>언제나 시도를 두려워하지 않으며, 문제에 직면하면 적극적으로 해결책을 찾아내고자 합니다. 이러한 자세로 다양한 프로젝트를 진행하고, 기술적인 도전과 성장을 지속적으로 추구합니다.</p>
+                            <ul className="thinking">
+                                <li>기본은 항상 중요하다고 생각하고 있습니다.</li>
+                                <li>우물안 개구리가 되지않기 위해 끊임없이 고뇌하고 있습니다.</li>
+                                <li>항상 참신한 시도를 해보려고 노력하고있습니다.</li>
+                            </ul>
+                            <div className="border-project"></div>
                         </div>
-                        <div className="dummy"></div>
-                        <div className="profile-skills">
+                        <div className="profile-section"> {/* 요약 */}
+                            <div className="profile-sub" id="summary">summary</div>
+                                <ul className="summary-list">
+                                    <li>
+                                        <p className="summary-title">Certificate</p>
+                                        <ul>
+                                            <li>Doc
+                                                <ul className="summary-sub-list">
+                                                    <li>ITQ - 아래한글 엑셀</li>
+                                                    <li>GTQ 1급</li>
+                                                    <li>GTQ 인디자인 1급</li>
+                                                </ul>
+                                            </li>
+                                            <li>Develop
+                                                <ul className="summary-sub-list">
+                                                    <li>정보처리기능사 &#40;2016&#41;</li>
+                                                    <li>웹디자인기능사 &#40;2018&#41;</li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <p className="summary-title">Education</p>
+                                        <ul className="summary-sub-list">
+                                            <li>세명컴퓨터고등학교 졸업
+                                                <ul className="normal">
+                                                    <li>스마트 콘텐츠과</li>
+                                                    <li>2016.03 ~ 2018.02</li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                        </div>
+                        <div className="profile-section"> {/* 프로젝트 */}
+                            <div className="profile-sub" id="project">project</div>
+                            <div className="profile-project">
+                                <p>
+                                    <Link className="profile-project-title" to='/project/post/Portfolio'>Portfolio Project</Link>
+                                    <span className="date">2023 july</span>
+                                </p>
+                                <span>현재 보고있는 포트폴리오로 React, Typescript를 사용하여 제작하였습니다.</span>
+                            </div>
+                            <div className="profile-project">
+                                <p>
+                                    <Link className="profile-project-title" to='/project/post/Oraculum'>Oraculum</Link>
+                                    <span className="date">2023 june</span>
+                                </p>
+                                <span>간단한 의사결정 시뮬레이션 게임으로 Node.js를 사용하여 1인 제작하였습니다.</span>
+                            </div>
+                        </div>
+                        <div className="profile-section"> {/* 기술 스택 */}
                             <div className="profile-sub" id="skills">skills</div>
                             <ul className="skill_list">
                                 <li>FrontEnd
@@ -124,16 +174,26 @@ export default function Profile() {
                                 </li>
                                 <li>BackEnd
                                     <ul className="skill_down">
-                                        <li>Express</li>
-                                        <li>MongoDB</li>
+                                        <li>Node.js</li>
                                     </ul>
                                 </li>
                                 <li>Data
                                     <ul className="skill_down">
-                                        <li>SQL</li>
+                                        <li>MySQL</li>
                                     </ul>
                                 </li>
                             </ul>
+                        </div>
+                        <div className="profile-section"> {/* contact */}
+                            <div className="profile-sub" id="contact">contact</div>
+                            <div className="contact-bundle">
+                                <span>EMAIL : <a href="mailto:biten10@naver.com">biten10@naver.com</a></span>
+                                <a href="https://github.com/Honey-Bi" target="_blink">
+                                    <i className="fa-brands fa-github"></i>
+                                    github
+                                </a>
+                                <span>Phone : 010-5646-8894</span>
+                            </div>
                         </div>
                     </div>
                     <ToTop color='#fff'/>
