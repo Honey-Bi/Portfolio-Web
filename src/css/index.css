@@ -41,7 +41,7 @@ code {
 .dark {
   background-color: var(--base-dark) !important;
   color: #fff !important;
-  & span:not(.album > *, .post *), & a , & i {
+  & span:not(.album > *, .post *), & a:not(.profile *) , & i {
     color: #fff !important;
   }
 }
