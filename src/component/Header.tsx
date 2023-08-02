@@ -1,9 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from 'react-router-dom';
 import 'css/header.css';
-import img1 from 'img/sample_images_01.png';
-import img2 from 'img/sample_images_02.png';
-import img3 from 'img/sample_images_03.png';
+import img2 from 'img/x.png';
 import Draggable from "react-draggable";
 
 export default function Header() {
@@ -134,14 +132,8 @@ export default function Header() {
                     onStop={(e) => dragStop(e)}
                     position={{x:0, y:0}}
                 >
-                    <div className="source-item a" 
-                    id="mushroom"
-                    ref={mushroomRef}
-                    style={{
-                        backgroundImage: `url(${img1})`,
-                        backgroundSize: "100% 100%"
-                    }}>
-                        &nbsp;
+                    <div className="source-item" ref={mushroomRef}>
+                        <img src={img2} alt="X" id="mushroom" draggable="false"/>
                     </div>
                 </Draggable>
                 <Draggable
@@ -150,14 +142,8 @@ export default function Header() {
                     onStop={(e) => dragStop(e)}
                     position={{x:0, y:0}}
                 >
-                    <div className="source-item" 
-                    id="potion"
-                    ref={potionRef}
-                    style={{
-                        backgroundImage: `url(${img2})`,
-                        backgroundSize: "100% 100%"
-                    }}>
-                        &nbsp;
+                    <div className="source-item" ref={potionRef}>
+                        <img src={img2} alt="X" id="potion" draggable="false"/>
                     </div>
                 </Draggable>
                 <Draggable
@@ -166,14 +152,8 @@ export default function Header() {
                     onStop={(e) => dragStop(e)}
                     position={{x:0, y:0}}
                 >
-                    <div className="source-item" 
-                    id="erase"
-                    ref={eraseRef}
-                    style={{
-                        backgroundImage: `url(${img3})`,
-                        backgroundSize: "100% 100%"
-                    }}>
-                        &nbsp;
+                    <div className="source-item" ref={eraseRef}>
+                        <img src={img2} alt="X" id="erase" draggable="false"/>
                     </div>
                 </Draggable>
             </div>
