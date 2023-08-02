@@ -76,6 +76,51 @@
         cursor: pointer;
         border: 1px solid var(--base-color);
         transition: 500ms all ease; 
+        &.about {
+            border: 1px solid var(--base-color-project);
+            &::before, &::after {
+                border: 1px solid var(--base-color-project);
+            }
+            .color {
+                background-color: var(--base-color-project);   
+            }
+        }
+        &.test1 {
+            border: 1px solid var(--base-color-test1);
+            &::before, &::after {
+                border: 1px solid var(--base-color-test1);
+            }
+            .color{ 
+                background-color: var(--base-color-test1);
+            }
+        }
+        &.concept {
+            border: 1px solid var(--base-color-concept);
+            .color {
+                background-color: var(--base-color-concept);
+            }
+            &::before, &::after {
+                border: 1px solid var(--base-color-concept);
+            }
+        }
+        &.making {
+            border: 1px solid var(--base-color-making);
+            .color {
+                background-color: var(--base-color-making);
+            }
+            &::before, &::after {
+                border: 1px solid var(--base-color-making);
+            }
+        }
+        &.skills {
+            border: 1px solid var(--base-color-profile);
+            .color {
+                background-color: var(--base-color-profile);
+            }
+            &::before, &::after {
+                border: 1px solid var(--base-color-profile);
+            }
+        }
         &::before, &::after {
             transition: 500ms all ease; 
             border: 1px solid var(--base-color);
@@ -143,55 +188,6 @@
     left: 0;
     right: 0;
     text-align: center;
-}
-.potion, .potion2 {
-    .time-line {
-        .about {
-            border: 1px solid var(--base-color-project);
-            &::before, &::after {
-                border: 1px solid var(--base-color-project);
-            }
-            .color {
-                background-color: var(--base-color-project);   
-            }
-        }
-        .test1 {
-            border: 1px solid var(--base-color-test1);
-            &::before, &::after {
-                border: 1px solid var(--base-color-test1);
-            }
-            .color{ 
-                background-color: var(--base-color-test1);
-            }
-        }
-        .concept {
-            border: 1px solid var(--base-color-concept);
-            .color {
-                background-color: var(--base-color-concept);
-            }
-            &::before, &::after {
-                border: 1px solid var(--base-color-concept);
-            }
-        }
-        .making {
-            border: 1px solid var(--base-color-making);
-            .color {
-                background-color: var(--base-color-making);
-            }
-            &::before, &::after {
-                border: 1px solid var(--base-color-making);
-            }
-        }
-        .skills {
-            border: 1px solid var(--base-color-profile);
-            .color {
-                background-color: var(--base-color-profile);
-            }
-            &::before, &::after {
-                border: 1px solid var(--base-color-profile);
-            }
-        }
-    }
 }
 .profile {
     position: relative;

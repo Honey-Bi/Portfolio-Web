@@ -12,14 +12,15 @@ export default function Profile() {
 
     const select = (e:BaseSyntheticEvent, id:string):void => {
 
+        
         let select_element:Element = e.target;
         if (select_element.classList.contains('color')) {
             select_element = e.target.parentNode;
         }
-
+        
         selector?.classList.remove('active');
         select_element.classList.add('active');
-
+        
         if (selector === select_element && beforeSame) {
             selector.classList.remove('active');
             setBeaforeSave(false);
@@ -27,7 +28,7 @@ export default function Profile() {
             setBeaforeSave(true);
         }
         setSelector(select_element);
-
+        
         const move = document.getElementById(id);
         move?.scrollIntoView({behavior:"smooth", block:"center"});
     }

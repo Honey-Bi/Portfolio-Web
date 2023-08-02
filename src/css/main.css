@@ -31,6 +31,7 @@
     &:nth-of-type(1) {
         transform: rotate(0deg);
         animation: triOn1 200ms linear 0ms;
+        fill: var(--base-color-1);
         &:hover {
             transform: rotate(0deg) translateY(15px);
             & + .list-title {
@@ -41,6 +42,7 @@
     &:nth-of-type(2) {
         transform: rotate(72deg);
         animation: triOn2 200ms linear 200ms;
+        fill: var(--base-color-project);
         &:hover {
             transform: rotate(72deg) translateY(15px);
             & + .list-title {
@@ -51,6 +53,7 @@
     &:nth-of-type(3) {
         transform: rotate(144deg);
         animation: triOn3 200ms linear 400ms;
+        fill: var(--base-color-profile);
         &:hover {
             transform: rotate(144deg) translateY(15px);
             & + .list-title {
@@ -61,6 +64,7 @@
     &:nth-of-type(4) {
         transform: rotate(216deg);
         animation: triOn4 200ms linear 600ms;
+        fill: var(--base-color-concept);
         &:hover {
             transform: rotate(216deg) translateY(15px);
             & + .list-title {
@@ -71,6 +75,7 @@
     &:nth-of-type(5) {   
         transform: rotate(288deg);
         animation: triOn5 200ms linear 800ms;
+        fill: var(--base-color-making);
         &:hover {
             transform: rotate(288deg) translateY(15px);
             & + .list-title {
@@ -100,23 +105,6 @@
     }
     &:nth-of-type(5) {
         transform: rotate(108deg) translate(50%, calc(0% + 15px));
-    }
-}
-.potion, .potion2 {
-    & .triangle:nth-of-type(1) {
-        fill: var(--base-color-1);
-    }
-    & .triangle:nth-of-type(2) {
-        fill: var(--base-color-project);
-    }
-    & .triangle:nth-of-type(3) {
-        fill: var(--base-color-profile);
-    }
-    & .triangle:nth-of-type(4) {
-        fill: var(--base-color-concept);
-    }
-    & .triangle:nth-of-type(5) {
-        fill: var(--base-color-making);
     }
 }
 @keyframes triOn1 {
@@ -164,26 +152,6 @@
 .mushroom2 .box {
     transform: scale(1.2);
 }
-.potion, .potion2 {
-    & .tri {
-        border-top-color: var(--base-color-1);
-    }
-    & .tri:nth-child(2) {
-        border-top-color: var(--base-color-project);
-    }
-    & .tri:nth-child(3) {
-        border-top-color: var(--base-color-test1);
-    }
-    & .tri:nth-child(4) {
-        border-top-color: var(--base-color-concept);
-    }
-    & .tri:nth-child(5) {
-        border-top-color: var(--base-color-making);
-    }
-    & .tri:nth-child(6) {
-        border-top-color: var(--base-color-profile);
-    }
-} 
 .select {
     position: absolute;
     font-weight: 800;
