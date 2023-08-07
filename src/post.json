@@ -9,15 +9,12 @@
         "body": [
             {
                 "type":"img",
-                "src":"test_images_3.png",
-                "alt":"img1",
+                "src":"portfolio_black.png",
+                "alt":"콘셉트 페이지 다크모드",
                 "class":["post-img-xl"]
             },
             {
                 "type":"text",
-                "bold": false,
-                "link": false,
-                "href": "",
                 "content":"포트폴리오 웹사이트는 나도 뭔가 멋들어지는 포트폴리오가 있으면 좋겟다라는 막연한 생각으로 만들게된 프로젝트입니다. 처음에는 막연한 생각으로 만들었지만 만들면서 나 자신에 대해 많이 생각해 볼수 있는 시간이 되었고 동시에 처음사용하는 react와 typescript 문법을 배우는 데에도 많은 도움이 되었습니다.",
                 "class":[]
             },
@@ -27,15 +24,12 @@
                 "body": [
                     { 
                         "type":"img",
-                        "src":"test_images_2.png",
-                        "alt":"img1",
-                        "class":["post-img-s", "fl", "mr-1"]
+                        "src":"portfolio_cd2.png",
+                        "alt":"프로젝트 페이지",
+                        "class":["post-img-s", "fl", "mr-1", "border-0-0-0-02"]
                     },
                     {
                         "type":"text",
-                        "bold": false,
-                        "link": false,
-                        "href": "",
                         "content":"프로젝트 소개를 어떻게 할까 고민하다가 휴대폰 뮤직 플레이어에서 영감을 받았습니다. 프로젝트마다 가지고 있는 브랜드 컬러를 추출해 앨범 커버를 제작하였고 마우스를 호버하면 옆으로 cd가 뽑아져 나와 유저가 선택을 했다는 느낌을 줄수있도록 제작하였습니다.",
                         "class":["mt-0", "mb-0"]
                     }
@@ -47,15 +41,12 @@
                 "body": [
                     {
                         "type":"img",
-                        "src":"test_images_2.png",
-                        "alt":"img1",
-                        "class":["post-img-s", "fl", "mr-1"]
+                        "src":"portfolio_white.png",
+                        "alt":"콘셉트 페이지",
+                        "class":["post-img-s", "fl", "mr-1", "border-0-0-0-02"]
                     },
                     {
                         "type":"text",
-                        "bold": false,
-                        "link": false,
-                        "href": "",
                         "content": "사이트의 시작에서 공들이 이리저리 움직이며 벽에 부딪히고 서로 가까워지면 선이 생기는 애니메이션은 막연하게 시작하게된 프로젝트처럼 여러 아이디어를 모으다가 영감을 받아 만들게 되었습니다. 하나의 점들은 아이디어를 뜻하고 이리저리 움직이다 어느순간 가까워지면 아이디어들끼리 시너지를 낸다고 생각하게 되어서 점들을 선으로 연결하여 나타내었습니다.",
                         "class":["mt-0", "mb-0"]
                     }
@@ -67,16 +58,13 @@
                 "body": [
                     {
                         "type":"img",
-                        "src":"test_images_3.png",
-                        "alt":"img1",
+                        "src":"portfolio_header.jpg",
+                        "alt":"헤더 설명 이미지",
                         "class":["post-img-s", "fl", "mr-1"]
                     },
                     {
                         "type":"text",
-                        "bold": false,
-                        "link": false,
-                        "href": "",
-                        "content": "사이트 헤더의 여러 버튼은 ",
+                        "content": "사이트 헤더의 여러 버튼들은 제가 어릴적 상상력을 키울때 도움이 되었던 여러 매체의 아이템들을 웹페이지에 적용해보면 어떨까? 라는 아이디어에서 나온 결과물 입니다. 버섯을 넣으면 내부 요소들이 확대되고 물약을 넣으면 내부 요소들이 변화되게 만들었습니다.",
                         "class":["mt-0", "mb-0"]
                     }
                 ]
@@ -93,54 +81,47 @@
         "body": [
             {
                 "type":"img",
-                "src":"test_images_2.png",
-                "alt":"img1",
+                "src":"oraculum_login.png",
+                "alt":"로그인 페이지",
                 "class":["post-img-xl"]
             },
             {
                 "type":"text",
-                "bold": false,
-                "link": false,
-                "href": "",
                 "content":"Oraculum은 우주를 배경으로한 간단한 의사결정 시뮬레이션 게임으로 NPC들의 질문과 현재의 상황등에 따라 화면의 카드를 좌우로 슬라이드해 양자택일로 결정하는 게임입니다. 이프로젝트는 EJS를 사용하여 프론트엔드를 개발하였으며, Node.js와 Express를 이용하여 백엔드를 구축했습니다. 데이터베이스로는 MongoDB Atlas를 사용하였스며, 게임은 순수 JavaScript만을 활용하여 구현하였습니다.",
                 "class":[]
             },
             {
                 "type":"img",
-                "src":"sample_images_01.png",
-                "alt":"img1",
+                "src":"oraculum_signup.png",
+                "alt":"회원가입 페이지",
                 "class":["post-img-m"]
             },
             {
                 "type":"text",
-                "bold": false,
-                "link": false,
-                "href": "",
                 "content": "프로젝트를 진행하면서 제가 중요하게 생각했던 측면은 유지보수의 용이함이었습니다. 각각의 이벤트와 카드가 생성될 때마다 개발자가 수동으로 코드를 추가한다면, 상당히 비효율적이라고 판단하여, 관리자 페이지를 구축했습니다. 관리자 페이지에서는 관리자가 카드 이미지를 쉽게 추가하고, 이벤트를 생성할 수 있습니다. 또한, 유저의 정보를 쉽게 확인하고 수정 또는 삭제하는 기능도 구현하였습니다.",
                 "class":[]
             },
             {
                 "type":"img",
-                "src":"sample_images_01.png",
-                "alt":"img2",
+                "src":"oraculum_admin_1.png",
+                "alt":"어드민 페이지 이벤트 관리",
                 "class":["post-img-3", "fl"]
             },
             {
                 "type":"img",
-                "src":"sample_images_02.png",
-                "alt":"img2",
+                "src":"oraculum_admin_2.png",
+                "alt":"어드민 페이지 이벤트 추가",
                 "class":["post-img-3", "fl"]
             },
             {
                 "type":"img",
-                "src":"sample_images_03.png",
-                "alt":"img2",
+                "src":"oraculum_admin_3.png",
+                "alt":"어드민페이지 이미지 추가",
                 "class":["post-img-3", "fl"]
             },
             {
-                "type":"text",
-                "bold": false,
-                "link": true,
+                "type":"link",
+                "blank": true,
                 "href": "https://port-0-oraculum-k19y2kljp1v7t6.sel4.cloudtype.app/",
                 "content":"https://port-0-oraculum-k19y2kljp1v7t6.sel4.cloudtype.app/",
                 "class":["mt-2"]
