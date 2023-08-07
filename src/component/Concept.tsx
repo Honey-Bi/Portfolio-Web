@@ -54,7 +54,7 @@ export default function Concept() {
             const canvas:HTMLCanvasElement = canvasRef.current;
             const context = canvas.getContext('2d') as CanvasRenderingContext2D;
             const down = document.getElementById('down') as HTMLElement;
-            handelResize()
+            handleResize()
             canvas.width = down.clientWidth;
             canvas.height = down.clientHeight;
             setCtx(context);
@@ -77,7 +77,7 @@ export default function Concept() {
     }, [canvasRef]);
 
     
-    const handelResize = () => { // 화면 resize 크기 저장
+    const handleResize = () => { // 화면 resize 크기 저장
         const down = document.getElementById('down') as HTMLElement;
         setSize({
             width: down.clientWidth,
@@ -85,9 +85,9 @@ export default function Concept() {
         });
     }
     useEffect(() => { // 화면 resize 처리
-        window.addEventListener('resize', handelResize);
+        window.addEventListener('resize', handleResize);
         return () => {
-            window.removeEventListener('resize', handelResize);
+            window.removeEventListener('resize', handleResize);
         }
     }, [size]);
 
