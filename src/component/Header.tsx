@@ -4,7 +4,6 @@ import 'css/header.css';
 import mushroom_img from 'img/mushroom.png';
 import posion_img from 'img/potion.png';
 import eraser_img from 'img/eraser.png';
-import img2 from 'img/x.png';
 import Draggable from "react-draggable";
 
 export default function Header() {
