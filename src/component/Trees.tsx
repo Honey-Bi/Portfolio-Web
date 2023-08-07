@@ -1,7 +1,7 @@
 import { BaseSyntheticEvent, useCallback, useEffect, useRef, useState } from "react";
+
 type Position = {
-  x: number,
-  y: number
+  x: number, y: number
 }
 class Branches {
   start: Position; // 시작 위치
@@ -145,8 +145,6 @@ class Tree {
 const trees:Array<Tree> = [];
 
 export default function Trees() {
-
-
   interface Size {width:number, height:number};
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [ctx, setCtx] = useState<CanvasRenderingContext2D | null>(null);
@@ -175,7 +173,6 @@ export default function Trees() {
       setCtx(context);
       trees.push(new Tree(window.innerWidth/2, window.innerHeight, context));
     }
-    console.log(trees);
   }, [canvasRef]);
 
   const handleClick = (e:BaseSyntheticEvent) => { // 화면 click 이벤트

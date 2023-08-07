@@ -155,6 +155,7 @@
 .mushroom2 .box {
     transform: scale(1.2);
 }
+
 .select {
     position: absolute;
     font-weight: 800;

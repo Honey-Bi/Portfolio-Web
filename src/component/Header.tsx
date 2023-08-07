@@ -4,6 +4,7 @@ import 'css/header.css';
 import mushroom_img from 'img/mushroom.png';
 import posion_img from 'img/potion.png';
 import eraser_img from 'img/eraser.png';
+import logo_img from 'img/logo.png';
 import Draggable from "react-draggable";
 
 export default function Header() {
@@ -32,7 +33,7 @@ export default function Header() {
     const [moveItems, setItems] = useState(items);
 
     function addItems(item:string) {
-        var i:number;
+        let i:number;
         switch(item) {
             case "mushroom" : case "potion":
                 i = Number(moveItems[item]);
@@ -91,7 +92,6 @@ export default function Header() {
             addItems(id);
         }
         down.classList.remove('dropZone')
-
     };
 
     const mushroomRef = useRef(null);
@@ -101,6 +101,7 @@ export default function Header() {
     const location = useLocation();
     const Home = () => {
         if (location.pathname === '/') {
+            <img src={logo_img} alt="logo" />
             return <span className="reload" onClick={reload}>Home</span>;
         } else {
             return <Link to='/'>Home</Link>;
@@ -113,11 +114,6 @@ export default function Header() {
     return (
         <nav>
             <div className="nav-item nav-home">
-                {/* <div className="logo1">
-                    <div className="logo-left"></div>
-                    <div className="logo-middle"></div>
-                    <div className="logo-right"></div>
-                </div> */}
                 {Home()}
             </div>
             <div className="nav-item mode-toggle">
@@ -130,8 +126,8 @@ export default function Header() {
             <div className="nav-item source">
                 <Draggable
                     nodeRef={mushroomRef}
-                    onDrag={(e) => dragOn(e)}
-                    onStop={(e) => dragStop(e)}
+                    onDrag={dragOn}
+                    onStop={dragStop}
                     position={{x:0, y:0}}
                 >
                     <div className="source-item" ref={mushroomRef}>
@@ -140,8 +136,8 @@ export default function Header() {
                 </Draggable>
                 <Draggable
                     nodeRef={potionRef}
-                    onDrag={(e) => dragOn(e)}
-                    onStop={(e) => dragStop(e)}
+                    onDrag={dragOn}
+                    onStop={dragStop}
                     position={{x:0, y:0}}
                 >
                     <div className="source-item" ref={potionRef}>
