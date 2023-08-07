@@ -18,8 +18,12 @@ export default function Post() {
     }
     type TextData = {
         type: string;
-        bold: boolean;
-        link: boolean;
+        content: string;
+        class: Array<string>;
+    }
+    type LinkData = {
+        type: string;
+        blank: boolean;
         href: string;
         content: string;
         class: Array<string>;
@@ -27,7 +31,7 @@ export default function Post() {
     type RowData = {
         type: string;
         class: Array<string>;
-        body: Array<ImgData|TextData>;
+        body: Array<ImgData|TextData|LinkData>;
     }
     type PostData = {
         title: string;
@@ -36,7 +40,7 @@ export default function Post() {
         date: string;
         color: string;
         tColor: string;
-        body: Array<TextData|ImgData|RowData>;
+        body: Array<TextData|ImgData|RowData|LinkData>;
     }
 
     const add_img = useCallback((data:ImgData, body:HTMLDivElement) => {
@@ -47,22 +51,20 @@ export default function Post() {
         body.appendChild(img);
     }, []);
     const add_text = useCallback((data:TextData, body:HTMLDivElement) => {
-        let text:Element;
-        if (data.link) { //하이퍼 링크 생성
-            text = document.createElement('a');
-            text.setAttribute('href', data.href);
-            text.setAttribute('target', '_blank');
-        } else if (data.bold) {
-            text = document.createElement('b');
-        } else {
-            text = document.createElement('p');
-        }
+        const text = document.createElement('p');
         for (let c of data.class) {text.classList.add(c)};
         
         text.textContent = data.content;
         body.appendChild(text);
     }, []);
-
+    const add_link = useCallback((data:LinkData, body:HTMLDivElement) => {
+        const a = document.createElement('a');
+        for (let c of data.class) {a.classList.add(c)};
+        a.setAttribute('target', data.blank?'_blank':'_self')
+        a.setAttribute('href', data.href);
+        a.textContent = data.content;
+        body.appendChild(a);
+    }, []);
     const add_item = useCallback((data:ImgData|TextData|RowData, body:HTMLDivElement) => {
         switch (data.type) {
             case "img":
@@ -81,8 +83,10 @@ export default function Post() {
                     add_item(i, row);
                 }
                 break;
+            case "link":
+                add_link(data as LinkData, body);
         }
-    }, [add_img, add_text])
+    }, [add_img, add_link, add_text])
 
     const [data, setData] = useState<PostData|null>(null);
     const color:string = (location.state) ? location.state.color : data?.color;
