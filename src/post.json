@@ -128,5 +128,33 @@
             }
 
         ]
+    },
+    "Plant" : {
+        "title": "Plant Tree",
+        "category": "Toy Project",
+        "author": "HB",
+        "date": "2023 June",
+        "color": "#B5F1CC",
+        "tColor": "#fff",
+        "body": [
+            {
+                "type":"img",
+                "src":"tree.png",
+                "alt":"tree",
+                "class":["post-img-xl"]
+            },
+            {
+                "type":"text",
+                "content":"Plant Tree는 포트폴리오의 콘셉트 페이지를 만들기위해 여러가지 아이디어를 시도를 하다가 나온 토이 프로젝트입니다. react와 typescript 그리고 canvas를 사용하여 만든 간단한 프로젝트로 마우스로 빈공간을 클릭하여 나무를 생성할수 있습니다.",
+                "class":[]
+            },
+            {
+                "type":"link",
+                "blank": false,
+                "href": "https://honey-bi.github.io/test/tree",
+                "content":"https://honey-bi.github.io/test/tree",
+                "class":[]
+            }
+        ]
     }
 }
