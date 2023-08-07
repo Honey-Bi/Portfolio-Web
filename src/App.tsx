@@ -10,7 +10,8 @@ import Project from './component/Project';
 import Profile from './component/Profile';
 import Concept from './component/Concept';
 import Terminal from './component/Terminal';
-import NotFound404 from './component/404';
+// import NotFound404 from './component/404';
+import Trees from 'component/Trees';
 
 function App() {
     const location = useLocation();
@@ -20,6 +21,9 @@ function App() {
     switch (true) {
         case /^\/project\/[a-zA-Z]/.test(location.pathname): // /project/
             className = "project-move";
+            break;
+        case /^\/test\/[a-zA-Z]/.test(location.pathname): // /test/
+            className = "move-none";
             break;
         default:
             className = "move";
@@ -38,11 +42,11 @@ function App() {
                     <Route path="/concept" element={<Concept />} />
                     <Route path="/terminal" element={<Terminal />} />
                     <Route path="/profile" element={<Profile />} />
-                    <Route path="/*" element={<NotFound404 />} />
+                    <Route path="/test/tree" element={<Trees />}  />
+                    {/* <Route path="/*" element={<NotFound404 />} /> */}
                 </Routes>
             </CSSTransition>
         </SwitchTransition>
-
     )
 }
 export default App;
