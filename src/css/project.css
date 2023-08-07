@@ -126,6 +126,7 @@ button.active .fa-play, button .fa-pause {
     position: absolute;
     z-index: 1;
     cursor: pointer;
+    box-shadow: #777 0px 3px 8px;
     .album-title {
         position: absolute;
         bottom: 1rem;

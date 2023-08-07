@@ -136,7 +136,9 @@
 .ml-1 {
     margin-left: 1rem !important;
 }
-
+.border-0-0-0-02 {
+    border: 2px solid rgba(0,0,0,0.2);
+}
 .post {
     position: relative;    
     margin: 1rem;
