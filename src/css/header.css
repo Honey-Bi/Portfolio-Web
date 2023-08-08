@@ -57,16 +57,22 @@ nav {
     height: 2.2rem;
     float: left;
     cursor: grab;
+    & svg {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        width: 100%;
+        min-width: 2rem;
+        max-width: 2rem;
+        max-height: 100%;
+    }
 }
-.source-item img {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
-    width: 100%;
-    min-width: 2rem;
-    max-width: 3rem;
-    max-height: 100%;
+.icon-mushroom {
+    transform: translateY(-50%) scale(1.2) !important;
+}
+.icon-eraser {
+    transform: translateY(-50%) scale(2) !important;
 }
 @media (min-width: 576px) {
     nav {

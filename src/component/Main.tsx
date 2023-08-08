@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import Header from './Header';
 import 'css/main.css';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 function Main() {
     const PENTAGON_SIZE = 300;
     const xmlns = "http://www.w3.org/2000/svg";
@@ -13,7 +13,7 @@ function Main() {
     }
 
     const navigate = useNavigate ();
-
+    const pentagonRef = useRef<SVGSVGElement>(null);
     useEffect( () => {
         const triangles = document.getElementsByClassName('triangle');
         if (triangles.length >= 5) { //추가생성 방지
@@ -21,8 +21,11 @@ function Main() {
         }
     
         const trianglesDots = pentagonDots.center + pentagonDots.bottomRight + pentagonDots.bottomLeft
-        const pentagon:SVGElement = document.getElementsByTagNameNS(xmlns, "svg")[0];
+        const pentagon = pentagonRef.current;
     
+        if (pentagon === null) {
+            return;
+        }
         for(var title of lists) {
             const triangle:SVGElement = document.createElementNS(xmlns ,'polygon');
             triangle.setAttribute("points", trianglesDots);
@@ -63,6 +66,7 @@ function Main() {
                 >
                     <div className="box">
                         <svg
+                            ref={pentagonRef}
                             className="pentagon"
                             style={{
                                 'width' : `${PENTAGON_SIZE}px`,

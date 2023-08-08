@@ -1,10 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLocation } from 'react-router-dom';
 import 'css/header.css';
-import mushroom_img from 'img/mushroom.png';
-import posion_img from 'img/potion.png';
-import eraser_img from 'img/eraser.png';
-import logo_img from 'img/logo.png';
 import Draggable from "react-draggable";
 
 export default function Header() {
@@ -94,14 +90,9 @@ export default function Header() {
         down.classList.remove('dropZone')
     };
 
-    const mushroomRef = useRef(null);
-    const potionRef = useRef(null);
-    const eraseRef = useRef(null);
-
     const location = useLocation();
     const Home = () => {
         if (location.pathname === '/') {
-            <img src={logo_img} alt="logo" />
             return <span className="reload" onClick={reload}>Home</span>;
         } else {
             return <Link to='/'>Home</Link>;
@@ -110,7 +101,7 @@ export default function Header() {
     const reload = () => {
         window.location.reload();
     }
-
+    const xmlns = "http://www.w3.org/2000/svg";
     return (
         <nav>
             <div className="nav-item nav-home">
@@ -125,33 +116,61 @@ export default function Header() {
             </div>
             <div className="nav-item source">
                 <Draggable
-                    nodeRef={mushroomRef}
                     onDrag={dragOn}
                     onStop={dragStop}
                     position={{x:0, y:0}}
                 >
-                    <div className="source-item" ref={mushroomRef}>
-                        <img src={mushroom_img} alt="Mushroom" id="mushroom" draggable="false"/>
+                    <div className="source-item">
+                        <svg xmlns={xmlns} 
+                            className="icon-mushroom" 
+                            width="24" height="24" 
+                            viewBox="0 0 24 24" 
+                            stroke-width="2" 
+                            stroke="currentColor" 
+                            fill="none" 
+                            stroke-linecap="round" 
+                            stroke-linejoin="round"> 
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/> 
+                            <path d="M20 11.1c0 -4.474 -3.582 -8.1 -8 -8.1s-8 3.626 -8 8.1a0.9 .9 0 0 0 .9 .9h14.2a0.9 .9 0 0 0 .9 -.9z" /> 
+                            <path d="M10 12v7a2 2 0 1 0 4 0v-7" /> 
+                        </svg>
                     </div>
                 </Draggable>
                 <Draggable
-                    nodeRef={potionRef}
                     onDrag={dragOn}
                     onStop={dragStop}
                     position={{x:0, y:0}}
                 >
-                    <div className="source-item" ref={potionRef}>
-                        <img src={posion_img} alt="Potion" id="potion" draggable="false"/>
+                    <div className="source-item">
+                        <svg xmlns={xmlns} 
+                            className="icon-potion"
+                            viewBox="0 0 256 256"
+                            stroke-width="18"
+                            stroke="currentColor" 
+                            fill="none"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <path d="M104,32V93.8a8.4,8.4,0,0,1-1.1,4.1l-63.6,106A8,8,0,0,0,46.1,216H209.9a8,8,0,0,0,6.8-12.1l-63.6-106a8.4,8.4,0,0,1-1.1-4.1V32"/>
+                            <line x1="88" y1="32" x2="168" y2="32"/>
+                            <path d="M62.6,165c11.8-8.7,32.1-13.6,65.4,3,35.7,17.9,56.5,10.8,67.9,1.1"/>
+                        </svg>
                     </div>
                 </Draggable>
                 <Draggable
-                    nodeRef={eraseRef}
                     onDrag={(e) => dragOn(e)}
                     onStop={(e) => dragStop(e)}
                     position={{x:0, y:0}}
                 >
-                    <div className="source-item" ref={eraseRef}>
-                        <img src={eraser_img} alt="Eraser" id="erase" draggable="false"/>
+                    <div className="source-item">
+                        <svg xmlns={xmlns}
+                            className="icon-eraser"
+                            width="16" height="16" 
+                            fill="currentColor" 
+                            viewBox="0 0 16 16"
+                        > 
+                            <path d="M8.086 2.207a2 2 0 0 1 2.828 0l3.879 3.879a2 2 0 0 1 0 2.828l-5.5 5.5A2 2 0 0 1 7.879 15H5.12a2 2 0 0 1-1.414-.586l-2.5-2.5a2 2 0 0 1 0-2.828l6.879-6.879zm.66 11.34L3.453 8.254 1.914 9.793a1 1 0 0 0 0 1.414l2.5 2.5a1 1 0 0 0 .707.293H7.88a1 1 0 0 0 .707-.293l.16-.16z"/> 
+                        </svg>
                     </div>
                 </Draggable>
             </div>
