@@ -28,7 +28,7 @@ export default function Header() {
     };
     const [moveItems, setItems] = useState(items);
 
-    function addItems(item:string) {
+    function addItems(item:iconType) {
         let i:number;
         switch(item) {
             case "mushroom" : case "potion":
@@ -42,7 +42,7 @@ export default function Header() {
                     });
                 }
                 break;
-            case "erase":
+            case "eraser":
                 localStorage.setItem("mushroom", "0");
                 localStorage.setItem("potion", "0");
                 setItems({mushroom: 0, potion: 0})
@@ -73,6 +73,13 @@ export default function Header() {
     }, [moveItems]);
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
+    type iconType = "mushroom"|"potion"|"eraser";
+
+    const [icon, setIcon] = useState<iconType>("mushroom");
+    const selectIcon = (set:iconType) => {
+        setIcon(set);
+    }
+
     const dragOn = (e: any) => {
         const down:HTMLElement = document.getElementById('down') as HTMLElement;
         if (e.pageY >= 78 || (isMobile && e.changedTouches[0].pageY >= 78)) {
@@ -81,11 +88,10 @@ export default function Header() {
             down.classList.remove('dropZone')
         }
     }
-    const dragStop = (e: any) => {
+    const dragStop = () => {
         const down:HTMLElement = document.getElementById('down') as HTMLElement;
         if(down.classList.contains('dropZone')) {
-            let id:string = e.target.id;
-            addItems(id);
+            addItems(icon);
         }
         down.classList.remove('dropZone')
     };
@@ -116,20 +122,21 @@ export default function Header() {
             </div>
             <div className="nav-item source">
                 <Draggable
+                    onStart={e => selectIcon("mushroom")}
                     onDrag={dragOn}
                     onStop={dragStop}
                     position={{x:0, y:0}}
                 >
                     <div className="source-item">
                         <svg xmlns={xmlns} 
-                            className="icon-mushroom" 
+                            id="mushroom" 
                             width="24" height="24" 
                             viewBox="0 0 24 24" 
-                            stroke-width="2" 
+                            strokeWidth="1.8" 
                             stroke="currentColor" 
                             fill="none" 
-                            stroke-linecap="round" 
-                            stroke-linejoin="round"> 
+                            strokeLinecap="round" 
+                            strokeLinejoin="round"> 
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/> 
                             <path d="M20 11.1c0 -4.474 -3.582 -8.1 -8 -8.1s-8 3.626 -8 8.1a0.9 .9 0 0 0 .9 .9h14.2a0.9 .9 0 0 0 .9 -.9z" /> 
                             <path d="M10 12v7a2 2 0 1 0 4 0v-7" /> 
@@ -137,19 +144,20 @@ export default function Header() {
                     </div>
                 </Draggable>
                 <Draggable
+                    onStart={e => selectIcon("potion")}
                     onDrag={dragOn}
                     onStop={dragStop}
                     position={{x:0, y:0}}
                 >
                     <div className="source-item">
                         <svg xmlns={xmlns} 
-                            className="icon-potion"
+                            id="potion"
                             viewBox="0 0 256 256"
-                            stroke-width="18"
+                            strokeWidth="18"
                             stroke="currentColor" 
                             fill="none"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
                         >
                             <path d="M104,32V93.8a8.4,8.4,0,0,1-1.1,4.1l-63.6,106A8,8,0,0,0,46.1,216H209.9a8,8,0,0,0,6.8-12.1l-63.6-106a8.4,8.4,0,0,1-1.1-4.1V32"/>
                             <line x1="88" y1="32" x2="168" y2="32"/>
@@ -158,13 +166,14 @@ export default function Header() {
                     </div>
                 </Draggable>
                 <Draggable
-                    onDrag={(e) => dragOn(e)}
-                    onStop={(e) => dragStop(e)}
+                    onStart={e=> selectIcon("eraser")}
+                    onDrag={dragOn}
+                    onStop={dragStop}
                     position={{x:0, y:0}}
                 >
                     <div className="source-item">
                         <svg xmlns={xmlns}
-                            className="icon-eraser"
+                            id="eraser"
                             width="16" height="16" 
                             fill="currentColor" 
                             viewBox="0 0 16 16"

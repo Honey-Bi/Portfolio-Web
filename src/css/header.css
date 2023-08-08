@@ -68,10 +68,10 @@ nav {
         max-height: 100%;
     }
 }
-.icon-mushroom {
+#mushroom {
     transform: translateY(-50%) scale(1.2) !important;
 }
-.icon-eraser {
+#eraser {
     transform: translateY(-50%) scale(2) !important;
 }
 @media (min-width: 576px) {
