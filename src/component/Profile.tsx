@@ -109,7 +109,14 @@ export default function Profile() {
                                 <li>우물안 개구리가 되지않기 위해 끊임없이 고뇌하고 있습니다.</li>
                                 <li>항상 참신한 시도를 해보려고 노력하고있습니다.</li>
                             </ul>
-                            <div className="border-project"></div>
+                            <div className="about-bundle">
+                                <span>EMAIL : <a href="mailto:biten10@naver.com">biten10@naver.com</a></span>
+                                <a href="https://github.com/Honey-Bi" target="_blink">
+                                    <i className="fa-brands fa-github"></i>
+                                    github
+                                </a>
+                                <span>Phone : 010-5646-8894</span>
+                            </div>
                         </div>
                         <div className="profile-section"> {/* 요약 */}
                             <div className="profile-sub" id="summary">summary</div>
@@ -152,7 +159,7 @@ export default function Profile() {
                                     <Link className="profile-project-title" to='/project/post/Portfolio'>Portfolio Project</Link>
                                     <span className="date">2023 july</span>
                                 </p>
-                                <span>현재 보고있는 포트폴리오로 React, Typescript를 사용하여 제작하였습니다.</span>
+                                <span>현재 보고있는 포트폴리오 페이지로 React, Typescript를 사용하여 제작하였습니다.</span>
                             </div>
                             <div className="profile-project">
                                 <p>
