@@ -199,7 +199,7 @@ export default function Profile() {
                                     <i className="fa-brands fa-github"></i>
                                     github
                                 </a>
-                                <span>Phone : 010-5646-8894</span>
+                                {/* <span>Phone : 010-5646-8894</span> */}
                             </div>
                         </div>
                     </div>
