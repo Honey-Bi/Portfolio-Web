@@ -58,9 +58,9 @@
                 "body": [
                     {
                         "type":"img",
-                        "src":"portfolio_header.jpg",
+                        "src":"portfolio_header.png",
                         "alt":"헤더 설명 이미지",
-                        "class":["post-img-s", "fl", "mr-1"]
+                        "class":["post-img-s", "fl", "mr-1", "border-0-0-0-02"]
                     },
                     {
                         "type":"text",
@@ -130,7 +130,7 @@
     },
     "Plant" : {
         "title": "Plant Tree",
-        "category": "Toy Project",
+        "category": "Animation Project",
         "author": "HB",
         "date": "2023 June",
         "color": "#B5F1CC",
