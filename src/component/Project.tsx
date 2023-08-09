@@ -114,9 +114,8 @@ function Project() {
 
                 const album_title = document.createElement('span');
                 album_title.classList.add('album-title');
-                const title = i.title;
-                album_title.textContent = title;
                 album_title.setAttribute('style', `color: ${i.tColor}`);
+                album_title.textContent = i.title;
                 const src = Object.keys(posts)[count];
                 album.onclick = e => move(e, src, window.getComputedStyle(album).backgroundColor);
                 album.appendChild(album_title);
@@ -138,12 +137,13 @@ function Project() {
                 record.classList.add('record');
                 const round = document.createElement('div');
                 round.classList.add('innerRound');
+
                 const shadow = document.createElement('div');
                 shadow.classList.add('record-shadow');
 
                 record.appendChild(round);
-                s_item.appendChild(record);
                 s_item.appendChild(shadow);
+                s_item.appendChild(record);
                 s_item.appendChild(album);
                 s_item.appendChild(album);
                 slide.appendChild(s_item);
