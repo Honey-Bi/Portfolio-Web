@@ -11,6 +11,7 @@ import Profile from './component/Profile';
 import Concept from './component/Concept';
 import Terminal from './component/Terminal';
 import Trees from 'component/Trees';
+import NotFound from './component/NotFound';
 
 function App() {
     const location = useLocation();
@@ -40,6 +41,7 @@ function App() {
                     <Route path="/terminal" element={<Terminal />} />
                     <Route path="/profile" element={<Profile />} />
                     <Route path="/test/tree" element={<Trees />}  />
+                    <Route path="/*" element={<NotFound />}  />
                 </Routes>
             </CSSTransition>
         </SwitchTransition>
