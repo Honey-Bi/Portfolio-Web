@@ -161,6 +161,13 @@ export default function Profile() {
                                 </p>
                                 <span>간단한 의사결정 시뮬레이션 게임으로 Node.js를 사용하여 1인 제작하였습니다.</span>
                             </div>
+                            <div className="profile-project">
+                                <p>
+                                    <Link className="profile-project-title"  to='/project/post/Plant'>Plant-Tree</Link>
+                                    <span className="date">2023 july</span>
+                                </p>
+                                <span>canvas를 사용한 애니메이션 프로젝트로, React, Typescript만을 사용하여 canvas 애니메이션을 제작하였습니다.</span>
+                            </div>
                         </div>
                         <div className="profile-section"> {/* 기술 스택 */}
                             <div className="profile-sub" id="skills">skills</div>
