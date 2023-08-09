@@ -19,7 +19,7 @@
     }
     & a {
         font-weight: 500;
-        color: #000;
+        color: #068FFF !important;
     }
     & > *:not(.terminal-command) {
         transition: color ease 0.5s, font-size ease 0.5s;
@@ -28,11 +28,13 @@
 .terminal-tab {
     font-size: 1rem;
     font-weight: 400;
+    color: #4aff36;
     &::before {
         content: "\00a0\00a0\00a0\00a0";;
     }
 }
 .terminal-accent {
+    color: #068FFF;
     font-size: 1rem;
     font-weight: 500 !important;
 }
@@ -48,6 +50,7 @@
     }
 }
 .shift {
+    color: #068FFF;
     font-weight: 500;
     text-decoration: underline;
     cursor: pointer;
@@ -106,10 +109,8 @@
         background-color: var(--base-dark);
         color: #fff !important;
     }
-    & .potion, & .potion2 {    
-        .terminal-tab{
-            color: #00ffa7;
-        }
+    .terminal-tab{
+        color: #00ffa7;
     }
 }
 .mushroom .terminal * {
@@ -117,16 +118,4 @@
 }
 .mushroom2 .terminal * {
     font-size: 1.2rem;
-}
-
-.potion, .potion2 {
-    & .terminal-accent{
-        color: #068FFF;
-    }
-    & .terminal-tab{
-        color: #4aff36;
-    }
-    & .terminal a, & .shift {
-        color: #068FFF !important;
-    }
 }

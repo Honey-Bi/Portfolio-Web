@@ -39,7 +39,11 @@ const opts = {
 
 const balls:Array<Ball> = [];
 const titles:Array<string> = [ // 타이핑 목록
-    'Developer이자 Createar 입니다.'
+"Developer이자 Createar 입니다.",
+"Not to be a big fish in a small pond",
+"보기좋은게 먹기도 좋을것 같습니다.",
+"Hello World!",
+"Better Design Better Experience"
 ];
 
 export default function Concept() {    
@@ -74,7 +78,7 @@ export default function Concept() {
                 balls.push(new Ball(x, y, s, d, r, c));
             }
         }
-    }, [canvasRef]);
+    }, []);
 
     
     const handleResize = () => { // 화면 resize 크기 저장
@@ -89,7 +93,7 @@ export default function Concept() {
         return () => {
             window.removeEventListener('resize', handleResize);
         }
-    }, [size]);
+    });
 
     const collisionWall = useCallback((ball: Ball) => { // 벽 부딪힘 계산
         if (ball.position.x >= size.width || ball.position.x <= 0 ) {
@@ -128,7 +132,7 @@ export default function Concept() {
             ctx.beginPath();
             ctx.arc(balls[i].position.x, balls[i].position.y, balls[i].radius, 0, Math.PI * 2);
             ctx.closePath();
-            ctx.fillStyle = (localStorage.getItem('potion') === '0')? 'rgb(200, 200, 200)' : balls[i].color;
+            ctx.fillStyle = balls[i].color;
             ctx.fill();
 
             // 부딪힘 확인
@@ -151,7 +155,7 @@ export default function Concept() {
 		return () => {
             window.cancelAnimationFrame(requestId);
 		};
-    }, [animate, ctx]);
+    });
 
 
     let checkDistance = function(x1:number, y1:number, x2:number, y2:number) {
