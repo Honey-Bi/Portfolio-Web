@@ -26,6 +26,12 @@ body {
   overflow: hidden;
   transition: background-color ease 0.5s;
 }
+#main {
+  position: relative;
+  width: 100vw;
+  height: calc(var(--vh, 1vh) * 100);
+  overflow: hidden;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -45,6 +51,9 @@ code {
   & a:not(.profile *, .post *, .terminal *) , 
   & i {
     color: #fff !important;
+  }
+  & text {
+    fill: #fff;
   }
 }
 .container {
