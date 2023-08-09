@@ -134,6 +134,7 @@ button.active .fa-play, button .fa-pause {
         font-size: 1.2rem;
         color: #fff;
         font-weight: 700;
+        
         text-transform: uppercase;
     }
     .album-date {
