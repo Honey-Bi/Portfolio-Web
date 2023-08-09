@@ -1,6 +1,6 @@
 #notFound {
     position: relative;
-    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
     width: 100vw;
 }
 .center {
@@ -9,6 +9,7 @@
     height: 210px;
     top: 25%;
     left: 50%;
+    z-index: 999;
     transform: translate(-50%, -50%);
 }
 .title {
@@ -37,14 +38,66 @@
         color: #fff !important;
     }
 }
-.dark.button {
-    border: 2px solid #fff;
-    color: #fff;
-    &:hover {
-        background-color: rgba(255, 255, 255, 0.8);
-        color: #000 !important;
-    }
+.footer {
+    z-index: 1;
+    position: relative;
+    height: calc(var(--vh, 1vh) * 100);
+    /* min-height:12rem; */
+}
+.bubbles {
+    position: absolute;
+    bottom: -3rem;
+    left:0;
+    right:0;
+    height: 3rem;
+    background-color: #343a40;
+    filter:url("#blob"); 
+}
+.bubble {
+    position: absolute;
+    left:var(--position, 50%);
+    background: #343a40;
+    border-radius:100%;
+    animation:
+        bubble-size var(--time, 4s) ease-in infinite var(--delay, 0s),
+        bubble-move var(--time, 4s) ease-in infinite var(--delay, 0s);
+    transform:translate(-50%, 0%);
 }
 
-
-    
+@keyframes bubble-size {
+    0%, 75% {
+        width:var(--size, 4rem);
+        height:var(--size, 4rem);
+    }
+    100% {
+        width:0rem;
+        height:0rem;
+    }
+}
+@keyframes bubble-move {
+    0% {
+        bottom:-4rem;
+    }
+    100% {
+        bottom:var(--distance, 10rem);
+    }
+}
+.svg {
+    position: fixed;
+    top: 100vh;
+}
+.dark {
+    background-color: #343a40;
+    color: #fff;
+    .button {
+        border: 2px solid #fff;
+        color: #fff;
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #000 !important;
+        }
+    }
+    .bubble, .bubbles {
+        background-color: #fff;
+    }
+}
