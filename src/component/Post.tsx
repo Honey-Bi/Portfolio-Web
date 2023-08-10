@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { useRef, useEffect, useState, useCallback } from 'react';
 import 'css/post.css'
 import ToTop from "./ToTop";
-import posts from'post.json';
+import posts from'json/post.json';
 
 export default function Post() {
     const navigate = useNavigate();
@@ -140,7 +140,6 @@ export default function Post() {
             }}>
                 <Link to={"/"} className="project-home" />
                 <span className="project-exit" onClick={e => navigate(-1)}></span>
-                {/* <Link to={"/project"} className="project-exit" /> */}
             </div>
             <div className="container post-transition"> 
                 <div className="post">
