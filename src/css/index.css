@@ -47,7 +47,7 @@ code {
 .dark {
   background-color: var(--base-dark) !important;
   color: #fff !important;
-  & span:not(.album > *, .post *, .whoami > *, .terminal *), 
+  & span:not(.album > *, .post *, .whoami > *, .terminal *, .profile *), 
   & a:not(.profile *, .post *, .terminal *) , 
   & i {
     color: #fff !important;
@@ -84,12 +84,16 @@ code {
   }
 } */
 :root {
-  --base-color-1: #fff7ab;
   --base-color-project: #B5F1CC;
   --base-color-test1: #FFCEFE;
   --base-color-concept: #FF9B9B;
   --base-color-making: #B9F3FC;
   --base-color-profile: #FFD6A5;
+  --base-color-1: #B5F1CC;
+  --base-color-2: #FFCEFE;
+  --base-color-3: #FF9B9B;
+  --base-color-4: #B9F3FC;
+  --base-color-5: #FFD6A5;
   --base-color: #cecece;
   --base-dark: #343a40;
   /* FFD6A5 AA96DA */
