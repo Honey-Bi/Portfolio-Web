@@ -37,7 +37,7 @@
     },
     {
         "name": "github",
-        "progress": 30,
+        "progress": 25,
         "color" : "#8c08eb",
         "content": "github를 통해 대부분의 프로젝트 소스 코드를 관리하였으며, 포트폴리오 사이트 또한 github서버를 활용하여 관리하고있습니다.."
     }
