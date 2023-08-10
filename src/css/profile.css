@@ -280,6 +280,10 @@
     font-weight: 500;
     & > i {
         color: #068FFF !important;
+        margin-right: 2px;
+    }
+    &:hover {
+        text-decoration: underline;
     }
 }
 .profile-project-title {
