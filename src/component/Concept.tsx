@@ -39,7 +39,7 @@ const opts = {
 
 const balls:Array<Ball> = [];
 const titles:Array<string> = [ // 타이핑 목록
-"Developer이자 Createar 입니다.",
+"Developer이자 Creator 입니다.",
 "Not to be a big fish in a small pond",
 ];
 

@@ -175,7 +175,7 @@ function Project() {
         >
             <Header />
             <div id="down" className="down-height">
-                <div className="wrap"
+                <div className="wrap move" 
                     onWheel={moveWheel}
 
                     onMouseDown={mouseDownHandler}

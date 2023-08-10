@@ -1,7 +1,7 @@
 #main:focus-visible {
     outline: none;;
 }
-.wrap {
+.move {
     cursor: move;
 }
 .controller {
