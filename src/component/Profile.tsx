@@ -157,7 +157,7 @@ export default function Profile() {
                                 <p>
                                     <Link className="profile-project-title" to='/project/post/Portfolio'>Portfolio Project</Link>    
                                     <span className="date">2023 july</span>
-                                    <a href="https://github.com/Honey-Bi" target="_blink" className="github">
+                                    <a href="https://github.com/Honey-Bi/Honey-Bi.github.io" target="_blink" className="github">
                                         <i className="fa-brands fa-github"></i>
                                         github
                                     </a>
@@ -175,6 +175,10 @@ export default function Profile() {
                                 <p>
                                     <Link className="profile-project-title"  to='/project/post/Plant'>Plant-Tree</Link>
                                     <span className="date">2023 july</span>
+                                    <a href="https://github.com/Honey-Bi/plant-tree-app" target="_blink" className="github">
+                                        <i className="fa-brands fa-github"></i>
+                                        github
+                                    </a>
                                 </p>
                                 <span>canvas를 사용한 애니메이션 프로젝트로, React, Typescript만을 사용하여 canvas 애니메이션을 제작하였습니다.</span>
                             </div>
