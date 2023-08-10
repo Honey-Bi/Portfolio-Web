@@ -5,24 +5,13 @@ import { useNavigate } from 'react-router-dom';
 import posts from'post.json';
 
 function Project() {
-    const [play, setPlay] = useState<boolean>(true);
     const [direction, setDirection] = useState<number|null>(null);
-    const [count, setCount] = useState<number>(20);
-    const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
     const slideRef = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => { // 슬라이드 선택
         if(direction === null) return;
         const slide:HTMLCollectionOf<Element> = document.getElementsByClassName('slide-item');
         slide[direction].classList.add('active');
-        const round:HTMLElement = document.getElementById('round') as HTMLElement;
-        const fill:HTMLElement = document.getElementById('fill') as HTMLElement;
-        round.classList.remove('round');
-        fill.classList.remove('fill');
-        void round.offsetWidth; 
-        void fill.offsetWidth; 
-        round.classList.add('round');
-        fill.classList.add('fill');
     }, [direction]);
 
     const next = useCallback(() => { // 슬라이드 다음
@@ -34,29 +23,6 @@ function Project() {
         }
     }, [direction]);
 
-    useEffect(() => { // 10초마다 다음슬라이드로 이동
-        if(count === 0 ) {
-            setCount(20)
-            next()
-        }
-    }, [count, next]);
-
-    useEffect(() => { // 0.5초마다 확인
-        if(play) {
-            timerRef.current = setInterval(elapsed, 500);
-        } else {
-            clearInterval(timerRef.current as NodeJS.Timer)
-        }
-        return () => clearInterval(timerRef.current as NodeJS.Timer);
-    }, [play]);
-
-    const elapsed = () => { // 카운트 다운
-        setCount((prev) => prev-1);
-    }
-    const PP = () => { // 정지 | 재생
-        setPlay((prev) => !prev);
-    }
-    
     const prev = () => { // 슬라이드 되돌리기
         if (direction && direction > 0) {
             const slide:HTMLCollectionOf<Element> = document.getElementsByClassName('slide-item');
@@ -93,13 +59,6 @@ function Project() {
             
         });
     }, [navigate])
-
-    const handelKeyDown =(e:BaseSyntheticEvent) => { // spacebar 정지 
-        const event = e.nativeEvent as KeyboardEvent;
-        if (event.key === ' ') {
-            PP();
-        }
-    };
 
     useEffect(() => { // 앨범 생성
         const slide = document.getElementsByClassName('slide')[0];
@@ -183,10 +142,8 @@ function Project() {
         if (mouse && slideRef.current && direction !== null && pageX) {
             if (direction > 0 && pageX > mouseX) { // 전으로 | 마우스 우로 이동
                 setStyle(`translateX(${pageX - mouseX}px)`);
-                setPlay(false);
             } else if (direction < Object.keys(posts).length-1 && mouseX > pageX) { // 앞으로 | 마우스 좌로 이동
                 setStyle(`translateX(${pageX - mouseX}px)`);
-                setPlay(false);
             }
         }
     };    
@@ -215,7 +172,6 @@ function Project() {
     return (
         <div id='main' 
             tabIndex={0}
-            onKeyDown={handelKeyDown}
         >
             <Header />
             <div id="down" className="down-height">
@@ -246,22 +202,6 @@ function Project() {
                     </div>
                 </div>
                 <div className="controller">
-                    <div className="btn-group">
-                        <button onClick={prev}>
-                            <i className="fa-solid fa-backward"></i>
-                        </button>
-                        <button className={play ? 'active' : ''} onClick={PP}>
-                            <i className="fa-solid fa-pause"></i>
-                            <i className="fa-solid fa-play"></i>
-                        </button>
-                        <button onClick={next}>
-                            <i className="fa-solid fa-forward"></i>
-                        </button>
-                    </div>
-                    <div className={play ? 'timer' : 'timer active'}>
-                        <div id='round' className="round"></div>
-                        <div id='fill' className="fill"></div>
-                    </div>
                 </div>
                 <div className="project-title">
                     project
