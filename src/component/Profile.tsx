@@ -155,8 +155,12 @@ export default function Profile() {
                             <div className="profile-sub" id="project">project</div>
                             <div className="profile-project">
                                 <p>
-                                    <Link className="profile-project-title" to='/project/post/Portfolio'>Portfolio Project</Link>
+                                    <Link className="profile-project-title" to='/project/post/Portfolio'>Portfolio Project</Link>    
                                     <span className="date">2023 july</span>
+                                    <a href="https://github.com/Honey-Bi" target="_blink" className="github">
+                                        <i className="fa-brands fa-github"></i>
+                                        github
+                                    </a>
                                 </p>
                                 <span>현재 보고있는 포트폴리오 페이지로 React, Typescript를 사용하여 제작하였습니다.</span>
                             </div>
@@ -180,6 +184,7 @@ export default function Profile() {
                             <ul className="skill_list">
                                 <li>FrontEnd
                                     <ul className="skill_down">
+                                        <li>HTML CSS JS</li>
                                         <li>TypeScript</li>
                                         <li>Jquery</li>
                                         <li>React</li>

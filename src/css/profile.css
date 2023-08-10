@@ -272,6 +272,16 @@
         text-transform: uppercase;
     }
 }
+.github {
+    margin-left: 1rem;
+    color: #068FFF !important;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    & > i {
+        color: #068FFF !important;
+    }
+}
 .profile-project-title {
     font-size: 1.2rem;
     font-weight: bold;

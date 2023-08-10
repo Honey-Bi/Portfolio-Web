@@ -133,11 +133,17 @@
                 "class":["post-img-3", "fl"]
             },
             {
-                "type":"link",
-                "blank": true,
-                "href": "https://port-0-oraculum-k19y2kljp1v7t6.sel4.cloudtype.app/",
-                "content":"https://port-0-oraculum-k19y2kljp1v7t6.sel4.cloudtype.app/",
-                "class":["mt-2"]
+                "type": "row",
+                "class": ["fl"],
+                "body": [
+                    {
+                        "type":"link",
+                        "blank": true,
+                        "href": "https://port-0-oraculum-k19y2kljp1v7t6.sel4.cloudtype.app/",
+                        "content":"DEMO - https://port-0-oraculum-k19y2kljp1v7t6.sel4.cloudtype.app/",
+                        "class":["mt-2"]
+                    }
+                ]
             }
         ]
     },
@@ -167,8 +173,8 @@
                     {
                         "type":"link",
                         "blank": true,
-                        "href": "https://honey-bi.github.io/test/tree",
-                        "content":"DEMO - https://honey-bi.github.io/test/tree",
+                        "href": "https://honey-bi.github.io/plant-tree-app/",
+                        "content":"DEMO - https://honey-bi.github.io/plant-tree-app/",
                         "class":["mt-1"]
                     }
                 ]
