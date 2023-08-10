@@ -68,6 +68,19 @@
                         "class":["mt-0", "mb-0"]
                     }
                 ]
+            },
+            {
+                "type": "row",
+                "class": [],
+                "body": [
+                    {
+                        "type":"link",
+                        "blank": true,
+                        "href": "https://github.com/Honey-Bi/plant-tree-app",
+                        "content":"GitHub - https://github.com/Honey-Bi/plant-tree-app",
+                        "class":["mt-1"]
+                    }
+                ]
             }
         ]
     },
@@ -148,11 +161,30 @@
                 "class":[]
             },
             {
-                "type":"link",
-                "blank": false,
-                "href": "https://honey-bi.github.io/test/tree",
-                "content":"https://honey-bi.github.io/test/tree",
-                "class":[]
+                "type": "row",
+                "class": [],
+                "body": [
+                    {
+                        "type":"link",
+                        "blank": true,
+                        "href": "https://honey-bi.github.io/test/tree",
+                        "content":"DEMO - https://honey-bi.github.io/test/tree",
+                        "class":["mt-1"]
+                    }
+                ]
+            },
+            {
+                "type": "row",
+                "class": [],
+                "body": [
+                    {
+                        "type":"link",
+                        "blank": true,
+                        "href": "https://github.com/Honey-Bi/plant-tree-app",
+                        "content":"GitHub - https://github.com/Honey-Bi/plant-tree-app",
+                        "class":["mt-1"]
+                    }
+                ]
             }
         ]
     }

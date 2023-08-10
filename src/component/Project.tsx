@@ -142,8 +142,8 @@ function Project() {
                 shadow.classList.add('record-shadow');
 
                 record.appendChild(round);
-                s_item.appendChild(shadow);
                 s_item.appendChild(record);
+                s_item.appendChild(shadow);
                 s_item.appendChild(album);
                 s_item.appendChild(album);
                 slide.appendChild(s_item);
