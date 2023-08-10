@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/static/css/main.3095065a.css",
+    "main.js": "/static/js/main.a5fca22b.js",
+    "static/media/portfolio_black.png": "/static/media/portfolio_black.3058e719649a89bb4c4d.png",
+    "static/media/tree.png": "/static/media/tree.b4aa7fc8253e5506aecd.png",
+    "static/media/portfolio_white.png": "/static/media/portfolio_white.ebfd7b72e8df8c341a6a.png",
+    "static/media/oraculum_1.png": "/static/media/oraculum_1.58608c52ba4c1cbfbaa4.png",
+    "static/media/oraculum_login.png": "/static/media/oraculum_login.09e1908b55fc69121953.png",
+    "static/media/portfolio_cd2.png": "/static/media/portfolio_cd2.d2356cda4cbeaeeee504.png",
+    "static/media/portfolio_cd.png": "/static/media/portfolio_cd.5def527262758ee7cf81.png",
+    "static/media/oraculum_signup.png": "/static/media/oraculum_signup.56e27129a551e32d5789.png",
+    "static/media/oraculum_admin_2.png": "/static/media/oraculum_admin_2.67c7bb72b08fa246c8af.png",
+    "static/media/oraculum_admin_1.png": "/static/media/oraculum_admin_1.6fb4f4db64e01c43ede2.png",
+    "static/media/oraculum_admin_3.png": "/static/media/oraculum_admin_3.c7f3f4883e6a850ae8fc.png",
+    "static/media/logo.png": "/static/media/logo.ff0ee05c1186605d3457.png",
+    "static/media/sample_images_03.png": "/static/media/sample_images_03.def288806f6cad0e065d.png",
+    "index.html": "/index.html",
+    "main.3095065a.css.map": "/static/css/main.3095065a.css.map",
+    "main.a5fca22b.js.map": "/static/js/main.a5fca22b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3095065a.css",
+    "static/js/main.a5fca22b.js"
+  ]
+}
