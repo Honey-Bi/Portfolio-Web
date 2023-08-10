@@ -91,6 +91,13 @@ export default function Profile() {
         );
     }
 
+    const openList = (e:BaseSyntheticEvent) => {
+        let target:HTMLElement  = e.target;
+        if (e.target.className === "close") target = target.parentElement!;
+        if (target.classList.contains('active')) target.classList.remove('active');
+        else target.classList.add('active');
+    }
+
     return(
         <div id="main" className="scroll">
             <Header/>
@@ -151,6 +158,18 @@ export default function Profile() {
                         <div className="profile-section"> {/* 기술 스택 */}
                             <div className="profile-sub" id="skills">skills</div>
                             {render_skills()} {/* div.skill */}
+                            {/* {
+                                "name": "MySQL",
+                                "progress": 20,
+                                "color" : "#ffa81f",
+                                "content": ""
+                            },
+                            {
+                                "name": "MongoDB",
+                                "progress": 20,
+                                "color" : "#54b245",
+                                "content": ""
+                            }, */}
                             <div className="skill-border"></div>
                         </div>
                         <div className="profile-section"> {/* 프로젝트 */}
@@ -192,12 +211,13 @@ export default function Profile() {
                                 </p>
                                 <span>canvas를 사용한 애니메이션 프로젝트로, React, Typescript만을 사용하여 canvas 애니메이션을 제작하였습니다.</span>
                             </div>
+
                         </div>
                         <div className="profile-section"> {/* 요약 */}
                             <div className="profile-sub" id="summary">summary</div>
                             <ul className="summary-list">
                                 <li>
-                                    <p className="summary-title">Certificate</p>
+                                    <span className="summary-title" onClick={openList}><div className="close"></div>Certificate</span>
                                     <ul>
                                         <li>Doc
                                             <ul className="summary-sub-list">
@@ -215,7 +235,7 @@ export default function Profile() {
                                     </ul>
                                 </li>
                                 <li>
-                                    <p className="summary-title">Education</p>
+                                    <span className="summary-title" onClick={openList}><div className="close"></div>Education</span>
                                     <ul className="summary-sub-list">
                                         <li>세명컴퓨터고등학교 졸업
                                             <ul className="normal">

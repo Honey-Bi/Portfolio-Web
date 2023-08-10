@@ -261,11 +261,40 @@
         font-size: 1.1rem;
         font-weight: 500;
     }
+    & > li {
+        margin-bottom: 1rem;
+    }
 }
 .summary-title {
     font-size: 1.2rem;
     font-weight: 500;
     margin: 0.5rem 0;
+    cursor: pointer;
+    & + ul {
+        margin-top: .5rem;
+        display: none;
+    }
+    &.active + ul {
+        display: block;
+    }
+    & > .close {
+        display: inline-block;
+        width: 0;
+        height: 0;
+        border-top: .5rem solid transparent;
+        border-right: .5rem solid transparent;
+        border-bottom: .5rem solid transparent;
+        border-left: calc(.5rem * 1.6) solid #000;
+    }
+    &.active > .close {
+        width: 0;
+        height: 0;
+        margin-right: .25rem;
+        border-top: calc(.5rem * 1.6) solid #000;
+        border-right: .5rem solid transparent;
+        border-left: .5rem solid transparent;
+        border-bottom: none;
+    }
 }
 .summary-sub-list {
     font-size: 1rem !important;
@@ -464,6 +493,16 @@
     }
     .skill-progress {
         background-color: #666;
+    }
+    .summary-title {
+        & > .close {
+            border-color: transparent;
+            border-left-color: #fff;
+        }
+        &.active > .close {
+            border-color: transparent;
+            border-top-color: #fff;
+        }
     }
 }
 
