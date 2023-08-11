@@ -33,7 +33,7 @@ nav {
     }
 }
 .dropZone {
-    box-shadow: 0 0 0 3px #0c0808 inset; 
+    box-shadow: 0 0 0 3px #ff7a7a inset; 
 }
 .nav-item {
     margin: 1rem 0 0.5rem;
