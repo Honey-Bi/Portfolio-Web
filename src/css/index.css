@@ -110,3 +110,30 @@ code {
       }
   }
 }
+.project-list {
+  transition: transform 0.5s ease;
+}
+.mushroom {
+  .project-list {
+    transform: scale(1.1) translate(-50%, -50%);
+  }
+}
+.mushroom2 {
+  .project-list {
+    transform: scale(1.2) translate(-50%, -50%);
+  }
+}
+@media (max-width: 768px) { 
+  .mushroom {
+    .project-list {
+      transform: translate(-50% , 0);
+      font-size: calc(16px * 1.1);
+    }
+  }
+  .mushroom2 {
+    .project-list {
+      transform: translate(-50% , 0);
+      font-size: calc(16px * 1.2);
+    }
+  }
+}
