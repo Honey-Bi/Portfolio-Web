@@ -10,7 +10,7 @@
     display: flex;
     flex-direction: column;
     & + & {
-        margin-left: 1rem;
+        margin-left: 5rem;
     }
 }
 .project {
@@ -28,6 +28,9 @@
             0 0 8px 0 rgba(0, 0, 0, 0.08),
             0 0 15px 0 rgba(0, 0, 0, 0.02),
             0 0 20px 4px rgba(0, 0, 0, 0.06);
+        .record, .record_shadow {
+            margin-left: 60%;
+        }
     }
     & + & {
         margin-top: 1rem;
@@ -59,11 +62,48 @@
         top: -0.8rem;
         text-transform: uppercase;
     }
+    .record {
+        position: absolute;
+        width: 90%;
+        height: 90%;
+        border-radius: 50%;
+        top: 5%;
+        margin-left: 25%;
+        background-color: #374259;
+        z-index: 0;
+        transition: all 1s ease;
+        /* animation: rotate 6s linear infinite; */
+        z-index: -1;
+        .innerRound {
+            left: 50%;
+            top: 50%;
+            width: 15%;
+            height: 15%;
+            position: absolute !important;
+            border-radius: 50% !important;
+            padding: 5%;
+            background-color: #fff;
+            background-clip: content-box;
+            border: 2px solid #fff;
+            transform: translate(-50%, -50%);
+        }
+    }
+    .record_shadow {
+        z-index: -1;
+        position: absolute;
+        width: 90%;
+        height: 90%;
+        border-radius: 50%;
+        top: 5%;
+        cursor: auto;
+        margin-left: 25%;
+        transition: all 1s ease;
+        border: 2px solid #fff;
+        box-shadow: #777 0px 3px 8px;
+    }
 }
 @media (max-width: 768px) {
     .project {
-        width: 95vw;
-        max-width: 550px;
         & + & {
             margin-top: 2rem;
         }
@@ -72,9 +112,18 @@
             top: 2.8rem;
             left: 1rem;
         }
+        .record, .record_shadow {
+            margin-left: 50%;
+        }
+        &:hover {
+            .record, .record_shadow {
+                margin-left: 70%;
+            }   
+        }
     }
     .project_list {
         top: 2rem;
+        width: 90vw;
         flex-direction: column;
         transform: translate(-50% , 0);
     }
