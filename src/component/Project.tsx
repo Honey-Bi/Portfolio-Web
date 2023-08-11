@@ -2,19 +2,20 @@ import Header from './Header';
 import 'css/project.css';
 import { BaseSyntheticEvent, useCallback, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import posts from'post.json';
+import posts from'json/post.json';
 
 function Project() {
-    const [play, setPlay] = useState<boolean>(true);
-    const [direction, setDirection] = useState<number|null>(null);
-    const [count, setCount] = useState<number>(20);
-    const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+    const [direction, setDirection] = useState<number>(0);
     const slideRef = useRef<HTMLDivElement | null>(null);
 
+    const [play, setPlay] = useState<boolean>(true);
+    const [count, setCount] = useState<number>(20);
+    const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
     useEffect(() => { // 슬라이드 선택
-        if(direction === null) return;
         const slide:HTMLCollectionOf<Element> = document.getElementsByClassName('slide-item');
         slide[direction].classList.add('active');
+
         const round:HTMLElement = document.getElementById('round') as HTMLElement;
         const fill:HTMLElement = document.getElementById('fill') as HTMLElement;
         round.classList.remove('round');
@@ -23,6 +24,7 @@ function Project() {
         void fill.offsetWidth; 
         round.classList.add('round');
         fill.classList.add('fill');
+
     }, [direction]);
 
     const next = useCallback(() => { // 슬라이드 다음
@@ -33,6 +35,22 @@ function Project() {
             setDirection((next) => next as number + 1);
         }
     }, [direction]);
+
+    const prev = () => { // 슬라이드 되돌리기
+        if (direction && direction > 0) {
+            const slide:HTMLCollectionOf<Element> = document.getElementsByClassName('slide-item');
+            slide[direction].classList.remove('active');
+            setDirection((prev) => prev as number - 1);
+        }
+    }
+
+    function moveWheel(e: any): void { // 마우스 휠 핸들러
+        if (e.deltaY > 0) {
+            next();
+        } else if (e.deltaY < 0) {
+            prev();
+        }
+    }
 
     useEffect(() => { // 10초마다 다음슬라이드로 이동
         if(count === 0 ) {
@@ -56,25 +74,16 @@ function Project() {
     const PP = () => { // 정지 | 재생
         setPlay((prev) => !prev);
     }
-    
-    const prev = () => { // 슬라이드 되돌리기
-        if (direction && direction > 0) {
-            const slide:HTMLCollectionOf<Element> = document.getElementsByClassName('slide-item');
-            slide[direction].classList.remove('active');
-            setDirection((prev) => prev as number - 1);
-        }
-    }
 
-    function moveWheel(e: any): void { // 마우스 휠 핸들러
-        if (e.deltaY > 0) {
-            next();
-        } else if (e.deltaY < 0) {
-            prev();
+    const handelKeyDown =(e:BaseSyntheticEvent) => { // spacebar 정지 
+        const event = e.nativeEvent as KeyboardEvent;
+        if (event.key === ' ') {
+            PP();
         }
-    }
+    };
 
     const navigate = useNavigate ();
-    const move = useCallback((e:MouseEvent, pName:string, bgColor:string) => { // 페이지 이동 함수
+    const move = useCallback((e:any, pName:string, bgColor:string) => { // 페이지 이동 함수
         const main:Element = document.getElementById('main') as Element;
         const style = `
             top: -${document.body.clientHeight - e.pageY}px;
@@ -94,63 +103,34 @@ function Project() {
         });
     }, [navigate])
 
-    const handelKeyDown =(e:BaseSyntheticEvent) => { // spacebar 정지 
-        const event = e.nativeEvent as KeyboardEvent;
-        if (event.key === ' ') {
-            PP();
+    const render_album = ():JSX.Element => {
+        let result = [];
+        let count = 0;
+        for (var i of Object.values(posts)) {
+            const src = Object.keys(posts)[count];
+            const color = i.color;
+
+            result.push(
+                <div className="slide-item" key={src}>
+                    <div className="record">
+                        <div className="innerRound"></div>
+                    </div>
+                    <div className="record-shadow"></div>
+                    <div 
+                        className="album" 
+                        style={{backgroundColor: color}}
+                        onClick={(e) => move(e, src, color)}
+                    >
+                        <span className="album-title" style={{color: i.tColor}}>{i.title}</span>
+                        <span className="album-date" style={{color: i.tColor}}>{i.date}</span>
+                        <span className="album-category" style={{color: i.tColor}}>{i.category}</span>
+                    </div>
+                </div>
+            );
+            count++;
         }
-    };
-
-    useEffect(() => { // 앨범 생성
-        const slide = document.getElementsByClassName('slide')[0];
-        if (slide && slide.childNodes.length < Object.values(posts).length) {
-            let count = 0;
-            for (var i of Object.values(posts)) {
-                const s_item = document.createElement('div');
-                s_item.classList.add('slide-item');
-                const album = document.createElement('div');
-                album.classList.add('album');
-                album.setAttribute('style', `background-color: ${i.color}`);
-
-                const album_title = document.createElement('span');
-                album_title.classList.add('album-title');
-                album_title.setAttribute('style', `color: ${i.tColor}`);
-                album_title.textContent = i.title;
-                const src = Object.keys(posts)[count];
-                album.onclick = e => move(e, src, window.getComputedStyle(album).backgroundColor);
-                album.appendChild(album_title);
-                count++;
-                
-                const album_date = document.createElement('span');
-                album_date.classList.add('album-date');
-                album_date.textContent = i.date;
-                album_date.setAttribute('style', `color: ${i.tColor}`);
-                album.appendChild(album_date);
-
-                const album_category = document.createElement('span');
-                album_category.classList.add('album-category');
-                album_category.textContent = i.category;
-                album_category.setAttribute('style', `color: ${i.tColor}`);
-                album.appendChild(album_category);
-
-                const record = document.createElement('div');
-                record.classList.add('record');
-                const round = document.createElement('div');
-                round.classList.add('innerRound');
-
-                const shadow = document.createElement('div');
-                shadow.classList.add('record-shadow');
-
-                record.appendChild(round);
-                s_item.appendChild(shadow);
-                s_item.appendChild(record);
-                s_item.appendChild(album);
-                s_item.appendChild(album);
-                slide.appendChild(s_item);
-            }
-            setDirection(0);
-        }
-    }, [move]);
+        return (<>{result}</>);
+    }
 
     const [mouse, setMouse] = useState<boolean>(false);
     const [mouseX, setMouseX] = useState<number>(0);
@@ -191,7 +171,7 @@ function Project() {
         }
     };    
 
-    const mouseUpHandler = (e:BaseSyntheticEvent) => {
+    const mouseUpHandler = (e:BaseSyntheticEvent) => { // 터치 | 클릭 종료
         let event, pageX = 0;
         if (e.type === "touchend") {
             event = e.nativeEvent as TouchEvent;
@@ -219,7 +199,7 @@ function Project() {
         >
             <Header />
             <div id="down" className="down-height">
-                <div className="wrap"
+                <div className="wrap move" 
                     onWheel={moveWheel}
 
                     onMouseDown={mouseDownHandler}
@@ -236,13 +216,14 @@ function Project() {
                             transform: style,
                         }}
                     >
-                    <div className="slide" 
-                        style={{
-                            marginLeft: `calc(12.5rem*${direction}*-2.45)`,
-                            width: `calc(12.5rem * 2.45 * ${Object.keys(posts).length})`
-                        }}
-                    >
-                    </div>
+                        <div className="slide" 
+                            style={{
+                                marginLeft: `calc(12.5rem*${direction}*-2.45)`,
+                                width: `calc(12.5rem * 2.45 * ${Object.keys(posts).length})`
+                            }}
+                        >
+                            {render_album()}
+                        </div>
                     </div>
                 </div>
                 <div className="controller">

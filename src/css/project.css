@@ -1,7 +1,7 @@
 #main:focus-visible {
     outline: none;;
 }
-.wrap {
+.move {
     cursor: move;
 }
 .controller {
@@ -9,6 +9,10 @@
     position: fixed;
     width: 100%;
     bottom: 5%;
+}
+.slide-move {
+    position: absolute;
+    top: calc(50% - 100px - 3.5rem);
 }
 
 .timer {
@@ -87,10 +91,7 @@ button.active .fa-pause, button .fa-play {
 button.active .fa-play, button .fa-pause {
     display: none;
 }
-.slide-move {
-    position: absolute;
-    top: calc(50% - 100px - 3.5rem);
-}
+
 .slide {
     transition: all 1s ease;
     position: absolute;

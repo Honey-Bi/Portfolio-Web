@@ -5,6 +5,8 @@ import 'css/profile.css';
 import ToTop from "./ToTop";
 import { Link } from "react-router-dom";
 
+import skills from 'json/skills.json';
+
 export default function Profile() {
 
     const [selector, setSelector] = useState<Element|null>(null);
@@ -61,6 +63,41 @@ export default function Profile() {
         setCount((prev) => prev + 1);
     }
 
+    const render_skills = ():JSX.Element => {
+        let result = []
+        for (let i in skills) {
+            const skill = skills[i];
+            result.push(
+                <div className="skill-item" key={i}>
+                    <div className="skill-name">{skill.name}</div>
+                    <div className="skill-progress">
+                        <div 
+                            className="skill-bar" 
+                            style={{
+                                width:`${skill.progress}%`,
+                                backgroundColor: skill.color
+                            }}
+                        >
+                            <div className="skill-round" style={{backgroundColor: skill.color}}></div>
+                            <span className="skill-percent" style={{color: skill.color}}>{skill.progress}%</span>
+                        </div>
+                    </div>
+                    <div className="skill-content">{skill.content}</div>
+                </div>
+            );
+        }
+        return (
+            <div className="skill">{result}</div>
+        );
+    }
+
+    const openList = (e:BaseSyntheticEvent) => {
+        let target:HTMLElement  = e.target;
+        if (e.target.className === "close") target = target.parentElement!;
+        if (target.classList.contains('active')) target.classList.remove('active');
+        else target.classList.add('active');
+    }
+
     return(
         <div id="main" className="scroll">
             <Header/>
@@ -76,13 +113,13 @@ export default function Profile() {
                         <div className="square selector about" onClick={(e) => select(e, 'about')}>
                             <div className="color"></div>
                         </div>
-                        <div className="square selector summary" onClick={(e) => select(e, 'summary')}>
+                        <div className="square selector summary" onClick={(e) => select(e, 'skills')}>
                             <div className="color"></div>
                         </div>
                         <div className="square selector project" onClick={(e) => select(e, 'project')}>
                             <div className="color"></div>
                         </div>
-                        <div className="square selector skills" onClick={(e) => select(e, 'skills')}>
+                        <div className="square selector skills" onClick={(e) => select(e, 'summary')}>
                             <div className="color"></div>
                         </div>
                         <div className="square selector contact" onClick={(e) => select(e, 'contact')}>
@@ -90,6 +127,7 @@ export default function Profile() {
                         </div>
                         <div className="square"></div>
                     </div>
+                    
                     <div className="profile">
                         <div className="profile-section"> {/* 자기소개 */}
                             <div className="profile-sub" id="about">about me</div>
@@ -109,84 +147,102 @@ export default function Profile() {
                                 <li>우물안 개구리가 되지않기 위해 끊임없이 고뇌하고 있습니다.</li>
                                 <li>항상 참신한 시도를 해보려고 노력하고있습니다.</li>
                             </ul>
-                            <div className="border-project"></div>
+                            <div className="about-bundle">
+                                <span>EMAIL : <a href="mailto:biten10@naver.com">biten10@naver.com</a></span>
+                                <a href="https://github.com/Honey-Bi" target="_blink">
+                                    <i className="fa-brands fa-github"></i>
+                                    github
+                                </a>
+                            </div>
                         </div>
-                        <div className="profile-section"> {/* 요약 */}
-                            <div className="profile-sub" id="summary">summary</div>
-                                <ul className="summary-list">
-                                    <li>
-                                        <p className="summary-title">Certificate</p>
-                                        <ul>
-                                            <li>Doc
-                                                <ul className="summary-sub-list">
-                                                    <li>ITQ - 아래한글 엑셀</li>
-                                                    <li>GTQ 1급</li>
-                                                    <li>GTQ 인디자인 1급</li>
-                                                </ul>
-                                            </li>
-                                            <li>Develop
-                                                <ul className="summary-sub-list">
-                                                    <li>정보처리기능사 &#40;2016&#41;</li>
-                                                    <li>웹디자인기능사 &#40;2018&#41;</li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <p className="summary-title">Education</p>
-                                        <ul className="summary-sub-list">
-                                            <li>세명컴퓨터고등학교 졸업
-                                                <ul className="normal">
-                                                    <li>스마트 콘텐츠과</li>
-                                                    <li>2016.03 ~ 2018.02</li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
+                        <div className="profile-section"> {/* 기술 스택 */}
+                            <div className="profile-sub" id="skills">skills</div>
+                            {render_skills()} {/* div.skill */}
+                            {/* {
+                                "name": "MySQL",
+                                "progress": 20,
+                                "color" : "#ffa81f",
+                                "content": ""
+                            },
+                            {
+                                "name": "MongoDB",
+                                "progress": 20,
+                                "color" : "#54b245",
+                                "content": ""
+                            }, */}
+                            <div className="skill-border"></div>
                         </div>
                         <div className="profile-section"> {/* 프로젝트 */}
-                            <div className="profile-sub" id="project">project</div>
+                            <div className="profile-sub" id="project">
+                                <Link to={'/project'}>project
+                                <div className="underline"></div>
+                                </Link>
+                            </div>
                             <div className="profile-project">
                                 <p>
-                                    <Link className="profile-project-title" to='/project/post/Portfolio'>Portfolio Project</Link>
+                                    <Link className="profile-project-title" to='/project/post/Portfolio'>Portfolio Project</Link>    
                                     <span className="date">2023 july</span>
+                                    <a href="https://github.com/Honey-Bi/Honey-Bi.github.io" target="_blink" className="url">
+                                        <i className="fa-brands fa-github"></i>
+                                        github
+                                    </a>
                                 </p>
-                                <span>현재 보고있는 포트폴리오로 React, Typescript를 사용하여 제작하였습니다.</span>
+                                <span>현재 보고있는 포트폴리오 페이지로 React, Typescript를 사용하여 제작하였습니다.</span>
                             </div>
                             <div className="profile-project">
                                 <p>
                                     <Link className="profile-project-title" to='/project/post/Oraculum'>Oraculum</Link>
                                     <span className="date">2023 june</span>
+                                    <a href="https://port-0-oraculum-k19y2kljp1v7t6.sel4.cloudtype.app/" target="_blink" className="url">
+                                        URL
+                                    </a>
                                 </p>
-                                <span>간단한 의사결정 시뮬레이션 게임으로 Node.js를 사용하여 1인 제작하였습니다.</span>
+                                <span>간단한 의사결정 시뮬레이션 게임으로 프로젝트로, 처음으로 Node.js 사용하여 만든 1인 프로젝트 입니다.</span>
                             </div>
                             <div className="profile-project">
                                 <p>
                                     <Link className="profile-project-title"  to='/project/post/Plant'>Plant-Tree</Link>
                                     <span className="date">2023 july</span>
+                                    <a href="https://Honey-Bi.github.io/plant-tree-app" target="_blink" className="url">URL</a>
+                                    <a href="https://github.com/Honey-Bi/plant-tree-app" target="_blink" className="url">
+                                        <i className="fa-brands fa-github"></i>
+                                        github
+                                    </a>
                                 </p>
                                 <span>canvas를 사용한 애니메이션 프로젝트로, React, Typescript만을 사용하여 canvas 애니메이션을 제작하였습니다.</span>
                             </div>
+
                         </div>
-                        <div className="profile-section"> {/* 기술 스택 */}
-                            <div className="profile-sub" id="skills">skills</div>
-                            <ul className="skill_list">
-                                <li>FrontEnd
-                                    <ul className="skill_down">
-                                        <li>TypeScript</li>
-                                        <li>Jquery</li>
-                                        <li>React</li>
+                        <div className="profile-section"> {/* 요약 */}
+                            <div className="profile-sub" id="summary">summary</div>
+                            <ul className="summary-list">
+                                <li>
+                                    <span className="summary-title" onClick={openList}><div className="close"></div>Certificate</span>
+                                    <ul>
+                                        <li>Doc
+                                            <ul className="summary-sub-list">
+                                                <li>ITQ - 아래한글 엑셀</li>
+                                                <li>GTQ 1급</li>
+                                                <li>GTQ 인디자인 1급</li>
+                                            </ul>
+                                        </li>
+                                        <li>Develop
+                                            <ul className="summary-sub-list">
+                                                <li>정보처리기능사 &#40;2016&#41;</li>
+                                                <li>웹디자인기능사 &#40;2018&#41;</li>
+                                            </ul>
+                                        </li>
                                     </ul>
                                 </li>
-                                <li>BackEnd
-                                    <ul className="skill_down">
-                                        <li>Node.js</li>
-                                    </ul>
-                                </li>
-                                <li>Data
-                                    <ul className="skill_down">
-                                        <li>MySQL</li>
+                                <li>
+                                    <span className="summary-title" onClick={openList}><div className="close"></div>Education</span>
+                                    <ul className="summary-sub-list">
+                                        <li>세명컴퓨터고등학교 졸업
+                                            <ul className="normal">
+                                                <li>스마트 콘텐츠과</li>
+                                                <li>2016.03 ~ 2018.02</li>
+                                            </ul>
+                                        </li>
                                     </ul>
                                 </li>
                             </ul>
@@ -199,7 +255,10 @@ export default function Profile() {
                                     <i className="fa-brands fa-github"></i>
                                     github
                                 </a>
+<<<<<<< HEAD
                                 {/* <span>Phone : 010-5646-8894</span> */}
+=======
+>>>>>>> a64abeb2649f751d7ac239449091b88f102ceff7
                             </div>
                         </div>
                     </div>

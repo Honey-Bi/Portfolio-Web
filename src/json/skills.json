@@ -1,0 +1,45 @@
+[
+    {
+        "name": "HTML",
+        "progress": 80,
+        "color" : "#ff651d",
+        "content": "웹서비스를 기획하며 직접 html 템플릿을 구성하고, 문법을 적절히 적용하여 원하는 데이터를 원하는 위치에 넣을수 있습니다."
+    },
+    {
+        "name": "CSS",
+        "progress": 80,
+        "color" : "#29a7e5",
+        "content": "직접 CSS를 적용하여 프론트를 꾸몄습니다. 또한 모바일에서도 잘 작동할 수 있도록 기본적인 반응형에 대해 공부하였습니다."
+    },
+    {
+        "name": "Javascript",
+        "progress": 80,
+        "color" : "#f9de22",
+        "content": "javascript의 기본 문법을 익히고 jquery를 통해 직접 웹프론트에서 구동하도록 구현하고, ajax를 통해 서버와 통신하며 로그인 등을 직접 구현하였습니다."
+    },
+    {
+        "name": "Typescript",
+        "progress": 50,
+        "color" : "#2d79c7",
+        "content": "함수나 객체에 들어가는 구조에 타입을 정의할수 있고 그로인한 프로퍼티의 자동완성으로 개발 진행할 때 편의성을 얻을 수 있습니다."
+    },
+    {
+        "name": "React",
+        "progress": 40,
+        "color" : "#66dbfc",
+        "content": "컴포넌트를 나누어서 작업할수 있으며, 상태관리를 사용해봤습니다."
+    },
+    {
+        "name": "Node.js",
+        "progress": 30,
+        "color" : "#86cf31",
+        "content": "JWT를 통해 Access Token 및 Refresh Token을 구현해보았으며, express, mongoose를 활용하여 데이터베이스를 구성하고 서버를 구현해보았습니다."
+    },
+    {
+        "name": "github",
+        "progress": 25,
+        "color" : "#8c08eb",
+        "content": "github를 통해 대부분의 프로젝트 소스 코드를 관리하였으며, 포트폴리오 사이트 또한 github서버를 활용하여 관리하고있습니다.."
+    }
+    
+]

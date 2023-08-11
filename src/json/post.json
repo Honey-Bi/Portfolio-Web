@@ -68,6 +68,19 @@
                         "class":["mt-0", "mb-0"]
                     }
                 ]
+            },
+            {
+                "type": "row",
+                "class": [],
+                "body": [
+                    {
+                        "type":"link",
+                        "blank": true,
+                        "href": "https://github.com/Honey-Bi/Honey-Bi.github.io",
+                        "content":"GitHub - https://github.com/Honey-Bi/Honey-Bi.github.io",
+                        "class":["mt-1"]
+                    }
+                ]
             }
         ]
     },
@@ -120,11 +133,17 @@
                 "class":["post-img-3", "fl"]
             },
             {
-                "type":"link",
-                "blank": true,
-                "href": "https://port-0-oraculum-k19y2kljp1v7t6.sel4.cloudtype.app/",
-                "content":"https://port-0-oraculum-k19y2kljp1v7t6.sel4.cloudtype.app/",
-                "class":["mt-2"]
+                "type": "row",
+                "class": ["fl"],
+                "body": [
+                    {
+                        "type":"link",
+                        "blank": true,
+                        "href": "https://port-0-oraculum-k19y2kljp1v7t6.sel4.cloudtype.app/",
+                        "content":"DEMO - https://port-0-oraculum-k19y2kljp1v7t6.sel4.cloudtype.app/",
+                        "class":["mt-2"]
+                    }
+                ]
             }
         ]
     },
@@ -148,11 +167,30 @@
                 "class":[]
             },
             {
-                "type":"link",
-                "blank": false,
-                "href": "https://honey-bi.github.io/test/tree",
-                "content":"https://honey-bi.github.io/test/tree",
-                "class":[]
+                "type": "row",
+                "class": [],
+                "body": [
+                    {
+                        "type":"link",
+                        "blank": true,
+                        "href": "https://honey-bi.github.io/plant-tree-app/",
+                        "content":"DEMO - https://honey-bi.github.io/plant-tree-app/",
+                        "class":["mt-1"]
+                    }
+                ]
+            },
+            {
+                "type": "row",
+                "class": [],
+                "body": [
+                    {
+                        "type":"link",
+                        "blank": true,
+                        "href": "https://github.com/Honey-Bi/plant-tree-app",
+                        "content":"GitHub - https://github.com/Honey-Bi/plant-tree-app",
+                        "class":["mt-1"]
+                    }
+                ]
             }
         ]
     }

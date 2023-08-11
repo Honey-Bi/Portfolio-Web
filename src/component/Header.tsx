@@ -108,6 +108,14 @@ export default function Header() {
         window.location.reload();
     }
     const xmlns = "http://www.w3.org/2000/svg";
+    
+    let vh = window.innerHeight * 0.01
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+    window.addEventListener('resize', () => {
+        let vh = window.innerHeight * 0.01
+        document.documentElement.style.setProperty('--vh', `${vh}px`)
+    });
+
     return (
         <nav>
             <div className="nav-item nav-home">
@@ -115,8 +123,9 @@ export default function Header() {
             </div>
             <div className="nav-item mode-toggle">
                 <span onClick={clickedToggle}>
-                    <i className="fa-regular fa-sun"></i>
-                    <i className="fa-regular fa-moon"></i>
+                    <div className="sun-moon">
+                        <div className="half"></div>
+                    </div>
                     Mode
                 </span>
             </div>

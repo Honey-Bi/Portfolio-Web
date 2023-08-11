@@ -35,7 +35,7 @@ export default function Terminal() {
         }
         switch (command) {
             case 'whoami': 
-                add_div.textContent = 'HyeonBi Yu / Developer';
+                add_div.textContent = 'HyeonBi Yu / Developer / Creator';
                 break;
             case 'pwd':
                 add_div.textContent = document.location.href;

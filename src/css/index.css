@@ -26,6 +26,12 @@ body {
   overflow: hidden;
   transition: background-color ease 0.5s;
 }
+#main {
+  position: relative;
+  width: 100vw;
+  height: calc(var(--vh, 1vh) * 100);
+  overflow: hidden;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -41,10 +47,13 @@ code {
 .dark {
   background-color: var(--base-dark) !important;
   color: #fff !important;
-  & span:not(.album > *, .post *, .whoami > *, .terminal *), 
+  & span:not(.album > *, .post *, .whoami > *, .terminal *, .profile *), 
   & a:not(.profile *, .post *, .terminal *) , 
   & i {
     color: #fff !important;
+  }
+  & text {
+    fill: #fff;
   }
 }
 .container {
@@ -75,12 +84,16 @@ code {
   }
 } */
 :root {
-  --base-color-1: #fff7ab;
   --base-color-project: #B5F1CC;
   --base-color-test1: #FFCEFE;
   --base-color-concept: #FF9B9B;
   --base-color-making: #B9F3FC;
   --base-color-profile: #FFD6A5;
+  --base-color-1: #B5F1CC;
+  --base-color-2: #FFCEFE;
+  --base-color-3: #FF9B9B;
+  --base-color-4: #B9F3FC;
+  --base-color-5: #FFD6A5;
   --base-color: #cecece;
   --base-dark: #343a40;
   /* FFD6A5 AA96DA */
@@ -95,5 +108,32 @@ code {
       &:hover {
         text-decoration: underline;
       }
+  }
+}
+.project-list {
+  transition: transform 0.5s ease;
+}
+.mushroom {
+  .project-list {
+    transform: scale(1.1) translate(-50%, -50%);
+  }
+}
+.mushroom2 {
+  .project-list {
+    transform: scale(1.2) translate(-50%, -50%);
+  }
+}
+@media (max-width: 768px) { 
+  .mushroom {
+    .project-list {
+      transform: translate(-50% , 0);
+      font-size: calc(16px * 1.1);
+    }
+  }
+  .mushroom2 {
+    .project-list {
+      transform: translate(-50% , 0);
+      font-size: calc(16px * 1.2);
+    }
   }
 }
