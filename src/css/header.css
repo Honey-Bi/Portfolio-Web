@@ -25,9 +25,15 @@ nav {
     & .dropZone {
         box-shadow: 0 0 3px 4px #ff7a7a inset; 
     }
+    .sun-moon {
+        border-color: #fff;
+        & > .half {
+            background-color: #fff;
+        }
+    }
 }
 .dropZone {
-    box-shadow: 0 0 0 3px #ff7a7a inset; 
+    box-shadow: 0 0 0 3px #0c0808 inset; 
 }
 .nav-item {
     margin: 1rem 0 0.5rem;
@@ -41,10 +47,28 @@ nav {
 .mode-toggle span {
     cursor: pointer;
     font-weight: 600;
+    position: relative;
+    padding-left: 1.3rem;
 }
 .mode-toggle span:hover {
     text-decoration: underline;
     text-decoration-thickness: 2px;
+}
+.sun-moon {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    border: 1px solid #000;
+    position: absolute;
+    overflow: hidden;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    & > .half {
+        width: 50%;
+        height: 100%;
+        background-color: #000;
+    }
 }
 .source {
     margin: 0
@@ -82,18 +106,6 @@ nav {
         width: calc(33% - 2rem);
         margin: 0 1rem;
     }
-}
-.mode-toggle i {
-    margin-right: 2px;
-}
-.mode-toggle.active .fa-sun {
-    display: none;
-}
-.mode-toggle.active .fa-moon {
-    display: inline-block;
-}
-.mode-toggle .fa-moon {
-    display: none;
 }
 
 @media (min-width: 768px) {

@@ -123,8 +123,9 @@ export default function Header() {
             </div>
             <div className="nav-item mode-toggle">
                 <span onClick={clickedToggle}>
-                    <i className="fa-regular fa-sun"></i>
-                    <i className="fa-regular fa-moon"></i>
+                    <div className="sun-moon">
+                        <div className="half"></div>
+                    </div>
                     Mode
                 </span>
             </div>
