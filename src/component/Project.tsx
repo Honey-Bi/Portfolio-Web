@@ -103,7 +103,7 @@ function Project() {
         });
     }, [navigate])
 
-    const render_album = ():JSX.Element => {
+    const render_album = ():JSX.Element => { // 앨범 생성
         let result = [];
         let count = 0;
         for (var i of Object.values(posts)) {

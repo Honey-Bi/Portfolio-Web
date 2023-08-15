@@ -12,6 +12,7 @@ import Concept from 'component/Concept';
 import Terminal from 'component/Terminal';
 import NotFound from 'component/NotFound';
 import Project2 from 'component/Project2';
+import Project3 from 'component/Project3';
 
 function App() {
     const location = useLocation();
@@ -37,6 +38,7 @@ function App() {
                     <Route path="/" element={<Main />} />
                     <Route path="/project" element={<Project />} />
                     <Route path="/Project2" element={<Project2 />} />
+                    <Route path="/Project3" element={<Project3 />} />
                     <Route path="/project/post/:pname" element={<Post />} />
                     <Route path="/concept" element={<Concept />} />
                     <Route path="/terminal" element={<Terminal />} />

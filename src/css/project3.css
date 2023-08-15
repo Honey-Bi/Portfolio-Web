@@ -1,0 +1,37 @@
+.project-container {
+    position: relative;
+    margin: auto;
+    border: 1px solid #000;
+    width: var(--h);
+    height: var(--w);
+}
+.dark {
+    & .project-container {
+        border: 1px solid #fff;
+    }
+}
+.base {
+    display: flex;
+}
+.project-item {
+    float: left;
+    &:nth-child(1) {
+        width: var(--w);
+        height: var(--w);
+        border-right: 1px solid #fff;
+    }
+}
+@media (min-width: 768px) {
+    .project-container {
+        width: var(--w);
+        height: var(--h);
+    }
+    .project-item {
+        &:nth-child(1) {
+            width: var(--h);
+            height: var(--h);
+            border-right: 1px solid #fff;
+        }   
+    }
+  }
+  

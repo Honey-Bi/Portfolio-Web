@@ -255,10 +255,6 @@ export default function Profile() {
                                     <i className="fa-brands fa-github"></i>
                                     github
                                 </a>
-<<<<<<< HEAD
-                                {/* <span>Phone : 010-5646-8894</span> */}
-=======
->>>>>>> a64abeb2649f751d7ac239449091b88f102ceff7
                             </div>
                         </div>
                     </div>
