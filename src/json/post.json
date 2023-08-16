@@ -1,5 +1,5 @@
-{
-    "Portfolio": {
+[
+    {
         "title": "Portfolio",
         "category": "Portfolio Project",
         "author": "HB",
@@ -84,7 +84,7 @@
             }
         ]
     },
-    "Oraculum": {
+    {
         "title": "Oraculum",
         "category": "Toy Project",
         "author": "HB",
@@ -147,7 +147,7 @@
             }
         ]
     },
-    "Plant" : {
+    {
         "title": "Plant Tree",
         "category": "Animation Project",
         "author": "HB",
@@ -193,5 +193,23 @@
                 ]
             }
         ]
+    },
+    {
+        "title": "test"
+    },
+    {
+        "title": "test"
+    },
+    {
+        "title": "test"
+    },
+    {
+        "title": "test"
+    },
+    {
+        "title": "test"
+    },
+    {
+        "title": "test"
     }
-}
+]

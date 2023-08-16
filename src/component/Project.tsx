@@ -103,34 +103,34 @@ function Project() {
         });
     }, [navigate])
 
-    const render_album = ():JSX.Element => { // 앨범 생성
-        let result = [];
-        let count = 0;
-        for (var i of Object.values(posts)) {
-            const src = Object.keys(posts)[count];
-            const color = i.color;
+    // const render_album = ():JSX.Element => { // 앨범 생성
+    //     let result = [];
+    //     let count = 0;
+    //     for (var i of Object.values(posts)) {
+    //         const src = Object.keys(posts)[count];
+    //         const color = i.color;
 
-            result.push(
-                <div className="slide-item" key={src}>
-                    <div className="record">
-                        <div className="innerRound"></div>
-                    </div>
-                    <div className="record-shadow"></div>
-                    <div 
-                        className="album" 
-                        style={{backgroundColor: color}}
-                        onClick={(e) => move(e, src, color)}
-                    >
-                        <span className="album-title" style={{color: i.tColor}}>{i.title}</span>
-                        <span className="album-date" style={{color: i.tColor}}>{i.date}</span>
-                        <span className="album-category" style={{color: i.tColor}}>{i.category}</span>
-                    </div>
-                </div>
-            );
-            count++;
-        }
-        return (<>{result}</>);
-    }
+    //         result.push(
+    //             <div className="slide-item" key={src}>
+    //                 <div className="record">
+    //                     <div className="innerRound"></div>
+    //                 </div>
+    //                 <div className="record-shadow"></div>
+    //                 <div 
+    //                     className="album" 
+    //                     style={{backgroundColor: color}}
+    //                     onClick={(e) => move(e, src, color)}
+    //                 >
+    //                     <span className="album-title" style={{color: i.tColor}}>{i.title}</span>
+    //                     <span className="album-date" style={{color: i.tColor}}>{i.date}</span>
+    //                     <span className="album-category" style={{color: i.tColor}}>{i.category}</span>
+    //                 </div>
+    //             </div>
+    //         );
+    //         count++;
+    //     }
+    //     return (<>{result}</>);
+    // }
 
     const [mouse, setMouse] = useState<boolean>(false);
     const [mouseX, setMouseX] = useState<number>(0);
@@ -198,7 +198,7 @@ function Project() {
             onKeyDown={handelKeyDown}
         >
             <Header />
-            <div id="down" className="down-height">
+            {/* <div id="down" className="down-height">
                 <div className="wrap move" 
                     onWheel={moveWheel}
 
@@ -247,7 +247,7 @@ function Project() {
                 <div className="project-title">
                     project
                 </div>
-            </div>
+            </div> */}
         </div>
     );
 }

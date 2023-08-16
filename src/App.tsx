@@ -6,7 +6,7 @@ import './css/transition.css';
 
 import Main from './component/Main';
 import Post from './component/Post';
-import Project from 'component/Project';
+// import Project from 'component/Project';
 import Profile from 'component/Profile';
 import Concept from 'component/Concept';
 import Terminal from 'component/Terminal';
@@ -36,7 +36,7 @@ function App() {
                 key={location.key} timeout={800} classNames={className}>
                 <Routes location={location}>
                     <Route path="/" element={<Main />} />
-                    <Route path="/project" element={<Project />} />
+                    <Route path="/project" element={<Project3 />} />
                     <Route path="/Project2" element={<Project2 />} />
                     <Route path="/Project3" element={<Project3 />} />
                     <Route path="/project/post/:pname" element={<Post />} />
