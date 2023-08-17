@@ -1,4 +1,4 @@
-/* #main:focus-visible {
+#main:focus-visible {
     outline: none;;
 }
 .move {
@@ -254,4 +254,4 @@ button.active .fa-play, button .fa-pause {
 }
 .ease-reverse {
     transition: all 1s ease;
-} */
+}
