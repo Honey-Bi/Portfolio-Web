@@ -1,35 +1,37 @@
-.base {
+.project {
     display: flex;   
 }
 .back-button {
     position: absolute;
     top: 5%;
     left: 5%;
-    width: 3rem;
-    height: 3rem;
-    border-radius: 50%;
-    background-color: #000;
     z-index: 999;
     display: flex;
-    color: #fff;
+    height: 2.75rem;
+    & > svg {
+        fill: #000;
+        cursor: pointer;
+    }
 }
 .project-container {
     margin: auto;
     position: relative;
-    /* overflow: hidden;
-    border: 2px solid #f2f2f2; */
     .project-view {
         display: -webkit-box;
-        transition: all .8s ease;
+        transition: all .5s ease;
         position: absolute;
         width: 100%;
         height: 100%;
     }
 }
 .project-item {
+    cursor: pointer;
     z-index: 1;
     position: relative;
     animation: project-appear 0.8s ease forwards;
+    &.disabled {
+        cursor: auto;
+    }
     &.active {
         z-index: -999;
         animation: disappear 0.8s ease forwards;
@@ -47,6 +49,80 @@
                 font-size: 3rem;
                 font-weight: 600;
             }
+            .project-date, .project-author {
+                color: #fff;
+                font-weight: 500;
+            }
+            .project-about {
+                position: absolute;
+                display: flex;
+                width: 7rem;
+                height: 3rem;
+                border: 1px solid #fff;
+                right: 2rem;
+                bottom: 2rem;
+                cursor: pointer;
+                & > span {
+                    color: #fff;
+                    margin: auto;
+                    font-weight: bold;
+                    text-decoration: none;
+                    text-transform: uppercase;
+                    transition: color 0.4s ease;
+                    z-index: 1;
+                }
+                & > .back {
+                    z-index: -1;
+                    position: absolute;
+                    width: 0%;
+                    height: 100%;
+                    transition: width 0.5s ease;
+                    background-color: #fff;
+                }
+                &:hover {
+                    & > span {
+                        color: #000 !important;
+                        transition: color 0.8s ease;
+                    }
+                    & > .back {
+                        width: 100%;
+                    }
+                }
+
+            }
+            .project-link {
+                position: absolute;
+                bottom: 2rem;
+                & > a {
+                    color: #fff;
+                }
+            }
+            .project-guide {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                bottom: 2rem;
+                right: 2rem;
+                .row {
+                    display: flex;
+                    flex-direction: row;
+                    .key {
+                        width: 3rem;
+                        height: 3rem;
+                        margin: auto;
+                        color: #000;
+                        border: 2px solid #000;
+                        box-sizing: border-box;
+                        line-height: 48px;
+                        text-align: center;
+                        background-color: #fff;
+                        border-radius: 4px;
+                        & > svg {
+                            margin-top: 10px;
+                        }
+                    }
+                }
+            }
         }
     }
 }
@@ -55,6 +131,7 @@
     z-index: -1;
     display: flex;
     background-color: #fff;
+    transition: all 0.5s ease;
     &.active1 {
         transform: scale(1.61803398875) translateX(-50%);
     }
@@ -66,6 +143,11 @@
     }
     &.active4 {
         transform: scale(1.61803398875) translateY(50%);
+    }
+    &.active1, &.active2, &.active3, &.active4 {
+        & > .project-item {
+            cursor: auto;
+        }
     }
 }
 
@@ -85,8 +167,30 @@
         opacity: 0;
     }
 }
+.project-enter {
+    position: fixed;
+    width: 200vw;
+    height: 200vh;
+    border-radius: 50%;
+    z-index: 9999;
+    animation: project-enter 800ms linear forwards;
+}
+@keyframes project-enter {
+    0% {
+        clip-path: circle(0%);
+    }
+    100% {
+        clip-path: circle(100%);
+    }
+}
+
 .dark {
     & .project-list {
         background-color: var(--base-dark) !important;
+    }
+    .back-button{
+        & > svg {
+            fill: #fff;
+        }
     }
 }
