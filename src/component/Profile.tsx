@@ -6,6 +6,7 @@ import ToTop from "./ToTop";
 import { Link } from "react-router-dom";
 
 import skills from 'json/skills.json';
+import Github from "./github";
 
 export default function Profile() {
 
@@ -150,7 +151,7 @@ export default function Profile() {
                             <div className="about-bundle">
                                 <span>EMAIL : <a href="mailto:biten10@naver.com">biten10@naver.com</a></span>
                                 <a href="https://github.com/Honey-Bi" target="_blink">
-                                    <i className="fa-brands fa-github"></i>
+                                    <Github color="#068FFF" size="24"/>
                                     github
                                 </a>
                             </div>
@@ -183,7 +184,7 @@ export default function Profile() {
                                     <Link className="profile-project-title" to='/project/post/Portfolio'>Portfolio Project</Link>    
                                     <span className="date">2023 july</span>
                                     <a href="https://github.com/Honey-Bi/Honey-Bi.github.io" target="_blink" className="url">
-                                        <i className="fa-brands fa-github"></i>
+                                        <Github color="#068FFF" size="24"/>
                                         github
                                     </a>
                                 </p>
@@ -205,7 +206,7 @@ export default function Profile() {
                                     <span className="date">2023 july</span>
                                     <a href="https://Honey-Bi.github.io/plant-tree-app" target="_blink" className="url">URL</a>
                                     <a href="https://github.com/Honey-Bi/plant-tree-app" target="_blink" className="url">
-                                        <i className="fa-brands fa-github"></i>
+                                        <Github color="#068FFF" size="24"/>
                                         github
                                     </a>
                                 </p>
@@ -252,7 +253,7 @@ export default function Profile() {
                             <div className="contact-bundle">
                                 <span>EMAIL : <a href="mailto:biten10@naver.com">biten10@naver.com</a></span>
                                 <a href="https://github.com/Honey-Bi" target="_blink">
-                                    <i className="fa-brands fa-github"></i>
+                                    <Github color="#068FFF" size="24"/>
                                     github
                                 </a>
                             </div>
