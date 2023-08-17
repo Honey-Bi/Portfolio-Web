@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import Header from "./Header";
 import 'css/project2.css';
 import posts from "json/post.json"
-import { Link } from "react-router-dom";
 import Github from "./github";
 
 const golden_ratio = 1.61803398875; // 황금비
@@ -75,7 +74,7 @@ function Project4() {
 
     type flexDirection = "column" | "row-reverse" | "column-reverse" | "row";
 
-    const move = useCallback((e:React.MouseEvent, pName:string, bgColor:string) => { // 페이지 이동 함수
+    const move = useCallback((e:React.MouseEvent, pName:string, bgColor:string, index:number) => { // 페이지 이동 함수
         const main:Element = document.getElementById('main') as Element;
         const style = `
             top: -${document.body.clientHeight - e.pageY}px;
@@ -86,9 +85,8 @@ function Project4() {
         add_element.classList.add('project-enter');
         add_element.setAttribute('style', style);
         main.after(add_element)
-
         navigate(`./post/${pName}`,{
-            state: { color: bgColor },
+            state: { color: bgColor, index: index},
         });
     }, [navigate])
 
@@ -115,6 +113,24 @@ function Project4() {
             scale /= golden_ratio;
             rotate += 90
         }
+
+        let links = [];
+        if(data.github !== null) {
+            links.push(
+                <a href={data.github} target="_blank" rel="noreferrer">
+                    <Github color="#fff" size="24"/>
+                    github
+                </a>
+            )
+        }
+        if (data.demo !== null) {
+            links.push(
+                <a href={data.demo} target="_blank" rel="noreferrer">
+                    Demo
+                </a>
+            )
+        }
+
         return(
             <>
             <div className={`project-item ${count < depth?'active':''}`}
@@ -129,18 +145,16 @@ function Project4() {
                         backgroundColor: data.color,
                         transform: `rotate(${rotate}deg)`
                     }}>
-                        <div className="project-title" style={{color: data.tColor}}>{data.title}</div>
+                        <div className="project-title">{data.title}</div>
                         <span className="project-date">{data.date}</span>
                         <span className="project-author"> - {data.author}</span>
-                        <div className="project-about" onClick={e => move(e, data.title, data.color)}>
+                        <div className="project-about" onClick={e => move(e, data.title, data.color, index)}>
                             <div className="back"></div>
                             <span>about</span>
                         </div>
                         <div className="project-link">
-                            <a href="https://github.com/Honey-Bi/Honey-Bi.github.io" target="_blank" rel="noreferrer">
-                                <Github color="#fff" size="24"/>
-                                github
-                            </a>
+                            {links}
+                            
                         </div>
                     </div>
                 </div>
@@ -212,20 +226,28 @@ function Project4() {
                                 <div className="project-content">
                                     <div className="project-title">Project</div>
                                     <div className="project-guide">
-                                        <div className="row">
-                                            <div className="key">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
-                                            </div>
+                                        <div className="mouse-guide">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"viewBox="0 0 16 16"> 
+                                                <path d="M8 3a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 3zm4 8a4 4 0 0 1-8 0V5a4 4 0 1 1 8 0v6zM8 0a5 5 0 0 0-5 5v6a5 5 0 0 0 10 0V5a5 5 0 0 0-5-5z"/> 
+                                            </svg>
                                         </div>
-                                        <div className="row">
-                                            <div className="key">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                                        <span>or</span>
+                                        <div className="key-guide">
+                                            <div className="row">
+                                                <div className="key">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+                                                </div>
                                             </div>
-                                            <div className="key">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
-                                            </div>
-                                            <div className="key">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                            <div className="row">
+                                                <div className="key">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                                                </div>
+                                                <div className="key">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+                                                </div>
+                                                <div className="key">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
