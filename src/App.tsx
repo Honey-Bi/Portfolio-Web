@@ -11,8 +11,7 @@ import Profile from 'component/Profile';
 import Concept from 'component/Concept';
 import Terminal from 'component/Terminal';
 import NotFound from 'component/NotFound';
-import Project2 from 'component/Project2';
-import Project3 from 'component/Project3';
+import Project4 from 'component/Project2';
 
 function App() {
     const location = useLocation();
@@ -36,9 +35,8 @@ function App() {
                 key={location.key} timeout={800} classNames={className}>
                 <Routes location={location}>
                     <Route path="/" element={<Main />} />
-                    <Route path="/project" element={<Project3 />} />
-                    <Route path="/Project2" element={<Project2 />} />
-                    <Route path="/Project3" element={<Project3 />} />
+                    <Route path="/project" element={<Project4 />} />
+                    <Route path="/Project4" element={<Project4 />} />
                     <Route path="/project/post/:pname" element={<Post />} />
                     <Route path="/concept" element={<Concept />} />
                     <Route path="/terminal" element={<Terminal />} />
