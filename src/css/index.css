@@ -50,8 +50,8 @@ code {
 .dark {
   background-color: var(--base-dark) !important;
   color: #fff !important;
-  & span:not(.album > *, .post *, .whoami > *, .terminal *, .profile *), 
-  & a:not(.profile *, .post *, .terminal *) , 
+  & span:not(.album > *, .post *, .whoami > *, .terminal *, .profile * , .project *), 
+  & a:not(.profile *, .post *, .terminal *, .project *) , 
   & i {
     color: #fff !important;
   }
