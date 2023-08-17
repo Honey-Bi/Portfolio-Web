@@ -5,8 +5,8 @@
         "author": "HB",
         "date": "2023 July",
         "color": "#FF9B9B",
-        "github": "",
-        "demo": "",
+        "github": "https://github.com/Honey-Bi/Honey-Bi.github.io",
+        "demo": null,
         "body": [
             {
                 "type":"img",
@@ -91,7 +91,8 @@
         "author": "HB",
         "date": "2023 June",
         "color": "#112D4E",
-        "tColor": "#fff",
+        "github": null,
+        "demo": "https://port-0-oraculum-k19y2kljp1v7t6.sel4.cloudtype.app/",
         "body": [
             {
                 "type":"img",
@@ -154,7 +155,8 @@
         "author": "HB",
         "date": "2023 June",
         "color": "#B5F1CC",
-        "tColor": "#fff",
+        "github": "https://honey-bi.github.io/plant-tree-app/",
+        "demo": "https://github.com/Honey-Bi/plant-tree-app",
         "body": [
             {
                 "type":"img",
