@@ -6,6 +6,9 @@ body {
   background-color: white;
   overflow: hidden;
 }
+#main:focus-visible {
+  outline: none;
+}
 #down {
   position: relative;
   z-index: 1;
