@@ -1,5 +1,5 @@
 import Header from './Header';
-import 'css/project.css';
+// import 'css/project.css';
 import { BaseSyntheticEvent, useCallback, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import posts from'json/post.json';
