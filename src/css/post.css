@@ -23,53 +23,63 @@
     margin-right: auto;
     width: 33.333%;
     text-align: left;
-}
-.project-home::after {
-    display: inline-block;
-    content: "home";
-    text-transform: uppercase;
-    color: #fff;
+    &::after {
+        display: inline-block;
+        content: "home";
+        text-transform: uppercase;
+        color: #fff;
+    }
 }
 .project-exit {
     width: 33.333%;
     text-align: right;
     margin-left: auto;
-}
-.project-exit::after {
-    display: inline-block;
-    content: "\00d7";
-    font-size: 2rem;
-    font-weight: 600;
-    color: #fff;
-    cursor: pointer;
+    &::after {
+        display: inline-block;
+        content: "\00d7";
+        font-size: 2rem;
+        font-weight: 600;
+        color: #fff;
+        cursor: pointer;
+    }
 }
 .post-body {
     padding: 1rem;
     overflow: hidden;
     /* display: flex;
     flex-direction: column; */
-}
-.post-body img {
-    width: 100%;
-    height: 100%;
-    margin: 0.2rem auto;
-    display: block;
-}
-.post-body > p {
-    width: 100%;
-    &::after {
-        content: '\00a0';
+    & img {
+        width: 100%;
+        height: 100%;
+        margin: 0.2rem auto;
+        display: block;
     }
-}
-.post a {
-    display: inline-block;
-    color: #000 !important;
+    & > p {
+        width: 100%;
+        &::after {
+            content: '\00a0';
+        }
+    }
+    & a {
+        display: inline-block;
+        color: #000 !important;
+    }
 }
 .row {
     display: flex;
     flex-direction: column;
-    & p {
+    & > p {
         width: 100%;
+    }
+}
+.post-foot {
+    padding: 1rem;
+    & > a {
+        color: #000;
+        display: table;
+    }
+    & > a + a {
+        margin-top: 1rem;
     }
 }
 @media (min-width: 768px) {
@@ -155,26 +165,28 @@
         box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.08), 0 0 15px 0 rgba(0, 0, 0, 0.02), 0 0 20px 4px rgba(0, 0, 0, 0.06);
     }
 }
-.post-title {
-    border-bottom: 1px solid rgba(0,0,0,.12);
-    padding: 1rem;
-    font-size: 3rem;
-    font-weight: 100;
-}
-.post-sub {
-    display: flex;
-    margin-top: 0.2rem;
-    margin-bottom: 2rem;
-}
-.post-category {
-    padding-left: clamp(0.2rem, 2vw, 1rem);
-    font-weight: 500;
-    margin-right: auto;
-}
-.post-date {
-    padding-right: clamp(0.2rem, 2vw, 1rem);
-    font-weight: 300;
-    margin-left: auto;
+.post-head {
+    & > .post-title {
+        border-bottom: 1px solid rgba(0,0,0,.12);
+        padding: 1rem;
+        font-size: 3rem;
+        font-weight: 100;
+    }
+    & > .post-sub {
+        display: flex;
+        margin-top: 0.2rem;
+        margin-bottom: 2rem;
+        & > .post-category {
+            padding-left: clamp(0.2rem, 2vw, 1rem);
+            font-weight: 500;
+            margin-right: auto;
+        }
+        & > .post-date {
+            padding-right: clamp(0.2rem, 2vw, 1rem);
+            font-weight: 300;
+            margin-left: auto;
+        }
+    }
 }
 .not-dark {
     color: #000 !important;

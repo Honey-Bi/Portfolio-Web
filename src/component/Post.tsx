@@ -51,6 +51,7 @@ export default function Post() {
         for (let c of data.class) img.classList.add(c);
         body.appendChild(img);
     }, []);
+
     const add_text = useCallback((data:TextData, body:HTMLDivElement) => {
         const text = document.createElement('p');
         for (let c of data.class) {text.classList.add(c)};
@@ -58,6 +59,7 @@ export default function Post() {
         text.textContent = data.content;
         body.appendChild(text);
     }, []);
+
     const add_link = useCallback((data:LinkData, body:HTMLDivElement) => {
         const a = document.createElement('a');
         for (let c of data.class) {a.classList.add(c)};
@@ -66,6 +68,7 @@ export default function Post() {
         a.textContent = data.content;
         body.appendChild(a);
     }, []);
+
     const add_item = useCallback((data:ImgData|TextData|RowData, body:HTMLDivElement) => {
         switch (data.type) {
             case "img":
@@ -89,13 +92,13 @@ export default function Post() {
         }
     }, [add_img, add_link, add_text])
 
+    const index = (location.state) ? location.state.index : -1;
     const [data, setData] = useState<PostData|null>(null);
     const color:string = (location.state) ? location.state.color : data?.color;
-    const index = (location.state) ? location.state.index : -1;
+
     useEffect(() => {
         if (pname === undefined || index === -1) return navigate('/404');
         setData(posts[index]);
-        // setData(Object.values(posts)[Object.keys(posts).indexOf(pname)]);
         if (bodyRef.current && data) {
             const body = bodyRef.current;
             body.textContent = '';
@@ -129,6 +132,26 @@ export default function Post() {
     const root = document.getElementById('root');
     if (root !== null && isDark === 'on') root.classList.add('dark');
 
+    function renderFoot():JSX.Element {
+        let result = [];
+        if(data === null) return(<></>);
+        if (data.demo !== null) {
+            result.push(
+                <a href={data.demo} key={data.demo} target="_blank" rel="noopener noreferrer">DEMO - {data.demo}</a>
+            )
+        }
+        if (data.github !== null) {
+            result.push(
+                <a href={data.github} key={data.github} target="_blank" rel="noopener noreferrer">Github - {data.github}</a>
+            )
+        }
+        return(
+            <div className="post-foot">
+                {result}
+            </div>
+        )
+    }
+
     return(
         <div 
             id="main" className="not-dark scroll"
@@ -146,19 +169,16 @@ export default function Post() {
             </div>
             <div className="container post-transition"> 
                 <div className="post">
-                    <div className="post-title">
-                        { getTitle() }
-                    </div>
-                    <div className="post-sub">
-                        <div className="post-category">
-                            { getCategory() } / { getAuthor() }
-                        </div>
-                        <div className="post-date">
-                            { getPostDate() }
+                    <div className="post-head">
+                        <div className="post-title">{ getTitle() }</div>
+                        <div className="post-sub">
+                            <div className="post-category">{ getCategory() } / { getAuthor() }</div>
+                            <div className="post-date">{ getPostDate() }</div>
                         </div>
                     </div>
                     <div className="post-body" ref={bodyRef}>
                     </div>
+                    {renderFoot()}
                 </div>
                 <ToTop color='#fff'/>
             </div>
