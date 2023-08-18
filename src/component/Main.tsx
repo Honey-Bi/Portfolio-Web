@@ -46,7 +46,7 @@ function Main() {
     }
 
     const [wheel, setWheel] = useState<number>(0);
-    function rotateWheel(e: any): void {
+    function rotateWheel(e: React.WheelEvent): void {
         if (e.deltaY > 0) { //down
             setWheel(wheel + 20);
         } else if (e.deltaY < 0) { //up
