@@ -25,13 +25,13 @@
                 "body": [
                     { 
                         "type":"img",
-                        "src":"portfolio_cd2.png",
+                        "src":"portfolio_list.png",
                         "alt":"프로젝트 페이지",
                         "class":["post-img-s", "fl", "mr-1", "border-0-0-0-02"]
                     },
                     {
                         "type":"text",
-                        "content":"프로젝트 소개를 어떻게 할까 고민하다가 휴대폰 뮤직 플레이어에서 영감을 받았습니다. 프로젝트마다 가지고 있는 브랜드 컬러를 추출해 앨범 커버를 제작하였고 마우스를 호버하면 옆으로 cd가 뽑아져 나와 유저가 선택을 했다는 느낌을 줄수있도록 제작하였습니다.",
+                        "content":"프로젝트 소개를 어떻게 할까 고민하다가 제가 가장 좋아하는 만화 '죠죠의 기묘한 모험' 와 휴대폰 뮤직 플레이어에서 영감을 받았습니다. 해당 만화에서 주인공이 사용한 기술을 처럼 황금비와 나선을 이용하여 프로젝트 리스트를 제작하였습니다. 또한 프로젝트마다 가지고 있는 브랜드 컬러를 추출해 앨범 커버를 제작하였습니다.",
                         "class":["mt-0", "mb-0"]
                     }
                 ]
@@ -67,19 +67,6 @@
                         "type":"text",
                         "content": "사이트 헤더의 여러 버튼들은 제가 어릴적 상상력을 키울때 도움이 되었던 여러 매체의 아이템들을 웹페이지에 적용해보면 어떨까? 라는 아이디어에서 나온 결과물 입니다. 버섯을 넣으면 내부 요소들이 확대되고 물약을 넣으면 내부 요소들이 변화되게 만들었습니다.",
                         "class":["mt-0", "mb-0"]
-                    }
-                ]
-            },
-            {
-                "type": "row",
-                "class": [],
-                "body": [
-                    {
-                        "type":"link",
-                        "blank": true,
-                        "href": "https://github.com/Honey-Bi/Honey-Bi.github.io",
-                        "content":"GitHub - https://github.com/Honey-Bi/Honey-Bi.github.io",
-                        "class":["mt-1"]
                     }
                 ]
             }
@@ -133,19 +120,6 @@
                 "src":"oraculum_admin_3.png",
                 "alt":"어드민페이지 이미지 추가",
                 "class":["post-img-3", "fl"]
-            },
-            {
-                "type": "row",
-                "class": ["fl"],
-                "body": [
-                    {
-                        "type":"link",
-                        "blank": true,
-                        "href": "https://port-0-oraculum-k19y2kljp1v7t6.sel4.cloudtype.app/",
-                        "content":"DEMO - https://port-0-oraculum-k19y2kljp1v7t6.sel4.cloudtype.app/",
-                        "class":["mt-2"]
-                    }
-                ]
             }
         ]
     },
@@ -168,32 +142,6 @@
                 "type":"text",
                 "content":"Plant Tree는 포트폴리오의 콘셉트 페이지를 만들기위해 여러가지 아이디어를 시도를 하다가 나온 토이 프로젝트입니다. react와 typescript 그리고 canvas를 사용하여 만든 간단한 프로젝트로 마우스로 빈공간을 클릭하여 나무를 생성할수 있습니다.",
                 "class":[]
-            },
-            {
-                "type": "row",
-                "class": [],
-                "body": [
-                    {
-                        "type":"link",
-                        "blank": true,
-                        "href": "https://honey-bi.github.io/plant-tree-app/",
-                        "content":"DEMO - https://honey-bi.github.io/plant-tree-app/",
-                        "class":["mt-1"]
-                    }
-                ]
-            },
-            {
-                "type": "row",
-                "class": [],
-                "body": [
-                    {
-                        "type":"link",
-                        "blank": true,
-                        "href": "https://github.com/Honey-Bi/plant-tree-app",
-                        "content":"GitHub - https://github.com/Honey-Bi/plant-tree-app",
-                        "class":["mt-1"]
-                    }
-                ]
             }
         ]
     }
