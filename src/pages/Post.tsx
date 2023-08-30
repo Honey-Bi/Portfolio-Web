@@ -1,4 +1,4 @@
-import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useRef, useEffect, useState, useCallback } from "react";
 import "css/post.css";
 import ToTop from "components/ToTop";
@@ -6,7 +6,6 @@ import posts from "json/post.json";
 
 export default function Post() {
   const navigate = useNavigate();
-  const location = useLocation();
   const { pname } = useParams();
   const bodyRef = useRef<HTMLDivElement>(null);
   type ImgData = {
@@ -104,14 +103,12 @@ export default function Post() {
     [add_img, add_link, add_text]
   );
 
-  const index = location.state ? location.state.index : -1;
   // 게시글 내용 데이터
   const [data, setData] = useState<PostData | null>(null);
-  const color: string = location.state ? location.state.color : data?.color;
 
   useEffect(() => {
-    if (pname === undefined || index === -1) return navigate("/404");
-    setData(posts[index]);
+    if (pname === undefined) return navigate("/404");
+    setData(posts[Number(pname)]);
     if (bodyRef.current && data) {
       const body = bodyRef.current;
       body.textContent = "";
@@ -119,24 +116,7 @@ export default function Post() {
         add_item(i, body);
       }
     }
-  }, [add_item, bodyRef, data, index, navigate, pname]);
-
-  const getTitle = (): string => {
-    if (data) return data.title;
-    return "";
-  };
-  const getCategory = (): string => {
-    if (data) return data.category;
-    return "";
-  };
-  const getAuthor = (): string => {
-    if (data) return data.author;
-    return "";
-  };
-  const getPostDate = (): string => {
-    if (data) return data.date;
-    return "";
-  };
+  }, [add_item, bodyRef, data, navigate, pname]);
 
   const project_enter: Element | null =
     document.getElementsByClassName("project-enter")[0];
@@ -146,17 +126,18 @@ export default function Post() {
   const root = document.getElementById("root");
   if (root !== null && isDark === "on") root.classList.add("dark");
 
+  // 푸터 렌더링 함수
   function renderFoot(): JSX.Element {
     let result = [];
     if (data === null) return <></>;
-    if (data.demo !== null) {
+    if (data.demo) {
       result.push(
         <a href={data.demo} key={data.demo} target="_blank" rel="noopener noreferrer">
           DEMO - {data.demo}
         </a>
       );
     }
-    if (data.github !== null) {
+    if (data.github) {
       result.push(
         <a href={data.github} key={data.github} target="_blank" rel="noopener noreferrer">
           Github - {data.github}
@@ -171,14 +152,14 @@ export default function Post() {
       id="main"
       className="not-dark scroll"
       style={{
-        backgroundColor: color,
+        backgroundColor: data ? data.color : "#fff",
       }}
     >
       <div id="top"></div>
       <div
         className="project-nav"
         style={{
-          backgroundColor: color,
+          backgroundColor: data ? data.color : "#fff",
         }}
       >
         <Link to={"/"} className="project-home" />
@@ -187,12 +168,12 @@ export default function Post() {
       <div className="container post-transition">
         <div className="post">
           <div className="post-head">
-            <div className="post-title">{getTitle()}</div>
+            <div className="post-title">{data ? data.title : ""}</div>
             <div className="post-sub">
               <div className="post-category">
-                {getCategory()} / {getAuthor()}
+                {data ? data.category : ""} / {data ? data.author : ""}
               </div>
-              <div className="post-date">{getPostDate()}</div>
+              <div className="post-date">{data ? data.date : ""}</div>
             </div>
           </div>
           <div className="post-body" ref={bodyRef}></div>

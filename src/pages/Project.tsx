@@ -179,7 +179,7 @@ function Project() {
               <button
                 className="project-about"
                 disabled={depth >= count ? false : true}
-                onClick={(e) => move(e, data.title, data.color, index)}
+                onClick={(e) => move(e, index, data.color)}
               >
                 <div className="back"></div>
                 <span>about</span>
