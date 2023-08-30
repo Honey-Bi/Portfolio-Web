@@ -8,6 +8,8 @@ import { Link } from "react-router-dom";
 import skills from "json/skills.json";
 import Github from "../components/github";
 
+import posts from "json/post.json";
+
 export default function Profile() {
   const [selector, setSelector] = useState<Element | null>(null);
   const [beforeSame, setBeaforeSave] = useState<boolean>(true);
@@ -78,10 +80,7 @@ export default function Profile() {
                 backgroundColor: skill.color,
               }}
             >
-              <div
-                className="skill-round"
-                style={{ backgroundColor: skill.color }}
-              ></div>
+              <div className="skill-round" style={{ backgroundColor: skill.color }}></div>
               <span className="skill-percent" style={{ color: skill.color }}>
                 {skill.progress}%
               </span>
@@ -101,6 +100,41 @@ export default function Profile() {
     else target.classList.add("active");
   };
 
+  function renderProjectList(): JSX.Element {
+    let result = [];
+    for (let i of posts) {
+      let urls = [];
+      if (i.github) {
+        urls.push(
+          <a href={i.github} target="_blink" className="url">
+            <Github color="#068FFF" size="24" />
+            github
+          </a>
+        );
+      }
+      if (i.demo) {
+        urls.push(
+          <a href={i.demo} target="_blink" className="url">
+            URL
+          </a>
+        );
+      }
+      result.push(
+        <div className="profile-project">
+          <p>
+            <Link className="profile-project-title" to={`/project/post/${i.title}`}>
+              {i.title}
+            </Link>
+            <span className="date">{i.date}</span>
+            {urls}
+          </p>
+          <span>{i.brief}</span>
+        </div>
+      );
+    }
+    return <>{result}</>;
+  }
+
   return (
     <div id="main" className="scroll">
       <Header />
@@ -110,16 +144,10 @@ export default function Profile() {
           <div className="time-line">
             <div className="line"></div>
             <div className="square"></div>
-            <div
-              className="square selector about"
-              onClick={(e) => select(e, "about")}
-            >
+            <div className="square selector about" onClick={(e) => select(e, "about")}>
               <div className="color"></div>
             </div>
-            <div
-              className="square selector summary"
-              onClick={(e) => select(e, "skills")}
-            >
+            <div className="square selector summary" onClick={(e) => select(e, "skills")}>
               <div className="color"></div>
             </div>
             <div
@@ -128,10 +156,7 @@ export default function Profile() {
             >
               <div className="color"></div>
             </div>
-            <div
-              className="square selector skills"
-              onClick={(e) => select(e, "summary")}
-            >
+            <div className="square selector skills" onClick={(e) => select(e, "summary")}>
               <div className="color"></div>
             </div>
             <div
@@ -144,9 +169,8 @@ export default function Profile() {
           </div>
 
           <div className="profile">
+            {/* 자기소개 */}
             <div className="profile-section">
-              {" "}
-              {/* 자기소개 */}
               <div className="profile-sub" id="about">
                 about me
               </div>
@@ -159,26 +183,20 @@ export default function Profile() {
                   <div className="name">HB</div>
                 </div>
               </div>
+              <p>재미있는 아이디어를 상상하고 구현하는것을 즐기는 주니어 개발자입니다.</p>
               <p>
-                재미있는 아이디어를 상상하고 구현하는것을 즐기는 주니어
-                개발자입니다.
-              </p>
-              <p>
-                언제나 시도를 두려워하지 않으며, 문제에 직면하면 적극적으로
-                해결책을 찾아내고자 합니다. 이러한 자세로 다양한 프로젝트를
-                진행하고, 기술적인 도전과 성장을 지속적으로 추구합니다.
+                언제나 시도를 두려워하지 않으며, 문제에 직면하면 적극적으로 해결책을
+                찾아내고자 합니다. 이러한 자세로 다양한 프로젝트를 진행하고, 기술적인
+                도전과 성장을 지속적으로 추구합니다.
               </p>
               <ul className="thinking">
                 <li>기본은 항상 중요하다고 생각하고 있습니다.</li>
-                <li>
-                  우물안 개구리가 되지않기 위해 끊임없이 고뇌하고 있습니다.
-                </li>
+                <li>우물안 개구리가 되지않기 위해 끊임없이 고뇌하고 있습니다.</li>
                 <li>항상 참신한 시도를 해보려고 노력하고있습니다.</li>
               </ul>
               <div className="about-bundle">
                 <span>
-                  EMAIL :{" "}
-                  <a href="mailto:biten10@naver.com">biten10@naver.com</a>
+                  EMAIL : <a href="mailto:biten10@naver.com">biten10@naver.com</a>
                 </span>
                 <a href="https://github.com/Honey-Bi" target="_blink">
                   <Github color="#068FFF" size="24" />
@@ -186,9 +204,8 @@ export default function Profile() {
                 </a>
               </div>
             </div>
+            {/* 기술 스택 */}
             <div className="profile-section">
-              {" "}
-              {/* 기술 스택 */}
               <div className="profile-sub" id="skills">
                 skills
               </div>
@@ -207,94 +224,18 @@ export default function Profile() {
                             }, */}
               <div className="skill-border"></div>
             </div>
+            {/* 프로젝트 */}
             <div className="profile-section">
-              {" "}
-              {/* 프로젝트 */}
               <div className="profile-sub" id="project">
                 <Link to={"/project"}>
                   project
                   <div className="underline"></div>
                 </Link>
               </div>
-              <div className="profile-project">
-                <p>
-                  <Link
-                    className="profile-project-title"
-                    to="/project/post/Portfolio"
-                  >
-                    Portfolio Project
-                  </Link>
-                  <span className="date">2023 july</span>
-                  <a
-                    href="https://github.com/Honey-Bi/Honey-Bi.github.io"
-                    target="_blink"
-                    className="url"
-                  >
-                    <Github color="#068FFF" size="24" />
-                    github
-                  </a>
-                </p>
-                <span>
-                  현재 보고있는 포트폴리오 페이지로 React, Typescript를 사용하여
-                  제작하였습니다.
-                </span>
-              </div>
-              <div className="profile-project">
-                <p>
-                  <Link
-                    className="profile-project-title"
-                    to="/project/post/Oraculum"
-                  >
-                    Oraculum
-                  </Link>
-                  <span className="date">2023 june</span>
-                  <a
-                    href="https://port-0-oraculum-k19y2kljp1v7t6.sel4.cloudtype.app/"
-                    target="_blink"
-                    className="url"
-                  >
-                    URL
-                  </a>
-                </p>
-                <span>
-                  간단한 의사결정 시뮬레이션 게임으로 프로젝트로, 처음으로
-                  Node.js 사용하여 만든 1인 프로젝트 입니다.
-                </span>
-              </div>
-              <div className="profile-project">
-                <p>
-                  <Link
-                    className="profile-project-title"
-                    to="/project/post/Plant"
-                  >
-                    Plant-Tree
-                  </Link>
-                  <span className="date">2023 july</span>
-                  <a
-                    href="https://Honey-Bi.github.io/plant-tree-app"
-                    target="_blink"
-                    className="url"
-                  >
-                    URL
-                  </a>
-                  <a
-                    href="https://github.com/Honey-Bi/plant-tree-app"
-                    target="_blink"
-                    className="url"
-                  >
-                    <Github color="#068FFF" size="24" />
-                    github
-                  </a>
-                </p>
-                <span>
-                  canvas를 사용한 애니메이션 프로젝트로, React, Typescript만을
-                  사용하여 canvas 애니메이션을 제작하였습니다.
-                </span>
-              </div>
+              {renderProjectList()}
             </div>
+            {/* 요약 */}
             <div className="profile-section">
-              {" "}
-              {/* 요약 */}
               <div className="profile-sub" id="summary">
                 summary
               </div>
@@ -338,15 +279,13 @@ export default function Profile() {
               </ul>
             </div>
             <div className="profile-section">
-              {" "}
               {/* contact */}
               <div className="profile-sub" id="contact">
                 contact
               </div>
               <div className="contact-bundle">
                 <span>
-                  EMAIL :{" "}
-                  <a href="mailto:biten10@naver.com">biten10@naver.com</a>
+                  EMAIL : <a href="mailto:biten10@naver.com">biten10@naver.com</a>
                 </span>
                 <a href="https://github.com/Honey-Bi" target="_blink">
                   <Github color="#068FFF" size="24" />

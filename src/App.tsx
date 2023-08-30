@@ -4,8 +4,8 @@ import { CSSTransition, SwitchTransition } from "react-transition-group";
 import "./css/index.css";
 import "./css/transition.css";
 
-import Main from "./pages/Main";
-import Post from "./pages/Post";
+import Main from "pages/Main";
+import Post from "pages/Post";
 import Profile from "pages/Profile";
 import Concept from "pages/Concept";
 import Terminal from "pages/Terminal";

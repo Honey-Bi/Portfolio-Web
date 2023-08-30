@@ -1,6 +1,7 @@
 body {
   margin: 0;
-  font-family: "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "sans-serif";
+  font-family: "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "sans-serif";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: white;
@@ -36,22 +37,30 @@ body {
   overflow: hidden;
 }
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 .scroll {
   overflow-y: scroll !important;
-  -ms-overflow-style: none; 
+  -ms-overflow-style: none;
   scrollbar-width: none;
   &::-webkit-scrollbar {
-      display: none;
+    display: none;
   }
 }
 .dark {
   background-color: var(--base-dark) !important;
   color: #fff !important;
-  & span:not(.album > *, .post *, .whoami > *, .terminal *, .profile * , .project *), 
-  & a:not(.profile *, .post *, .terminal *, .project *) , 
+  &
+    span:not(
+      .album > *,
+      .post *,
+      .whoami > *,
+      .terminal *,
+      .profile *,
+      .project *
+    ),
+  & a:not(.profile *, .post *, .terminal *, .project *),
   & i {
     color: #fff !important;
   }
@@ -65,19 +74,19 @@ code {
 
 @media (min-width: 576px) {
   .container {
-    max-width:540px
+    max-width: 540px;
   }
 }
 
 @media (min-width: 768px) {
   .container {
-      max-width:720px
+    max-width: 720px;
   }
 }
 
 @media (min-width: 992px) {
   .container {
-    max-width:960px
+    max-width: 960px;
   }
 }
 
@@ -87,30 +96,30 @@ code {
   }
 } */
 :root {
-  --base-color-project: #B5F1CC;
-  --base-color-test1: #FFCEFE;
-  --base-color-concept: #FF9B9B;
-  --base-color-making: #B9F3FC;
-  --base-color-profile: #FFD6A5;
-  --base-color-1: #B5F1CC;
-  --base-color-2: #FFCEFE;
-  --base-color-3: #FF9B9B;
-  --base-color-4: #B9F3FC;
-  --base-color-5: #FFD6A5;
+  --base-color-project: #b5f1cc;
+  --base-color-test1: #ffcefe;
+  --base-color-concept: #ff9b9b;
+  --base-color-making: #b9f3fc;
+  --base-color-profile: #ffd6a5;
+  --base-color-1: #b5f1cc;
+  --base-color-2: #ffcefe;
+  --base-color-3: #ff9b9b;
+  --base-color-4: #b9f3fc;
+  --base-color-5: #ffd6a5;
   --base-color: #cecece;
   --base-dark: #343a40;
   /* FFD6A5 AA96DA */
-} 
+}
 .toTop {
-  text-align: center; 
+  text-align: center;
   position: relative;
   margin-bottom: 1.5rem;
   & span {
-      color: #aaa;
-      cursor: pointer;
-      &:hover {
-        text-decoration: underline;
-      }
+    color: #aaa;
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 .project-list {
@@ -126,16 +135,16 @@ code {
     transform: scale(1.2) translate(-50%, -50%);
   }
 }
-@media (max-width: 768px) { 
+@media (max-width: 768px) {
   .mushroom {
     .project-list {
-      transform: translate(-50% , 0);
+      transform: translate(-50%, 0);
       font-size: calc(16px * 1.1);
     }
   }
   .mushroom2 {
     .project-list {
-      transform: translate(-50% , 0);
+      transform: translate(-50%, 0);
       font-size: calc(16px * 1.2);
     }
   }

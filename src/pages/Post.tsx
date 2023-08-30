@@ -146,24 +146,14 @@ export default function Post() {
     if (data === null) return <></>;
     if (data.demo !== null) {
       result.push(
-        <a
-          href={data.demo}
-          key={data.demo}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a href={data.demo} key={data.demo} target="_blank" rel="noopener noreferrer">
           DEMO - {data.demo}
         </a>
       );
     }
     if (data.github !== null) {
       result.push(
-        <a
-          href={data.github}
-          key={data.github}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a href={data.github} key={data.github} target="_blank" rel="noopener noreferrer">
           Github - {data.github}
         </a>
       );

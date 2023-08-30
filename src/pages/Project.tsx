@@ -109,12 +109,7 @@ function Project() {
     const data = posts[index];
     let width = max - min;
     let height = min;
-    let direction: flexDirection[] = [
-      "row-reverse",
-      "column-reverse",
-      "row",
-      "column",
-    ];
+    let direction: flexDirection[] = ["row-reverse", "column-reverse", "row", "column"];
     let active = ["active2", "active3", "active4", "active1"];
     if (index % 2 === 0) {
       height = width;
@@ -133,12 +128,7 @@ function Project() {
     let links = [];
     if (data.github !== null) {
       links.push(
-        <a
-          href={data.github}
-          key={data.github}
-          target="_blank"
-          rel="noreferrer"
-        >
+        <a href={data.github} key={data.github} target="_blank" rel="noreferrer">
           <Github color="#fff" size="24" />
           github
         </a>
@@ -226,6 +216,7 @@ function Project() {
       </>
     );
   }
+  // 키입력 감지
   function handleKeyDown(e: React.KeyboardEvent) {
     switch (e.key) {
       case "ArrowRight":
@@ -256,12 +247,7 @@ function Project() {
   return (
     <div id="main" tabIndex={0} onKeyDown={(e) => handleKeyDown(e)}>
       <Header />
-      <div
-        id="down"
-        className="down-height project"
-        ref={baseRef}
-        onWheel={moveWheel}
-      >
+      <div id="down" className="down-height project" ref={baseRef} onWheel={moveWheel}>
         <div
           className="project-container"
           style={{ width: size.width, height: size.height }}

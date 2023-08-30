@@ -1,5 +1,16 @@
 [
   {
+    "title": "Vector-Draw",
+    "category": "Toy Project",
+    "author": "HB",
+    "date": "2023 August",
+    "color": "#068fff",
+    "github": "https://github.com/Honey-Bi/vector-draw",
+    "demo": "https://honey-bi.github.io/vector-draw/",
+    "brief": "",
+    "body": []
+  },
+  {
     "title": "Portfolio",
     "category": "Portfolio Project",
     "author": "HB",
@@ -7,6 +18,7 @@
     "color": "#FF9B9B",
     "github": "https://github.com/Honey-Bi/Honey-Bi.github.io",
     "demo": null,
+    "brief": "현재 보고있는 포트폴리오 페이지로 React, Typescript를 사용하여 제작하였습니다.",
     "body": [
       {
         "type": "img",
@@ -80,6 +92,7 @@
     "color": "#112D4E",
     "github": "https://github.com/Honey-Bi/Oraculum",
     "demo": "https://port-0-oraculum-k19y2kljp1v7t6.sel4.cloudtype.app/",
+    "brief": "간단한 의사결정 시뮬레이션 게임으로 프로젝트로, 처음으로 Node.js 사용하여 만든 1인 프로젝트 입니다.",
     "body": [
       {
         "type": "img",
@@ -131,6 +144,7 @@
     "color": "#B5F1CC",
     "github": "https://honey-bi.github.io/plant-tree-app/",
     "demo": "https://github.com/Honey-Bi/plant-tree-app",
+    "brief": "canvas를 사용한 애니메이션 프로젝트로, React, Typescript만을 사용하여 canvas 애니메이션을 제작하였습니다.",
     "body": [
       {
         "type": "img",
