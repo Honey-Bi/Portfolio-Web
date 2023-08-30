@@ -5,39 +5,29 @@ import { useEffect, useRef, useState } from "react";
 function Main() {
   const PENTAGON_SIZE = 300;
   const xmlns = "http://www.w3.org/2000/svg";
-  const lists: Array<string> = [
-    "project",
-    "concept",
-    "terminal",
-    "",
-    "profile",
-  ];
+  const lists: Array<string> = ["project", "concept", "terminal", "", "profile"];
+  // 6각형 비율 저장
   const pentagonDots = {
     center: ` ${PENTAGON_SIZE / 2}, ${PENTAGON_SIZE / 1.905759}`,
-    bottomRight: ` ${PENTAGON_SIZE / 1.2402044}, ${
-      PENTAGON_SIZE / 1.0550724637
-    }`,
-    bottomLeft: ` ${PENTAGON_SIZE / 5.2374100719}, ${
-      PENTAGON_SIZE / 1.0550724637
-    }`,
+    bottomRight: ` ${PENTAGON_SIZE / 1.2402044}, ${PENTAGON_SIZE / 1.0550724637}`,
+    bottomLeft: ` ${PENTAGON_SIZE / 5.2374100719}, ${PENTAGON_SIZE / 1.0550724637}`,
   };
 
   const navigate = useNavigate();
   const pentagonRef = useRef<SVGSVGElement>(null);
   useEffect(() => {
     const triangles = document.getElementsByClassName("triangle");
-    if (triangles.length >= 5) {
-      //추가생성 방지
-      return;
-    }
+    // 추가생성 방지
+    if (triangles.length >= 5) return;
 
     const trianglesDots =
       pentagonDots.center + pentagonDots.bottomRight + pentagonDots.bottomLeft;
     const pentagon = pentagonRef.current;
 
-    if (pentagon === null) {
-      return;
-    }
+    // 생성 영역 확인
+    if (pentagon === null) return;
+
+    // 6각형 생성
     for (var title of lists) {
       const triangle: SVGElement = document.createElementNS(xmlns, "polygon");
       triangle.setAttribute("points", trianglesDots);
@@ -53,11 +43,13 @@ function Main() {
     }
   });
 
+  // 이동용 함수
   const move = (url: string) => {
     if (url !== "./") navigate(url);
   };
 
   const [wheel, setWheel] = useState<number>(0);
+  // 스크롤 함수
   function rotateWheel(e: React.WheelEvent): void {
     if (e.deltaY > 0) {
       //down

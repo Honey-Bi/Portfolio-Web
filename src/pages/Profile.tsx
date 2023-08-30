@@ -6,7 +6,7 @@ import ToTop from "components/ToTop";
 import { Link } from "react-router-dom";
 
 import skills from "json/skills.json";
-import Github from "../components/github";
+import Github from "components/github";
 
 import posts from "json/post.json";
 
@@ -15,15 +15,17 @@ export default function Profile() {
   const [beforeSame, setBeaforeSave] = useState<boolean>(true);
   const [count, setCount] = useState<number>(0);
 
+  // 구역이동 하이퍼링크
   const select = (e: BaseSyntheticEvent, id: string): void => {
     let select_element: Element = e.target;
     if (select_element.classList.contains("color")) {
       select_element = e.target.parentNode;
     }
 
-    selector?.classList.remove("active");
+    selector!.classList.remove("active");
     select_element.classList.add("active");
 
+    // 전과 같은 이동인지 확인
     if (selector === select_element && beforeSame) {
       selector.classList.remove("active");
       setBeaforeSave(false);
@@ -32,13 +34,14 @@ export default function Profile() {
     }
     setSelector(select_element);
 
-    const move = document.getElementById(id);
-    move?.scrollIntoView({ behavior: "smooth", block: "center" });
+    const move = document.getElementById(id) as Element;
+    move.scrollIntoView({ behavior: "smooth", block: "center" });
   };
   const removeSelect = () => {
     if (selector) selector.classList.remove("active");
   };
 
+  // 이름 변환 트랜지션
   useEffect(() => {
     const names: HTMLCollection = document.getElementsByClassName("name");
     const interval: NodeJS.Timer = setInterval(() => {
@@ -65,6 +68,7 @@ export default function Profile() {
     setCount((prev) => prev + 1);
   };
 
+  // 기술 스택 명시 랜더링
   const render_skills = (): JSX.Element => {
     let result = [];
     for (let i in skills) {
@@ -93,6 +97,7 @@ export default function Profile() {
     return <div className="skill">{result}</div>;
   };
 
+  // 자격증, 학력 열고 닫기
   const openList = (e: BaseSyntheticEvent) => {
     let target: HTMLElement = e.target;
     if (e.target.className === "close") target = target.parentElement!;
@@ -100,13 +105,15 @@ export default function Profile() {
     else target.classList.add("active");
   };
 
+  // 프로젝트 리스트 랜더링
   function renderProjectList(): JSX.Element {
     let result = [];
+    let count = 0;
     for (let i of posts) {
       let urls = [];
       if (i.github) {
         urls.push(
-          <a href={i.github} target="_blink" className="url">
+          <a href={i.github} target="_blink" className="url" key={i.github}>
             <Github color="#068FFF" size="24" />
             github
           </a>
@@ -114,15 +121,15 @@ export default function Profile() {
       }
       if (i.demo) {
         urls.push(
-          <a href={i.demo} target="_blink" className="url">
-            URL
+          <a href={i.demo} target="_blink" className="url" key={i.demo}>
+            DEMO
           </a>
         );
       }
       result.push(
-        <div className="profile-project">
+        <div className="profile-project" key={i.title}>
           <p>
-            <Link className="profile-project-title" to={`/project/post/${i.title}`}>
+            <Link className="profile-project-title" to={`/project/post/${count++}`}>
               {i.title}
             </Link>
             <span className="date">{i.date}</span>

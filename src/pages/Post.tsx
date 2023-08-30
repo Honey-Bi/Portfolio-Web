@@ -43,6 +43,7 @@ export default function Post() {
     body: Array<TextData | ImgData | RowData | LinkData>;
   };
 
+  // 이미지 생성 콜백
   const add_img = useCallback((data: ImgData, body: HTMLDivElement) => {
     const img = document.createElement("img");
     img.setAttribute("src", require(`img/${data.src}`));
@@ -51,6 +52,7 @@ export default function Post() {
     body.appendChild(img);
   }, []);
 
+  // 문자열 생성 콜백
   const add_text = useCallback((data: TextData, body: HTMLDivElement) => {
     const text = document.createElement("p");
     for (let c of data.class) {
@@ -61,6 +63,7 @@ export default function Post() {
     body.appendChild(text);
   }, []);
 
+  // 하이퍼 링크 생성 콜백
   const add_link = useCallback((data: LinkData, body: HTMLDivElement) => {
     const a = document.createElement("a");
     for (let c of data.class) {
@@ -72,6 +75,7 @@ export default function Post() {
     body.appendChild(a);
   }, []);
 
+  // 게시글 내용 생성 콜백
   const add_item = useCallback(
     (data: ImgData | TextData | RowData, body: HTMLDivElement) => {
       switch (data.type) {
@@ -101,6 +105,7 @@ export default function Post() {
   );
 
   const index = location.state ? location.state.index : -1;
+  // 게시글 내용 데이터
   const [data, setData] = useState<PostData | null>(null);
   const color: string = location.state ? location.state.color : data?.color;
 

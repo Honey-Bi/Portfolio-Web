@@ -13,14 +13,9 @@ export default function Terminal() {
     else if (url !== "./") navigate(url);
   };
 
-  const ls: Array<string> = [
-    "main",
-    "profile",
-    "project",
-    "terminal",
-    "concept",
-  ];
+  const ls: Array<string> = ["main", "profile", "project", "terminal", "concept"];
 
+  // submit 함수
   const handleOnSubmit = (command: string) => {
     const add_div = document.createElement("div");
     const log = document.createElement("div");
@@ -75,6 +70,7 @@ export default function Terminal() {
     if (command === "cls") terminal.innerHTML = "";
   };
 
+  // 키입력 핸들러
   const handleOnKeyDown = (e: BaseSyntheticEvent) => {
     const e1: KeyboardEvent = e.nativeEvent as KeyboardEvent;
     if (e1.key === "Enter") {

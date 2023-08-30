@@ -10,6 +10,7 @@ export default function Header() {
     setToggle((prev) => !prev);
   };
 
+  // 다크모드 변환
   useEffect(() => {
     if (toggle) {
       localStorage.setItem("isDark", "on");
@@ -28,6 +29,7 @@ export default function Header() {
   };
   const [moveItems, setItems] = useState(items);
 
+  // 효과 추가 저장용 함수
   function addItems(item: iconType) {
     let i: number;
     switch (item) {
@@ -50,6 +52,8 @@ export default function Header() {
         break;
     }
   }
+
+  // 효과 추가시 클래스 추가
   useEffect(() => {
     const down: HTMLElement = document.getElementById("down") as HTMLElement;
     if (moveItems.mushroom === 2) {
@@ -81,6 +85,7 @@ export default function Header() {
     setIcon(set);
   };
 
+  // 효과 드래그 시작
   const dragOn = (e: any) => {
     const down: HTMLElement = document.getElementById("down") as HTMLElement;
     if (e.pageY >= 78 || (isMobile && e.changedTouches[0].pageY >= 78)) {
@@ -89,6 +94,7 @@ export default function Header() {
       down.classList.remove("dropZone");
     }
   };
+  // 효과 드래그 종료
   const dragStop = () => {
     const down: HTMLElement = document.getElementById("down") as HTMLElement;
     if (down.classList.contains("dropZone")) {
@@ -97,6 +103,7 @@ export default function Header() {
     down.classList.remove("dropZone");
   };
 
+  // 홈버튼
   const location = useLocation();
   const Home = () => {
     if (location.pathname === "/") {
@@ -109,10 +116,13 @@ export default function Header() {
       return <Link to="/">Home</Link>;
     }
   };
+
+  //새고로침
   const reload = () => {
     window.location.reload();
   };
 
+  // 모바일 하단 조작바용 vh길이설정
   let vh = window.innerHeight * 0.01;
   document.documentElement.style.setProperty("--vh", `${vh}px`);
   window.addEventListener("resize", () => {

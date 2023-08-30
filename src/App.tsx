@@ -16,6 +16,7 @@ function App() {
   const location = useLocation();
   let className: string;
 
+  // 현재 위치에 따라서 페이지 트랜지션 바꾸기
   switch (true) {
     case /^\/project\/[a-zA-Z]/.test(location.pathname): // /project/
       className = "project-move";
