@@ -7,7 +7,7 @@
     "color": "#068fff",
     "github": "https://github.com/Honey-Bi/vector-draw",
     "demo": "https://honey-bi.github.io/vector-draw/",
-    "brief": "그림판처럼 쉽게 svg 파일을 그릴수 있도록 한 온라인 svg 에디터 입니다. 여러 프로젝트를 진행하면서 아이콘등에 SVG를 사용하면서 SVG에 관한 이해도가 부족하다고 생각이 되어 시작하게되었습니다.",
+    "brief": "React와 Typescript를 사용하여 만든 svg 파일을 그림판처럼 쉽게 그릴수 있도록 한 온라인 svg 에디터 입니다. 여러 프로젝트를 진행하면서 아이콘등에 SVG를 사용하면서 SVG에 관한 이해도가 부족하다고 생각이 되었고, 관심을 가져보자해서 시작하게된 프로젝트입니다.",
     "body": []
   },
   {
@@ -18,7 +18,7 @@
     "color": "#FF9B9B",
     "github": "https://github.com/Honey-Bi/Honey-Bi.github.io",
     "demo": null,
-    "brief": "현재 보고있는 포트폴리오 페이지로 React, Typescript를 사용하여 제작하였습니다.",
+    "brief": "현재 보고있는 포트폴리오 페이지로 React, Typescript을 사용하여 제작하였습니다.",
     "body": [
       {
         "type": "img",
@@ -43,7 +43,7 @@
           },
           {
             "type": "text",
-            "content": "프로젝트 소개를 어떻게 할까 고민하다가 제가 가장 좋아하는 만화 '죠죠의 기묘한 모험' 와 휴대폰 뮤직 플레이어에서 영감을 받았습니다. 해당 만화에서 주인공이 사용한 기술을 처럼 황금비와 나선을 이용하여 프로젝트 리스트를 제작하였습니다. 또한 프로젝트마다 가지고 있는 브랜드 컬러를 추출해 앨범 커버를 제작하였습니다.",
+            "content": "프로젝트 소개를 어떻게 할까 고민하다가 제가 가장 좋아하는 만화 '죠죠의 기묘한 모험' 과 휴대폰 뮤직 플레이어에서 영감을 받았습니다. 해당 만화에서 주인공이 사용한 기술을 처럼 황금비와 나선을 이용하여 프로젝트 리스트를 제작하였습니다. 또한 프로젝트마다 가지고 있는 브랜드 컬러를 추출해 앨범 커버를 제작하였습니다.",
             "class": ["mt-0", "mb-0"]
           }
         ]
@@ -91,7 +91,7 @@
     "date": "2023 June",
     "color": "#112D4E",
     "github": "https://github.com/Honey-Bi/Oraculum",
-    "demo": "https://port-0-oraculum-k19y2kljp1v7t6.sel4.cloudtype.app/",
+    "demo": null,
     "brief": "간단한 의사결정 시뮬레이션 게임으로 프로젝트로, 처음으로 Node.js 사용하여 만든 1인 프로젝트 입니다.",
     "body": [
       {
