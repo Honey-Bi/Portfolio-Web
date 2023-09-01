@@ -30,7 +30,7 @@ function App() {
   }
 
   return (
-    <SwitchTransition mode={"out-in"}>
+    <SwitchTransition mode="out-in">
       <CSSTransition key={location.key} timeout={800} classNames={className}>
         <Routes location={location}>
           <Route path="/" element={<Main />} />
