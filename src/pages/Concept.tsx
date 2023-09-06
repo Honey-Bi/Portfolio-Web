@@ -43,6 +43,9 @@ const opts = {
 const balls: Array<Ball> = [];
 const titles: Array<string> = [
   // 타이핑 목록
+  "인생이란 점이 모여 선이 되듯이, 과거의 일들이 이어져 현재를 만듭니다.",
+  "살면서 마주한 선택이 점이 되고 점들이 이어져 지금의 나를 만듭니다.",
+  "나는 오늘도 개발자가 되기 위해 최선을 다해 빛나는 점을 찍습니다.",
   "Developer이자 Creator 입니다.",
   "다크모드로 보시는걸 추천드립니다.",
   "Not to be a big fish in a small pond",
@@ -231,7 +234,7 @@ export default function Concept() {
     const blink = document.getElementsByClassName("blink")[0];
     if (pp) {
       blink.classList.remove("active");
-      timerRef.current = setInterval(typing, 150);
+      timerRef.current = setInterval(typing, 100);
     } else {
       clearInterval(timerRef.current as NodeJS.Timer);
       blink.classList.add("active");
