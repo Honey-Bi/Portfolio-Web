@@ -84,7 +84,10 @@ export default function Profile() {
                 backgroundColor: skill.color,
               }}
             >
-              <div className="skill-round" style={{ backgroundColor: skill.color }}></div>
+              <div
+                className="skill-round"
+                style={{ backgroundColor: skill.color }}
+              ></div>
               <span className="skill-percent" style={{ color: skill.color }}>
                 {skill.progress}%
               </span>
@@ -129,7 +132,10 @@ export default function Profile() {
       result.push(
         <div className="profile-project" key={i.title}>
           <p>
-            <Link className="profile-project-title" to={`/project/post/${count++}`}>
+            <Link
+              className="profile-project-title"
+              to={`/project/post/${count++}`}
+            >
               {i.title}
             </Link>
             <span className="date">{i.date}</span>
@@ -151,10 +157,16 @@ export default function Profile() {
           <div className="time-line">
             <div className="line"></div>
             <div className="square"></div>
-            <div className="square selector about" onClick={(e) => select(e, "about")}>
+            <div
+              className="square selector about"
+              onClick={(e) => select(e, "about")}
+            >
               <div className="color"></div>
             </div>
-            <div className="square selector summary" onClick={(e) => select(e, "skills")}>
+            <div
+              className="square selector summary"
+              onClick={(e) => select(e, "skills")}
+            >
               <div className="color"></div>
             </div>
             <div
@@ -163,7 +175,10 @@ export default function Profile() {
             >
               <div className="color"></div>
             </div>
-            <div className="square selector skills" onClick={(e) => select(e, "summary")}>
+            <div
+              className="square selector skills"
+              onClick={(e) => select(e, "summary")}
+            >
               <div className="color"></div>
             </div>
             <div
@@ -190,20 +205,26 @@ export default function Profile() {
                   <div className="name">HB</div>
                 </div>
               </div>
-              <p>재미있는 아이디어를 상상하고 구현하는것을 즐기는 주니어 개발자입니다.</p>
               <p>
-                언제나 시도를 두려워하지 않으며, 문제에 직면하면 적극적으로 해결책을
-                찾아내고자 합니다. 이러한 자세로 다양한 프로젝트를 진행하고, 기술적인
-                도전과 성장을 지속적으로 추구합니다.
+                재미있는 아이디어를 상상하고 구현하는것을 즐기는 프론트앤드
+                개발자입니다.
+              </p>
+              <p>
+                언제나 시도를 두려워하지 않으며, 문제에 직면하면 적극적으로
+                해결책을 찾아내고자 합니다. 이러한 자세로 다양한 프로젝트를
+                진행하고, 기술적인 도전과 성장을 지속적으로 추구합니다.
               </p>
               <ul className="thinking">
                 <li>기본은 항상 중요하다고 생각하고 있습니다.</li>
-                <li>우물안 개구리가 되지않기 위해 끊임없이 고뇌하고 있습니다.</li>
+                <li>
+                  우물안 개구리가 되지않기 위해 끊임없이 고뇌하고 있습니다.
+                </li>
                 <li>항상 참신한 시도를 해보려고 노력하고있습니다.</li>
               </ul>
               <div className="about-bundle">
                 <span>
-                  EMAIL : <a href="mailto:biten10@naver.com">biten10@naver.com</a>
+                  EMAIL :{" "}
+                  <a href="mailto:biten10@naver.com">biten10@naver.com</a>
                 </span>
                 <a href="https://github.com/Honey-Bi" target="_blink">
                   <Github color="#068FFF" size="24" />
@@ -292,7 +313,8 @@ export default function Profile() {
               </div>
               <div className="contact-bundle">
                 <span>
-                  EMAIL : <a href="mailto:biten10@naver.com">biten10@naver.com</a>
+                  EMAIL :{" "}
+                  <a href="mailto:biten10@naver.com">biten10@naver.com</a>
                 </span>
                 <a href="https://github.com/Honey-Bi" target="_blink">
                   <Github color="#068FFF" size="24" />
