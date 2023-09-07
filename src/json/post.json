@@ -137,13 +137,13 @@
     ]
   },
   {
-    "title": "Plant Tree",
-    "category": "Animation Project",
+    "title": "Animations",
+    "category": "Animation List",
     "author": "HB",
     "date": "2023 June",
-    "color": "#B5F1CC",
-    "github": "https://honey-bi.github.io/plant-tree-app/",
-    "demo": "https://github.com/Honey-Bi/plant-tree-app",
+    "color": "#dfccfb",
+    "github": "https://honey-bi.github.io/animation-list/",
+    "demo": "https://github.com/Honey-Bi/animation-list",
     "brief": "canvas를 사용한 애니메이션 프로젝트로, React, Typescript만을 사용하여 canvas 애니메이션을 제작하였습니다.",
     "body": [
       {
